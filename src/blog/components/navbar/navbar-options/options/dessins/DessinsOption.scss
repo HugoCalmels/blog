@@ -1,0 +1,41 @@
+.b-navbar-dessins-opened-menu-list{
+  
+  width: 0px;
+  height: 0px;
+  border: 4px solid green;
+  position: absolute;
+  left: 0;
+  top: 28px;
+  background-color: white;
+  list-style-type: none;
+  display: none;
+  flex-direction: column;
+  padding: 8px;
+  transition: .4s cubic-bezier(.54,0,.58,.99);
+  opacity: 0;
+  z-index: 31;
+
+}
+.b-navbar-dessins-opened-menu-list.active{
+  display: flex;
+}
+
+.b-navbar-dessins-opened-menu-unit{
+  border: 2px solid magenta;
+  padding: 6px 12px;
+  width: 0px;
+  transition: .3s;
+  display: flex;
+  width: 100%;
+}
+.b-navbar-dessins-opened-menu-unit span{
+  transition: .02s;
+}
+
+
+.b-navbar-dessins-opened-menu-unit span{
+  font-size: 1rem;
+  opacity: 0;
+  display: none;
+
+}

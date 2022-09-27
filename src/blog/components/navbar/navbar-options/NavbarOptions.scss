@@ -1,0 +1,26 @@
+.b-nabvar-options-list{
+  list-style-type: none;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+}
+
+
+.b-navbar-option{
+
+  margin: 0;
+  padding: 0;
+  padding: 12px 24px;
+  border: 3px solid blue;
+  display: flex;
+  align-items: center;
+  position:relative;
+  z-index:31;
+}
+
+.b-navbar-option span{
+  font-size: 1.15rem;
+
+}

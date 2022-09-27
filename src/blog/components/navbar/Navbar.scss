@@ -1,0 +1,32 @@
+.b-navbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  border: 4px solid black;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 75px;
+}
+
+/*
+.b-navbar-container{
+
+  border: 4px solid orange;
+
+}
+*/
+
+.b-navbar-overlay{
+  position: fixed;
+  border: 6px solid lightgreen;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  display: none;
+}
