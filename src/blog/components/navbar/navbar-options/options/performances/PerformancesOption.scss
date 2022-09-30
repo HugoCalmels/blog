@@ -1,26 +1,4 @@
-
-
-.b-navbar-option-container{
-  display: flex;
-
-  position: relative;
-
-}
-
-.b-navbar-option{
-
-  margin: 0;
-  padding: 0;
-  padding: 6px 16px;
-  border: 3px solid blue;
-  display: flex;
-  align-items: center;
-  position:relative;
-  z-index:31;
-  background-color: yellow;
-}
-
-.b-navbar-dessins-opened-menu-list{
+.b-navbar-performances-opened-menu-list{
   
   width: 0px;
   height: 0px;
@@ -37,11 +15,11 @@
   z-index:99;
   overflow: hidden;
 }
-.b-navbar-dessins-opened-menu-list.active{
+.b-navbar-performances-opened-menu-list.active{
   display: flex;
 }
 
-.b-navbar-dessins-opened-menu-unit{
+.b-navbar-performances-opened-menu-unit{
   border: 2px solid magenta;
   padding: 6px 12px;
   width: 0px;
@@ -50,12 +28,12 @@
   width: 100%;
   opacity: 0;
 }
-.b-navbar-dessins-opened-menu-unit span{
+.b-navbar-performances-opened-menu-unit span{
   transition: .02s;
 }
 
 
-.b-navbar-dessins-opened-menu-unit span{
+.b-navbar-performances-opened-menu-unit span{
   font-size: 1rem;
   opacity: 0;
   display: none;

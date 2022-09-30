@@ -1,122 +1,89 @@
 import "./DessinsOption.scss";
-
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-const DessinsOption = () => {
+const DessinsOption = (props) => {
 
-  let menuOpened = false;
+  const navigate = useNavigate()
 
-  const openMenu = () => {
-    if (menuOpened === false) {
-      console.log("why does this ttrigger ?????????????");
-      let dessinsTextElem = document.querySelectorAll(
-        ".b-navbar-dessins-opened-menu-unit.dessins span"
-      );
-      let paysagesTextElem = document.querySelectorAll(
-        ".b-navbar-dessins-opened-menu-unit.paysages span"
-      );
-      let carnetsTextElem = document.querySelectorAll(
-        ".b-navbar-dessins-opened-menu-unit.carnets span"
-      );
-      let menuLiElems = document.querySelectorAll(
-        ".b-navbar-dessins-opened-menu-unit"
-      );
-
-      let menuElem = document.querySelector(
-        ".b-navbar-dessins-opened-menu-list"
-      );
-      let overlay = document.querySelector(".b-navbar-overlay");
-
-      menuElem.classList.add("active");
-
-      const timeout = setTimeout(() => {
-        menuElem.style.opacity = "1";
-        menuElem.style.width = "175px";
-        menuElem.style.height = "126px";
-
-        let indexDessins = 0;
-        let indexPaysages = 0;
-        let indexCarnets = 0;
-
-        setTimeout(() => {
-          setInterval(() => {
-            if (dessinsTextElem[indexDessins] !== undefined) {
-              dessinsTextElem[indexDessins].style.opacity = "1";
-              dessinsTextElem[indexDessins].style.display = "block";
-            }
-     
-      
-  
-            indexDessins += 1;
-          }, 20);
-        }, 200)
-      
-        setTimeout(() => {
-          setInterval(() => {
-            if (paysagesTextElem[indexPaysages] !== undefined) {
-              paysagesTextElem[indexPaysages].style.opacity = "1";
-              paysagesTextElem[indexPaysages].style.display = "block";
-            }
-            indexPaysages += 1;
-          }, 20)
-        }, 300)
-   
-
-        setTimeout(() => {
-          setInterval(() => {
-            if (carnetsTextElem[indexCarnets] !== undefined) {
-              carnetsTextElem[indexCarnets].style.opacity = "1";
-              carnetsTextElem[indexCarnets].style.display = "block";
-            }
-            indexCarnets += 1;
-          }, 20)
-        },400)
-      
-        menuOpened = true;
-        overlay.style.display = "block";
-      }, 400);
+  const openMenu = async () => {
+    const menuElem = document.querySelector(
+      ".b-navbar-dessins-opened-menu-list"
+    );
+    const menuLiElems = document.querySelectorAll(
+      ".b-navbar-dessins-opened-menu-unit"
+    );
+    let overlay = document.querySelector(".b-navbar-overlay");
+    if (props.menuOpenedPerformances === true) {
+      const performancesMenuElem = document.querySelector('.b-navbar-performances-opened-menu-list')
+      performancesMenuElem.classList.remove('active')
+      performancesMenuElem.style.width = "0px"
+      performancesMenuElem.style.height = "0px"
+      props.setMenuOpenedPerformances(false)
     }
+  
+    setTimeout(() => {
+   
+      animateMenuForward(menuElem);
+    }, 5);
+    menuElem.classList.add("active");
+    overlay.style.display = "block";
+    props.setMenuOpenedDessins(true);
+
+    // reset text
+    menuLiElems.forEach((el) => {
+      el.style.display = "none";
+      el.style.opacity = "0";
+    })
+
+    const aPromise = new Promise((accept) => {
+      setTimeout(() => {
+        menuLiElems.forEach((elem) => {
+          elem.style.display = "flex";
+          setTimeout(() => {
+            elem.style.opacity = "1";
+            accept()
+          }, 400);
+         
+        });
+        
+      });
+     
+    })
+    await aPromise
+ 
+  };
+
+  const animateMenuForward = (elem) => {
+    elem.style.opacity = "1";
+    elem.style.width = "180px";
+    elem.style.height = "126px";
+    props.setMenuOpenedDessins(true);
   };
 
   const closeMenu = () => {
-    let menuElem = document.querySelector(".b-navbar-dessins-opened-menu-list");
-
-    let dessinsTextElem = document.querySelectorAll(
-      ".b-navbar-dessins-opened-menu-unit.dessins span"
+    const menuElem = document.querySelector(
+      ".b-navbar-dessins-opened-menu-list"
     );
-    let paysagesTextElem = document.querySelectorAll(
-      ".b-navbar-dessins-opened-menu-unit.paysages span"
-    );
-
-    let carnetsTextElem = document.querySelectorAll(
-      ".b-navbar-dessins-opened-menu-unit.carnets span"
+    const menuLiElems = document.querySelectorAll(
+      ".b-navbar-dessins-opened-menu-unit"
     );
     let overlay = document.querySelector(".b-navbar-overlay");
-
+    overlay.style.display = "none";
     menuElem.style.opacity = "0";
     menuElem.style.width = "0px";
     menuElem.style.height = "0px";
-    dessinsTextElem.forEach((elem) => {
-      elem.style.opacity = "0";
-      elem.style.display ="none"
-    });
-    paysagesTextElem.forEach((elem) => {
-      elem.style.opacity = "0";
-      elem.style.display ="none"
-    });
-    carnetsTextElem.forEach((elem) => {
-      elem.style.opacity = "0";
-      elem.style.display ="none"
-    });
 
-    setTimeout(() => {
-      menuElem.classList.remove("active");
-      menuOpened = false;
-      overlay.style.display = "none";
-    }, 300);
+    menuLiElems.forEach((elem) => {
+      elem.style.opacity = "0";
+      setTimeout(() => {
+        elem.style.display = "none";
+      }, 50);
+    });
+    props.setMenuOpenedDessins(false);
   };
 
-  const toggleMenu = () => {
-    if (menuOpened === false) {
+  const toggleMenu = (e) => {
+    if (props.menuOpenedDessins === false) {
       openMenu();
     } else {
       closeMenu();
@@ -125,71 +92,43 @@ const DessinsOption = () => {
 
   useEffect(() => {
     const overlay = document.querySelector(".b-navbar-overlay");
-    overlay.addEventListener("click", () => {
+    overlay.addEventListener("click", (e) => {
+      e.stopPropagation();
+      console.log("TEST");
       closeMenu();
     });
   });
 
+  const navigateToCroquis = () => {
+    closeMenu()
+    navigate('/gaelle-boucherit/dessins-et-croquis')
+  }
+  const navigateToPaysages = () => {
+    closeMenu()
+    navigate('/gaelle-boucherit/paysages')
+  }
+
+  const navigateToCarnets = () => {
+    closeMenu()
+    navigate('/gaelle-boucherit/carnets-de-voyages')
+  }
+
+
   return (
     <>
-      <li className="b-navbar-option" onClick={toggleMenu}>
-        <span>Dessins</span>
+      <li className="b-navbar-option-container">
+        <div className="b-navbar-option dessins" onClick={(e) => toggleMenu(e)}>
+          <span>Dessins</span>
+        </div>
         <ul className="b-navbar-dessins-opened-menu-list">
-          <li
-            className="b-navbar-dessins-opened-menu-unit dessins"
-          >
-            <span>D</span>
-            <span>e</span>
-            <span>s</span>
-            <span>s</span>
-            <span>i</span>
-            <span>n</span>
-            <span>s</span>
-            <span>&nbsp;</span>
-            <span>e</span>
-            <span>t</span>
-            <span>&nbsp;</span>
-            <span>c</span>
-            <span>r</span>
-            <span>o</span>
-            <span>q</span>
-            <span>u</span>
-            <span>i</span>
-            <span>s</span>
+          <li className="b-navbar-dessins-opened-menu-unit dessins" onClick={navigateToCroquis}>
+            Dessins et croquis
           </li>
-          <li
-            className="b-navbar-dessins-opened-menu-unit paysages"
-          >
-            <span>P</span>
-            <span>a</span>
-            <span>y</span>
-            <span>s</span>
-            <span>a</span>
-            <span>g</span>
-            <span>e</span>
-            <span>s</span>
+          <li className="b-navbar-dessins-opened-menu-unit paysages"onClick={navigateToPaysages}>
+            Paysages
           </li>
-          <li
-            className="b-navbar-dessins-opened-menu-unit carnets"
-          >
-            <span>C</span>
-            <span>a</span>
-            <span>r</span>
-            <span>n</span>
-            <span>e</span>
-            <span>t</span>
-            <span>s</span>
-            <span>&nbsp;</span>
-            <span>d</span>
-            <span>e</span>
-            <span>&nbsp;</span>
-            <span>v</span>
-            <span>o</span>
-            <span>y</span>
-            <span>a</span>
-            <span>g</span>
-            <span>e</span>
-            <span>s</span>
+          <li className="b-navbar-dessins-opened-menu-unit carnets"onClick={navigateToCarnets}>
+            Carnets de voyages
           </li>
         </ul>
       </li>
