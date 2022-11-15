@@ -12,7 +12,7 @@ const NavbarOptions = () => {
     <ul className="b-nabvar-options-list">
       <DessinsOption menuOpenedDessins={menuOpenedDessins} menuOpenedPerformances={menuOpenedPerformances} setMenuOpenedDessins={setMenuOpenedDessins} setMenuOpenedPerformances={setMenuOpenedPerformances} />
       <PerformancesOption menuOpenedDessins={menuOpenedDessins} menuOpenedPerformances={ menuOpenedPerformances} setMenuOpenedDessins={setMenuOpenedDessins} setMenuOpenedPerformances={setMenuOpenedPerformances}/>
-      <li className="b-navbar-option"><span>Amis</span></li>
+      <li className="b-navbar-option"><span>Partenaires</span></li>
       <li className="b-navbar-option"><span>Contact</span></li>
     </ul>
   );

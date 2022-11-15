@@ -1,9 +1,9 @@
 import "./PerformancesOption.scss"
 import { useEffect } from "react"
-
+import { useNavigate } from "react-router-dom";
 const PerformancesOption = (props) => {
 
-
+  const navigate = useNavigate()
   const openMenu = async () => {
     const menuElem = document.querySelector(
       ".b-navbar-performances-opened-menu-list"
@@ -77,7 +77,7 @@ const PerformancesOption = (props) => {
   const animateMenuForward = (elem) => {
     elem.style.opacity = "1";
     elem.style.width = "180px";
-    elem.style.height = "126px";
+    elem.style.height = "90px";
     props.setMenuOpenedPerformances(true);
   };
 
@@ -98,19 +98,33 @@ const PerformancesOption = (props) => {
       closeMenu();
     });
   });
+
+  const navigateToPerformancesSolo = () => {
+    closeMenu()
+    navigate('/gaelle-boucherit/performances/solo')
+  }
+  const navigateToPerformancesGroup = () => {
+    closeMenu()
+    navigate('/gaelle-boucherit/performances/à-plusieurs')
+  }
   return (
     <>
       <li className="b-navbar-option-container">
-        <div className="b-navbar-option dessins" onClick={(e) => toggleMenu(e)}>
+        <div className="b-navbar-option dessins" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
           <span>Performances</span>
-        </div>
-
-        <ul className="b-navbar-performances-opened-menu-list">
-          <li className="b-navbar-performances-opened-menu-unit">
-            test 123123
-          </li>
+          <ul className="b-navbar-performances-opened-menu-list">
+          <li className="b-navbar-performances-opened-menu-unit" onClick={navigateToPerformancesSolo}>
+            solo
+            </li>
+            <li className="b-navbar-performances-opened-menu-unit" onClick={navigateToPerformancesGroup}>
+            à plusieurs
+            </li>
+            
         
         </ul>
+        </div>
+
+        
        
       </li>
     </>

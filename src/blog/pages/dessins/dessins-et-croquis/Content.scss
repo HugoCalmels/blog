@@ -1,0 +1,102 @@
+@import "../../../../variables";
+
+.bd-images-container {
+  display: flex;
+
+  flex-direction: column;
+
+
+  background-color: #f2f2f2;
+}
+.bd-images-grid {
+
+  padding: 20px 20px;
+
+}
+
+.bd-images-grid h5{
+  font-family: 'Quicksand', sans-serif;
+  font-weight:500;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-item {
+
+  position: relative;
+
+}
+.grid-item.red {
+  border: 4px solid red;
+}
+
+.bd-image-destroy {
+  position: absolute;
+  right: 0;
+
+  top: 0;
+  background: white;
+}
+
+.bd-image {
+  cursor: pointer;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+
+  margin-top: 20px;
+
+}
+.my-masonry-grid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background: white;
+
+  margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .my-masonry-grid {
+    margin-left: -15px; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 15px; /* gutter size offset */
+  }
+  .my-masonry-grid_column > div {
+    margin-bottom: 15px; /* space between items */
+  }
+}
+
+.bd-image-edit {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  background-color: white;
+}
+
+.bd-image-hide-btn {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  background-color: white;
+}
+.bd-images-grid:nth-child(odd) {
+  background-color: #dddddd;
+}

@@ -1,0 +1,48 @@
+.bd-images-reader {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  z-index: 9;
+  overflow: hidden;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 4px solid cyan;
+  display: none;
+}
+
+.bd-image-selected {
+  border: 4px solid green;
+  display: flex;
+  justify-content: center;
+}
+
+.bd-image-selected img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 75px);
+  width: auto;
+  height: 100%;
+}
+
+.bd-images-reade-close-menu {
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  position: absolute;
+  color: white;
+  font-size: 3rem;
+  background-color: black;
+  padding: 2px;
+}
+
+.bd-images-reader-references {
+  border: 4px solid lightblue;
+  color: black;
+  background-color: white;
+}

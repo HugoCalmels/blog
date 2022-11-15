@@ -1,0 +1,24 @@
+.bd-left-bar {
+  position: fixed;
+  left: 0;
+  top: 75px;
+  bottom: 0;
+
+  width: 250px;
+  background-color: yellow;
+}
+
+.bdl-create-year {
+  border: 2px solid black;
+  font-size: 1.15rem;
+}
+.bdl-create-year:hover {
+  background-color: blue;
+}
+.bdl-create-photo {
+  border: 2px solid black;
+}
+
+.bdl-years-list {
+  border: 2px solid black;
+}

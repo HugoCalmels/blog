@@ -1,0 +1,47 @@
+
+@import "../../../../variables";
+
+.bd-container {
+
+  position: relative;
+
+
+}
+
+.bd-content-wrapper {
+
+  max-width: 100%;
+
+  position: relative;
+  margin-left: 250px;
+  display: flex;
+  margin-top: 150px;
+
+}
+.bd-dessins-title{
+  display: flex;
+  height: 75px;
+  align-items: center;
+
+  //
+  position: fixed;
+  top: 75px;
+  left: 250px;
+  right: 0;
+  height: 75px;
+  z-index: 29999;
+  background-color: #f2f2f2;
+  overflow: hidden;
+
+}
+.bd-dessins-title h2{
+ 
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+  color: $dark-1;
+
+  font-family: 'Quicksand', sans-serif;
+  font-weight:500;
+  margin-left: 20px;
+}

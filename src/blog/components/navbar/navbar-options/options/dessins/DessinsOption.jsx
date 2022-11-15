@@ -5,7 +5,10 @@ const DessinsOption = (props) => {
 
   const navigate = useNavigate()
 
-  const openMenu = async () => {
+  const [menuIsBeingOpened, setMenuIsBeingOpened] = useState(false)
+
+  const openMenu = async (number) => {
+    setMenuIsBeingOpened(true)
     const menuElem = document.querySelector(
       ".b-navbar-dessins-opened-menu-list"
     );
@@ -42,6 +45,7 @@ const DessinsOption = (props) => {
           setTimeout(() => {
             elem.style.opacity = "1";
             accept()
+            setMenuIsBeingOpened(false)
           }, 400);
          
         });
@@ -84,6 +88,7 @@ const DessinsOption = (props) => {
 
   const toggleMenu = (e) => {
     if (props.menuOpenedDessins === false) {
+      
       openMenu();
     } else {
       closeMenu();
@@ -117,10 +122,9 @@ const DessinsOption = (props) => {
   return (
     <>
       <li className="b-navbar-option-container">
-        <div className="b-navbar-option dessins" onClick={(e) => toggleMenu(e)}>
+        <div className="b-navbar-option dessins" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
           <span>Dessins</span>
-        </div>
-        <ul className="b-navbar-dessins-opened-menu-list">
+          <ul className="b-navbar-dessins-opened-menu-list">
           <li className="b-navbar-dessins-opened-menu-unit dessins" onClick={navigateToCroquis}>
             Dessins et croquis
           </li>
@@ -131,6 +135,8 @@ const DessinsOption = (props) => {
             Carnets de voyages
           </li>
         </ul>
+        </div>
+        
       </li>
     </>
   );

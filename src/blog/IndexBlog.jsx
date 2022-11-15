@@ -1,6 +1,6 @@
 
 import "./Index.scss"
-const Index = () => {
+const IndexBlog = () => {
   return (
     <>
       
@@ -12,4 +12,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default IndexBlog
