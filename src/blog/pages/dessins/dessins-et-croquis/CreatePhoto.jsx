@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import "./CreatePhoto.scss";
-
+import {DessinsContext} from "./DessinsContext"
+import xCloseIcon from "../../../../assets/icons/xCloseIcon.png"
+import imageCompression from "browser-image-compression";
+const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN
 const CreatePhoto = () => {
   const [categories, setCategories] = useState([]);
   const [imageRef, setImageRef] = useState(0);
@@ -8,12 +11,15 @@ const CreatePhoto = () => {
   const [imageMaterial, setImageMaterial] = useState("");
   const [imageWidth, setImageWidth] = useState("");
   const [imageHeight, setImageHeight] = useState("");
-
+  const formCreatePhoto = useRef(null)
+  const modalCreatePhoto = useRef(null)
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("dessin_temp_image[image]", e.target[1].files[0]);
-    let getSelects = document.querySelectorAll(".bdl-custom-select");
+
+    resizeImageFunction(e.target[1].files[0]).then((imageFile) => {
+      const data = new FormData()
+      data.append("dessin_temp_image[image]", imageFile)
+      let getSelects = document.querySelectorAll(".bdl-custom-select");
     const foundSelect = Array.from(getSelects).filter(
       (select) => select.value == e.target[0].value
     );
@@ -21,19 +27,47 @@ const CreatePhoto = () => {
     createTempImage(data).then((data) => {
       createImage(data, categoryID);
     });
+     })
+  };
+
+  const resizeImageFunction = async (file) => {
+    const options = {
+      maxSizeMB: 0.1,
+      maxWidthOrHeight: 4000,
+      useWebWorker: true,
+    };
+    const compressedFile = await imageCompression(file, options);
+    return compressedFile;
   };
 
   const createTempImage = async (data) => {
-    await fetch("http://localhost:3000/api/v1/dessin_temp_images", {
+    const res = await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, {
       method: "POST",
       body: data,
     });
+    const data2 = await res.json()
+    console.log("1st step :")
+    console.log("1st step :")
+    console.assert(res)
+    console.log(data2)
+    console.log("1st step :")
+    console.log("1st step :")
+    console.log("1st step :")
     // get latest image
     const latestImageResponse = await fetch(
-      "http://localhost:3000/api/v1/dessin-latest"
+      `${BASE_URL}/api/v1/dessin-latest`
     );
     const latestImage = await latestImageResponse.json();
+    console.log("2nd step :")
+    console.log("2nd step :")
+    console.assert(latestImageResponse)
+    console.log(latestImage)
+    console.log("2nd step :")
+    console.log("2nd step :")
+    console.log("2nd step :")
     return latestImage;
+
+  
   };
 
   const createImage = async (image, categoryID) => {
@@ -47,7 +81,15 @@ const CreatePhoto = () => {
         width: imageWidth,
         height: imageHeight,
       },
+      
     };
+    console.log("2&demi step :")
+    console.log("2&demi step :")
+    console.assert(body)
+
+    console.log("2&demi step :")
+    console.log("2&demi step :")
+    console.log("2&demi step :")
     const config = {
       method: "POST",
       headers: {
@@ -55,11 +97,50 @@ const CreatePhoto = () => {
       },
       body: JSON.stringify(body),
     };
-    await fetch(
-      `http://localhost:3000/api/v1/dessin_categories/${categoryID}/dessins`,
+    const res = await fetch(
+      `${BASE_URL}/api/v1/dessin_categories/${categoryID}/dessins`,
       config
     );
-    window.location.reload(false);
+    //window.location.reload(false);
+    const data = await res.json();
+    console.log("3rd step :")
+    console.log("3rd step :")
+    console.assert(res)
+    console.log(data)
+    console.log("3rd step :")
+    console.log("3rd step :")
+    console.log("3rd step :")
+    //subArrayToChange = value.filter
+
+    let subArrayToChange = value.map((category) => {
+      if (category.id === data.dessin_category_id) {
+        console.log('?????????????? WHAT ????????????????')
+        console.log('?????????????? WHAT ????????????????')
+        console.log(category.dessins)
+     
+        console.log('?????????????? WHAT ????????????????')
+        console.log('?????????????? WHAT ????????????????')
+        category.dessins.push(data)
+     
+     
+        return category
+      
+      } else {
+        return category
+    }
+    })
+    console.log("44444444444444444444")
+    console.log("44444444444444444444")
+    console.log("44444444444444444444")
+    console.log(subArrayToChange)
+    console.log("44444444444444444444")
+    console.log("44444444444444444444")
+    console.log("44444444444444444444")
+    console.log("44444444444444444444")
+    formCreatePhoto.current.reset()
+    modalCreatePhoto.current.classList.remove("active")
+    setValue(subArrayToChange)
+    
   };
 
   const closeModal = () => {
@@ -69,7 +150,7 @@ const CreatePhoto = () => {
 
   const getCategories = async () => {
     const response = await fetch(
-      "http://localhost:3000/api/v1/dessin_categories",
+      `${BASE_URL}/api/v1/dessin_categories`,
       {
         method: "GET",
       }
@@ -83,12 +164,33 @@ const CreatePhoto = () => {
     getCategories();
   }, []);
 
+  const { value, setValue } = useContext(DessinsContext)
+  
+  useEffect(() => {
+    console.log('2222222222222222')
+    console.log('from create a photo')
+    console.log('2222222222222222')
+  }, [value])
+  
+  const submitInput = useRef(null)
+  if (imageWidth !== "" && imageHeight !== "" && imageTitle !== "" && imageRef !== "" && submitInput.current !== null) {
+    console.log(imageTitle)
+    console.log(imageWidth)
+    console.log(imageHeight)
+    submitInput.current.disabled = false
+  } else if (submitInput.current !== null) {
+    submitInput.current.disabled = true
+  }
+ 
+
   return (
-    <div className="bdl-create-photo-modal">
-      <h5>Créer une IMAGE/PHOTO</h5>
-      <p onClick={closeModal}>X</p>
-      <form className="bdl-create-photo-form" onSubmit={(e) => handleSubmit(e)}>
-        <label>1.Sélectionner année ou catégorie</label>
+    <div className="bdl-create-photo-modal" ref={modalCreatePhoto}>
+      <h5>Créer une image</h5>
+      <div className="bdl-create-photo-close" onClick={closeModal}><img src={xCloseIcon} alt="close photo creation"/></div>
+      <form className="bdl-create-photo-form" onSubmit={(e) => handleSubmit(e)} ref={formCreatePhoto}>
+
+        <div className="bdl-create-photo-form-input">
+        <label>1.Sélectionner une catégorie</label>
 
         <select id="select-categories">
           {categories.map((category) => (
@@ -100,41 +202,57 @@ const CreatePhoto = () => {
               {category.title}
             </option>
           ))}
-        </select>
-        <label htmlFor="dessin-image">2. Photo</label>
+          </select>
+        </div>
+        
+        <div className="bdl-create-photo-form-input">
+        <label htmlFor="dessin-image">2. Upload de l'image</label>
         <input type="file" id="dessin-image" name="dessin-image"></input>
+        </div>
 
-        <label>3. titre de l'image</label>
+        <div className="bdl-create-photo-form-input">
+        <label>3. Titre de l'image</label>
         <input
           type="text"
           onChange={(e) => setImageTitle(e.target.value)}
-        ></input>
+          ></input>
+           </div>
 
-        <label>4. référence image ( par défaut "# + (réf_image)" ) </label>
+        
+           <div className="bdl-create-photo-form-input number">
+        <label>4. Référence de l'image ( par exemple : 5 ) </label>
         <input
           type="number"
           onChange={(e) => setImageRef(e.target.value)}
         ></input>
-
-        <label>5. longueur </label>
+        </div>
+        
+        <div className="bdl-create-photo-form-input number">
+        <label>5. Longueur en cm ( par exemple : 24 )</label>
         <input
-          type="text"
+          type="number"
           onChange={(e) => setImageWidth(e.target.value)}
-        ></input>
+          ></input>
+           </div>
 
-        <label>6. largeur</label>
+           <div className="bdl-create-photo-form-input number">
+        <label>6. Largeur en cm ( par exemple : 21 )</label>
         <input
-          type="text"
+          type="number"
           onChange={(e) => setImageHeight(e.target.value)}
-        ></input>
+          ></input>
+               </div>
 
-        <label>7. matériau utilisé</label>
+               <div className="bdl-create-photo-form-input">
+        <label>7. Matériau utilisé ( optionnel )</label>
         <input
           type="text"
           onChange={(e) => setImageMaterial(e.target.value)}
-        ></input>
-
-        <input type="submit" value="envoyer"></input>
+          ></input>
+              </div>
+              <div className="bdl-create-photo-form-input submit">
+          <input type="submit" value="Valider" disabled={true} ref={submitInput}></input>
+          </div>
       </form>
     </div>
   );

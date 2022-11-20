@@ -1,32 +1,20 @@
 import "./ImagesReader.scss";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState , useRef} from "react";
+import customChevron from "../../../../assets/icons/chevronDroit.png"
+import closeMenuIcon from "../../../../assets/icons/xCloseIcon.png"
 const ImagesReader = (props) => {
-
-  const closeMenu = () => {
-    document.querySelector(".bd-images-reader").style.display = "none";
-  };
-  // --------------------------------------------------------------------------------
-  
-  // I hate what Im doing. Its so hard to understand.
-  // Just want to make it simple.
-  // An array, an index, and deal with it.
 
   const [currentArray, setCurrentArray] = useState([])
   const [currentArrayIndex, setCurrentArrayIndex] = useState("")
   const [currentArrayImageIndex, setCurrentArrayImageIndex] = useState("")
 
-  const [disableRightPaginationBtn, setDisableRightPaginationBtn] = useState(false)
+  const imagesReaderElement = useRef(null)
 
-  // init when called from parent
-  useEffect(() => {
-    if (props.defaultArrayAndIndex.imageIndex !== '') {
-      setCurrentArray(props.defaultArrayAndIndex.category)
-      setCurrentArrayIndex(props.defaultArrayAndIndex.arrayIndex)
-      setCurrentArrayImageIndex(props.defaultArrayAndIndex.imageIndex)
-    }
-  }, [props.defaultArrayAndIndex])
-  
+  const closeMenu = () => {
+    //document.querySelector(".bd-images-reader").style.display = "none";
+    imagesReaderElement.current.style.display = "none"
+  };
+
   const imagesPaginationForward = (e) => {
     e.preventDefault();
     if (currentArrayIndex + 1 >= props.images.length) {
@@ -55,105 +43,172 @@ const ImagesReader = (props) => {
   }
 
   const imagesPaginationBackward = (e) => {
-    console.log('backward launched')
     e.preventDefault();
     if (currentArrayIndex  <= 0 ) {
-      // reset la boucle 
-      console.log('33333333333333333333333333333333333333')
-      console.log("HII")
-      console.log(props.images[props.images.length - 1])
-      console.log(props.images.length - 1)
-      console.log(props.images[props.images.length-1].dessins.length - 1)
-      console.log('33333333333333333333333333333333333333')
       setCurrentArray(props.images[props.images.length-1])
       setCurrentArrayIndex(props.images.length-1)
       setCurrentArrayImageIndex(props.images[props.images.length-1].dessins.length - 1)
     } else {
-      console.log("6666666666666666666")
-      console.log("6666666666666666666")
-      console.log(currentArrayImageIndex)
-      console.log("6666666666666666666")
-      console.log("6666666666666666666")
       if (currentArrayImageIndex  <= 0) {
-        // go next array 
-        console.log("9999999999999999")
-        console.log("9999999999999999")
-        console.log(props.images[currentArrayIndex - 1].dessins.length)
-        console.log("9999999999999999")
-        console.log("9999999999999999")
         if (props.images[currentArrayIndex - 1].dessins.length !== 0) {
-          // saute 1
-          console.log("çççççççççççççççççççççççççççççççççççççççççççç")
-          console.log("saute 1")
-          console.log(props.images[currentArrayIndex - 1])
-          console.log(currentArrayIndex - 1)
-          console.log(props.images[currentArrayIndex - 1].dessins.length)
-          console.log("çççççççççççççççççççççççççççççççççççççççççççç")
           setCurrentArray(props.images[currentArrayIndex-1])
           setCurrentArrayIndex(currentArrayIndex-1)
           setCurrentArrayImageIndex(props.images[currentArrayIndex-1].dessins.length - 1)
         } else {
-          console.log("saute 2")
-          console.log("77777777777777777777")
-          console.log(props.images[currentArrayIndex - 1])
-          console.log(currentArrayIndex - 1)
-          console.log(props.images[currentArrayIndex - 1].dessins.length)
-          console.log("77777777777777777777")
-          // saute 2 si dessins.length = 0
           setCurrentArray(props.images[currentArrayIndex-2])
           setCurrentArrayIndex(currentArrayIndex-2)
           setCurrentArrayImageIndex(props.images[currentArrayIndex-2].dessins.length - 1)
         }
       } else {
-        console.log('WHAT??')
         setCurrentArrayImageIndex(currentArrayImageIndex - 1)
       }
     }
   }
 
-
-  // in the end we just gonna print the array[index]
-  
-  console.log("nnnnnnnnnnnn")
-  console.log(currentArray)
-  console.log(currentArrayImageIndex)
-  if (currentArrayImageIndex !== "") {
-  console.log(currentArray.dessins[currentArrayImageIndex])
-}
-  console.log("nnnnnnnnnnnn")
-
-
-
-  return (
-    <div className="bd-images-reader">
-      {currentArrayImageIndex !== '' ?
-        <>
-        <div className="bd-images-reade-close-menu" onClick={closeMenu}>
-        "X"
-      </div>
-      <div className="bd-images-reader-references">
-      <p onClick={(e)=>imagesPaginationForward(e)}>increment</p>
-      <p onClick={(e)=>imagesPaginationBackward(e)}>decrement</p>
-        <p>titre : {currentArray.dessins[currentArrayImageIndex].title} </p>
-        <p>matériel : {currentArray.dessins[currentArrayImageIndex].material}</p>
-        <p>largeur : {currentArray.dessins[currentArrayImageIndex].height}</p>
-        <p>longueur : {currentArray.dessins[currentArrayImageIndex].width}</p>
-        <p>référence : {currentArray.dessins[currentArrayImageIndex].ref} </p>
-        {currentArray.dessins[currentArrayImageIndex].has_to_be_displayed === true ? (
-          <p>displayed : true </p>
-        ) : (
-          <p>displayed : false </p>
-        )}
-      </div>
-      <div className="bd-image-selected">
-        <img src={currentArray.dessins[currentArrayImageIndex].image_url} />
-          </div>
-        </>
-        :
-        <></>
+    // init when called from parent
+    useEffect(() => {
+      if (props.defaultArrayAndIndex.imageIndex !== '') {
+        setCurrentArray(props.defaultArrayAndIndex.category)
+        setCurrentArrayIndex(props.defaultArrayAndIndex.arrayIndex)
+        setCurrentArrayImageIndex(props.defaultArrayAndIndex.imageIndex)
       }
-           
-   
+    }, [props.defaultArrayAndIndex])
+
+
+  // -----------------------------------------------------------------------------
+
+    // one idea is to display all the images as a carousel in the browser
+    // try not to display all if possible ( only - 1 / and + 1), and that part may be hard to achieve.
+    // and then soooo simply to navigate from one to another using only the dom ( or virtual dom )
+    // might wanna push to save my code.
+    // but honestly Im up to restart from scratch
+  
+    //1st problem : size & co ( solved ! )
+  //2nd problem : trying useref in map : a full mess
+
+  const [defaultCurrentIndex, setDefaultCurrentIndex] = useState('')
+  const readerMain = useRef(null)
+  const paginateLeft = useRef(null)
+  const paginateRight = useRef(null)
+  const newIncrementionFunction = () => {
+    // need current image position ( custom_index )
+    // need total_images_count
+  }
+
+  useEffect(() => {
+    if (props.defaultCustomIndex !== '') {
+      console.log('init')
+      console.log(props.defaultCustomIndex)
+      //setCurrentImageTest(props.defaultCustomIndex)
+
+
+      // code to move or translate the array block ?
+      readerMain.current.style.transform = `translateX(-${100*props.defaultCustomIndex-100}vw)`
+      setDefaultCurrentIndex(props.defaultCustomIndex)
+      
+    }
+  },[props.defaultCustomIndex])
+ 
+
+  let spacing = -100 
+  const addDistance = () => {
+    spacing += 100
+    return spacing
+  }
+
+
+  const paginateForward = (e) => {
+    e.preventDefault()
+    console.log('aaaaaaaaaaaaaaaa')
+    console.log(defaultCurrentIndex)
+    console.log('aaaaaaaaaaaaaaaa')
+    readerMain.current.style.transform = `translateX(-${(defaultCurrentIndex * 100)}vw)`
+    setDefaultCurrentIndex(defaultCurrentIndex + 1)
+    console.log(`-${(defaultCurrentIndex * 100)}vw`)
+  }
+  const paginateBackward = (e) => {
+    e.preventDefault()
+    //readerMain.current.style.transform = `translateX(-${((defaultCurrentIndex - 2) * 100)}vw)`
+    //setDefaultCurrentIndex(defaultCurrentIndex - 1)
+
+      setDefaultCurrentIndex(defaultCurrentIndex - 1)
+      readerMain.current.style.transform = `translateX(-${((defaultCurrentIndex - 2) * 100)}vw)`
+  
+  }
+
+  useEffect(() => {
+    console.log('lllllllllllllllll')
+    console.log(defaultCurrentIndex)
+    console.log('lllllllllllllllll')
+    if (defaultCurrentIndex === 1) {
+      paginateLeft.current.style.display = "none"
+    } else {
+      paginateLeft.current.style.display = "block"
+    }
+
+    if (defaultCurrentIndex > props.totalImagesCount - 1) {
+      paginateRight.current.style.display = "none"
+    } else {
+      paginateRight.current.style.display = "block"
+    }
+  },[defaultCurrentIndex])
+
+  useEffect(() => {
+    
+  },[props.images])
+  
+  return (
+    <div className="bd-images-reader" ref={imagesReaderElement}>
+      
+      <div className="bd-images-reader-carrousel">
+        
+         
+        <div className="bd-images-reader-main" ref={readerMain}>
+        {currentArrayIndex !== '' ?
+            <>
+              {props.images.map((category) => (
+                category.dessins.map((image) => (
+              
+                  <div className="bd-images-reader-unit" style={{ left: addDistance()+"vw" }}>
+                  <div className="bd-images-reader-unit-container">
+                  <img src={image.image_url}/>
+                    </div>
+                    <div className="bd-images-reader-unit-references">
+                      <p className="bd-irur-title">{image.title} </p>
+                      <p className="bd-irur-ref">Référence : <span>#{image.ref}</span> </p>
+                      <p>Longueur : {image.width} cm</p>
+                      <p>Largeur : {image.height} cm</p>
+                      {image.material !== '' ?
+                        <p>Matériel : {image.material}</p>
+                        :
+                        <></>
+                      }
+                
+              
+  
+                    </div>
+                  </div>
+             
+              ))
+            ))}
+      
+            </>
+            :
+            <></>
+          }
+        </div>
+
+
+          <div className="bd-images-reader-chevron left"  ref={paginateLeft}>
+          <img src={customChevron} id="chevron-left" alt="chevron" onClick={(e) => paginateBackward(e)}  />
+          </div>
+          <div className="bd-images-reader-chevron right"ref={paginateRight}>
+          <img src={customChevron} id="chevron-right" alt="chevron" onClick={(e)=>paginateForward(e)}   />
+        </div>
+        <div className="bd-images-reader-close-modal" onClick={closeMenu}><img src={closeMenuIcon}alt="close"/></div>
+       
+      </div>
+      
     </div>
   );
 };

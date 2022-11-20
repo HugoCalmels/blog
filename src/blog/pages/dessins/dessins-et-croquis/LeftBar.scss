@@ -5,20 +5,81 @@
   bottom: 0;
 
   width: 250px;
-  background-color: yellow;
+  background-color: #dddddd;
+  font-family: "Quicksand";
+  padding: 10px;
+  border-right: 1px solid black;
 }
 
+
 .bdl-create-year {
-  border: 2px solid black;
+
   font-size: 1.15rem;
+  cursor:pointer;
+  transition: .3s ease;
+  border-radius: 4px;;
 }
-.bdl-create-year:hover {
-  background-color: blue;
-}
+
 .bdl-create-photo {
-  border: 2px solid black;
+  cursor:pointer;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: .3s ease;
+  border-radius: 4px;;
+}
+.bdl-create-photo.hide{
+  justify-content: space-between;
+  padding-right: 5px;
+  cursor:auto;
+}
+.bdl-create-photo input{
+  height: 22px;
+  width: 22px;
+  cursor:pointer;
 }
 
 .bdl-years-list {
-  border: 2px solid black;
+
+}
+.bdl-create-photo h5{
+  margin:0;
+  padding:0;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 10px 10px;
+}
+.bdl-create-year h5{
+  margin:0;
+  padding:0;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 10px 10px;
+}
+.bdl-create-year:hover{
+  background: #bbbbbb;
+  transition: .3s ease;
+
+}
+.bdl-create-photo:hover{
+  background: #bbbbbb;
+  transition: .3s ease;
+}
+
+.bdl-years-list h5{
+  margin:0;
+  padding:0;
+  font-weight: 500;
+  font-size: 1.15rem;
+  cursor:pointer;
+
+  padding: 10px 10px;
+  transition: .3s ease;
+  border-radius: 4px;
+}
+
+.bdl-years-list h5:hover{
+  background: #bbbbbb;
+  transition: .3s ease;
 }

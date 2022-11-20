@@ -10,16 +10,19 @@ import Paysages from "./blog/pages/dessins/paysages/Paysages";
 import Carnets from "./blog/pages/dessins/carnets-de-voyages/Carnets";
 import Solo from "./blog/pages/performances/solo/Solo"
 import Group from "./blog/pages/performances/group/Group"
-
+import { LoginContext } from "./authentication/LoginContext"
+import {useState} from "react"
+//const LazyDessins = React.lazy(()=>import('./blog/pages/dessins/dessins-et-croquis/Dessins'))
 function App() {
+
+  const [isAuth, setIsAuth] = useState(false) // useConte
   return (
     <>
+      <LoginContext.Provider value={{isAuth, setIsAuth}} >
       <Router>
 
         <Navbar />
-        <div className="bd-dessins-title">
-          <h2 >Dessins et croquis</h2>
-          </div>
+        
         <Routes>
 
         {/* Authentication router*/}
@@ -39,7 +42,8 @@ function App() {
           <Route path="/" element={<IndexCie />} />
           
         </Routes>
-      </Router>
+        </Router>
+        </LoginContext.Provider>
     </>
   );
 }

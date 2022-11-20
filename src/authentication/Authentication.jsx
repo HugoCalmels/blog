@@ -1,11 +1,14 @@
 import "./Authentication.scss"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import Cookies from "js-cookie";
+import { LoginContext } from "./LoginContext"
+const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN
 const Authentication = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
+  const {isAuth, setIsAuth} = useContext(LoginContext)
 
   const tryToLogin = async (e) => {
     e.preventDefault()
@@ -25,7 +28,7 @@ const Authentication = () => {
     let response = []
     let token = []
     try {
-      response = await fetch("http://localhost:3000/users/sign_in", config)
+      response = await fetch(`${BASE_URL}/users/sign_in`, config)
     } catch (e) {
       console.log(e)
     }
@@ -39,6 +42,7 @@ const Authentication = () => {
       Cookies.set("cie-lutin-auth-token", token);
       Cookies.set("cie-lutin-isAuth", true);
       // reload the page
+      // setIsAuth(true)
       window.location.reload(false)
     } else {
       setErrorMessage("Mauvais mot de passe, ou mauvais identifiant.")

@@ -1,5 +1,5 @@
 import "./LeftBar.scss";
-
+import Cookies from "js-cookie";
 const LeftBar = (props) => {
   const toggleModalCreateYearDisplay = () => {
     const mainModalElem = document.querySelector(".bdl-create-year-modal");
@@ -33,30 +33,47 @@ const LeftBar = (props) => {
     props.setUnhideImages(!props.unhideImages);
   };
 
+  let cookieIsAuth = false
+  const cookie = Cookies.get("cie-lutin-isAuth")
+  if (cookie !== undefined) {
+    cookieIsAuth = JSON.parse(cookie)
+  }
+ 
 
+
+  console.log("LLLLLLLLLLLLLLLLLLLLLLLL")
+  console.log(cookie)
+  console.log("LLLLLLLLLLLLLLLLLLLLLLLLLLLL")
 
   return (
     <div className="bd-left-bar">
 
-      <div className="bdl-create-year" onClick={toggleModalCreateYearDisplay}>
-        <h5>Créer/supprimer une année</h5>
+      {cookieIsAuth === true  ?
+        <>
+          <div className="bdl-create-year" onClick={toggleModalCreateYearDisplay}>
+        <h5>Créer une catégorie</h5>
       </div>
       <div className="bdl-create-photo" onClick={toggleModalCreatePhotoDisplay}>
-        <h5>Créer une photo</h5>
+        <h5>Créer une image</h5>
       </div>
-      <div className="bdl-create-photo">
-        <h5>Demasquer les images</h5>
+      <div className="bdl-create-photo hide">
+        <h5>Démasquer</h5>
         <input
           type="checkbox"
           checked={props.unhideImages}
           onChange={(e) => toggleImagesHiding(e)}
         ></input>
       </div>
+        </>
+        :
+        <></>
+      }
+      
       <div className="bdl-years-list">
         {props.categories.map((category) => (
           <h5
             key={category.id}
-            onClick={() => props.scrollToElement(category.title)}
+            onClick={() => props.displaySelectedCategory(category.title)}
           >
             {category.title}
           </h5>
