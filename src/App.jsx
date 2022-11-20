@@ -27,16 +27,16 @@ function App() {
 
         {/* Authentication router*/}
         {/* <Route path="/" element={<Redirection />} />*/}
-        <Route path="/admin" element={<Authentication />} />
+        <Route path="/admin" element={<Authentication />} exact/>
   
         
         {/* Blog router */}
-        <Route path="/gaelle-boucherit" element={<IndexBlog />} />
-        <Route path="/gaelle-boucherit/dessins-et-croquis" element={<Dessins />} />
-        <Route path="/gaelle-boucherit/paysages" element={<Paysages />} />
+        <Route path="/gaelle-boucherit" element={<IndexBlog />}  exact/>
+        <Route path="/gaelle-boucherit/dessins-et-croquis" element={<Dessins />}  exact/>
+        <Route path="/gaelle-boucherit/paysages" element={<Paysages />}  exact/>
         <Route path="/gaelle-boucherit/carnets-de-voyages" element={<Carnets />} />
-        <Route path="/gaelle-boucherit/performances/solo" element={<Solo />} />
-        <Route path="/gaelle-boucherit/performances/à-plusieurs" element={<Group />} />
+        <Route path="/gaelle-boucherit/performances/solo" element={<Solo />}  exact/>
+        <Route path="/gaelle-boucherit/performances/à-plusieurs" element={<Group />}  exact/>
         
         {/* Cie router */}
           <Route path="/" element={<IndexCie />} />
