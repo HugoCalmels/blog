@@ -7,53 +7,65 @@ const DessinsOption = (props) => {
 
   const [menuIsBeingOpened, setMenuIsBeingOpened] = useState(false)
 
-  const openMenu = async (number) => {
-    setMenuIsBeingOpened(true)
-    const menuElem = document.querySelector(
-      ".b-navbar-dessins-opened-menu-list"
-    );
-    const menuLiElems = document.querySelectorAll(
-      ".b-navbar-dessins-opened-menu-unit"
-    );
-    let overlay = document.querySelector(".b-navbar-overlay");
-    if (props.menuOpenedPerformances === true) {
-      const performancesMenuElem = document.querySelector('.b-navbar-performances-opened-menu-list')
-      performancesMenuElem.classList.remove('active')
-      performancesMenuElem.style.width = "0px"
-      performancesMenuElem.style.height = "0px"
-      props.setMenuOpenedPerformances(false)
-    }
-  
-    setTimeout(() => {
-   
-      animateMenuForward(menuElem);
-    }, 5);
-    menuElem.classList.add("active");
-    overlay.style.display = "block";
-    props.setMenuOpenedDessins(true);
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
 
-    // reset text
-    menuLiElems.forEach((el) => {
-      el.style.display = "none";
-      el.style.opacity = "0";
-    })
+  const hidenMenuDessinsElem = useRef(null)
 
-    const aPromise = new Promise((accept) => {
-      setTimeout(() => {
-        menuLiElems.forEach((elem) => {
-          elem.style.display = "flex";
-          setTimeout(() => {
-            elem.style.opacity = "1";
-            accept()
-            setMenuIsBeingOpened(false)
-          }, 400);
-         
-        });
-        
-      });
+
+ 
+  const openMenu = async (e) => {
+ 
+
+    if (menuIsOpen === false) {
+      setMenuIsBeingOpened(true)
+      const menuElem = document.querySelector(
+        ".b-navbar-dessins-opened-menu-list"
+      );
+      const menuLiElems = document.querySelectorAll(
+        ".b-navbar-dessins-opened-menu-unit"
+      );
+      let overlay = document.querySelector(".b-navbar-overlay");
      
-    })
-    await aPromise
+    
+      setTimeout(() => {
+     
+        animateMenuForward(menuElem);
+      }, 5);
+      //menuElem.style.padding = "8px";
+        //menuElem.style.top = "28px";
+      menuElem.classList.add("active");
+      overlay.style.display = "block";
+      props.setMenuOpenedDessins(true);
+  
+      // reset text
+      menuLiElems.forEach((el) => {
+        el.style.display = "none";
+        el.style.opacity = "0";
+      })
+  
+      const aPromise = new Promise((accept) => {
+        setTimeout(() => {
+          menuLiElems.forEach((elem) => {
+            elem.style.display = "flex";
+            setTimeout(() => {
+              elem.style.opacity = "1";
+              accept()
+              //setMenuIsBeingOpened(false)
+              setMenuIsOpen(true)
+            }, 200);
+           
+          });
+          
+        });
+       
+      })
+      await aPromise
+    }
+      
+
+
+
+    
  
   };
 
@@ -61,29 +73,43 @@ const DessinsOption = (props) => {
     elem.style.opacity = "1";
     elem.style.width = "180px";
     elem.style.height = "126px";
+    elem.style.width = "250px";
+    elem.style.height = "160px";
     props.setMenuOpenedDessins(true);
   };
 
-  const closeMenu = () => {
-    const menuElem = document.querySelector(
-      ".b-navbar-dessins-opened-menu-list"
-    );
-    const menuLiElems = document.querySelectorAll(
-      ".b-navbar-dessins-opened-menu-unit"
-    );
-    let overlay = document.querySelector(".b-navbar-overlay");
-    overlay.style.display = "none";
-    menuElem.style.opacity = "0";
-    menuElem.style.width = "0px";
+  const closeMenu = (e) => {
+    e.preventDefault();
+
+      const menuElem = document.querySelector(
+        ".b-navbar-dessins-opened-menu-list"
+      );
+      const menuLiElems = document.querySelectorAll(
+        ".b-navbar-dessins-opened-menu-unit"
+      );
+      let overlay = document.querySelector(".b-navbar-overlay");
+      overlay.style.display = "none";
+      menuElem.style.opacity = "1";
+      menuElem.style.width = "0px";
     menuElem.style.height = "0px";
 
-    menuLiElems.forEach((elem) => {
-      elem.style.opacity = "0";
-      setTimeout(() => {
-        elem.style.display = "none";
-      }, 50);
-    });
-    props.setMenuOpenedDessins(false);
+
+        
+      menuLiElems.forEach((elem) => {
+        //elem.style.opacity = "0";
+        setTimeout(() => {
+          //elem.style.display = "none";
+          menuElem.style.padding = "0px";
+          //menuElem.style.top = "0px";
+          setMenuIsOpen(false)
+        }, 100);
+      });
+   
+  
+      props.setMenuOpenedDessins(false);
+
+
+   
   };
 
   const toggleMenu = (e) => {
@@ -119,24 +145,31 @@ const DessinsOption = (props) => {
   }
 
 
+
+
   return (
     <>
-      <li className="b-navbar-option-container">
-        <div className="b-navbar-option dessins" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
-          <span>Dessins</span>
-          <ul className="b-navbar-dessins-opened-menu-list">
+      <li className="b-navbar-option-container" >
+        <div className="b-navbar-option dessins" onMouseEnter={(e)=>openMenu(e)} onMouseLeave={(e)=>closeMenu(e)} >
+          <span >Dessins</span>
+          <div className="b-navbar-dessins-opened-menu-list">
+            <div className="b-navbar-dessins-oml-hiddenDiv"></div>
+          <ul id="b-navbar-dropdown-menu" ref={hidenMenuDessinsElem}>
           <li className="b-navbar-dessins-opened-menu-unit dessins" onClick={navigateToCroquis}>
-            Dessins et croquis
+            <span>Dessins et croquis</span>
           </li>
           <li className="b-navbar-dessins-opened-menu-unit paysages"onClick={navigateToPaysages}>
-            Paysages
+          <span>Paysages</span>
           </li>
           <li className="b-navbar-dessins-opened-menu-unit carnets"onClick={navigateToCarnets}>
-            Carnets de voyages
+          <span>Carnets de voyages</span>
           </li>
-        </ul>
+            </ul>
+            </div>
         </div>
-        
+        <div className="b-navbar-dropdown-menu-2">
+       
+        </div>
       </li>
     </>
   );

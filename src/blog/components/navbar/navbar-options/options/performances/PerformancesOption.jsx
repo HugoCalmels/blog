@@ -110,18 +110,12 @@ const PerformancesOption = (props) => {
   return (
     <>
       <li className="b-navbar-option-container">
-        <div className="b-navbar-option dessins" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
-          <span>Performances</span>
-          <ul className="b-navbar-performances-opened-menu-list">
-          <li className="b-navbar-performances-opened-menu-unit" onClick={navigateToPerformancesSolo}>
-            solo
-            </li>
-            <li className="b-navbar-performances-opened-menu-unit" onClick={navigateToPerformancesGroup}>
-            à plusieurs
-            </li>
+        <div className="b-navbar-option">
+          <span  >Performances</span>
+      
             
         
-        </ul>
+   
         </div>
 
         
