@@ -132,26 +132,26 @@ const NavbarOptions = () => {
   return (
     <ul className="b-nabvar-options-list">
       {isAuthCookie === true ?
-         <></>
+         <li className="b-navbar-option-btn-container admin" onMouseEnter={(e)=>selectMenu(e, "admin", true)} onMouseLeave={(e)=>selectMenu(e, "admin", false)} onClick={()=>navigateTo("admin")}>
+         <div className="b-navbar-option__btn">
+         <span className="b-navbar-option__btn__first-span">Admin</span>
+           <div className="b-navbar-option__effect" ref={optionEffectAdmin}>
+        
+           <span>Admin</span>
+           <span>Admin</span>
+           </div>
+   
+         </div>
+         <div className="b-navbar-option__linebar_effect-container">
+         <div className="b-navbar-option__linebar_effect" ref={linebarElemAdmin}>
+         </div>
+         </div>
+         
+       </li>
         :
         <></>
       }
-   <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "admin", true)} onMouseLeave={(e)=>selectMenu(e, "admin", false)} onClick={()=>navigateTo("admin")}>
-        <div className="b-navbar-option__btn">
-        <span className="b-navbar-option__btn__first-span">Admin</span>
-          <div className="b-navbar-option__effect" ref={optionEffectAdmin}>
-       
-          <span>Admin</span>
-          <span>Admin</span>
-          </div>
-  
-        </div>
-        <div className="b-navbar-option__linebar_effect-container">
-        <div className="b-navbar-option__linebar_effect" ref={linebarElemAdmin}>
-        </div>
-        </div>
-        
-      </li>
+   
     <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "dessins", true)} onMouseLeave={(e)=>selectMenu(e, "dessins", false)}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">Dessins</span>
