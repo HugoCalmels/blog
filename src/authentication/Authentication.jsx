@@ -71,8 +71,9 @@ const Authentication = () => {
     <div className="auth-wrapper">
       <div className="auth-content">
         <h4 className="auth-title" >ADMIN</h4>
-        <h1>pour se connecter :    "email":"gaelle-boucherit@gmail.com",
-          "password":"123123"</h1>
+        <h1>gaelle-boucherit@gmail.com</h1>
+
+        <h1>123123</h1>
 
         <div className="auth-login">
           {errorMessage}

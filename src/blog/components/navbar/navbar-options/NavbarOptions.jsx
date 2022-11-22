@@ -123,6 +123,10 @@ const NavbarOptions = () => {
     }
   }
 
+
+  const navigateTo = (arg) => {
+    navigate(`/${arg}`)
+  }
  
 
   return (
@@ -132,7 +136,7 @@ const NavbarOptions = () => {
         :
         <></>
       }
-   <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "admin", true)} onMouseLeave={(e)=>selectMenu(e, "admin", false)}>
+   <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "admin", true)} onMouseLeave={(e)=>selectMenu(e, "admin", false)} onClick={()=>navigateTo("admin")}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">Admin</span>
           <div className="b-navbar-option__effect" ref={optionEffectAdmin}>
@@ -165,13 +169,13 @@ const NavbarOptions = () => {
         </div>
         <div className="b-navbar-option-dessins__dropdown" ref={dropdownElemDessins} >
           <div className="dessins__dropdown-menu" onMouseEnter={(e)=>selectDropdownMenu(e)}>
-          <p  ref={dropdownSubmenuDessins} >Dessins et croquis</p>
-          <p ref={dropdownSubmenuPaysages} >Paysages</p>
-            <p ref={dropdownSubmenuCarnets}  >Carnets de voyage</p>
+          <p  ref={dropdownSubmenuDessins} onClick={()=>navigateTo("gaelle-boucherit/dessins-et-croquis")}>Dessins et croquis</p>
+          <p ref={dropdownSubmenuPaysages} onClick={()=>navigateTo("gaelle-boucherit/paysages")}>Paysages</p>
+            <p ref={dropdownSubmenuCarnets} onClick={()=>navigateTo("gaelle-boucherit/carnets-de-voyages")} >Carnets de voyages</p>
           </div>
         </div>
       </li>
-      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "performances", true)} onMouseLeave={(e)=>selectMenu(e, "performances", false)}>
+      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "performances", true)} onMouseLeave={(e)=>selectMenu(e, "performances", false)} onClick={()=>navigateTo("gaelle-boucherit/performances")}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">Performances</span>
           <div className="b-navbar-option__effect" ref={optionEffectPerformances}>
@@ -186,7 +190,7 @@ const NavbarOptions = () => {
         </div>
         </div>
       </li>
-      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "partenaires", true)} onMouseLeave={(e)=>selectMenu(e, "partenaires", false)}>
+      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "partenaires", true)} onMouseLeave={(e)=>selectMenu(e, "partenaires", false)}  >
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">Partenaires</span>
           <div className="b-navbar-option__effect" ref={optionEffectPartenaires}>

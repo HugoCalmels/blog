@@ -30,7 +30,7 @@ const LeftBar = (props) => {
   };
 
   const toggleImagesHiding = (e) => {
-    props.setUnhideImages(!props.unhideImages);
+    props.setHideImages(!props.hideImages);
   };
 
   let cookieIsAuth = false
@@ -51,16 +51,16 @@ const LeftBar = (props) => {
       {cookieIsAuth === true  ?
         <>
           <div className="bdl-create-year" onClick={toggleModalCreateYearDisplay}>
-        <h5>Créer une catégorie</h5>
+        <h5>Créer catégorie</h5>
       </div>
       <div className="bdl-create-photo" onClick={toggleModalCreatePhotoDisplay}>
-        <h5>Créer une image</h5>
+        <h5>Créer image</h5>
       </div>
       <div className="bdl-create-photo hide">
         <h5>Démasquer</h5>
         <input
           type="checkbox"
-          checked={props.unhideImages}
+          checked={!props.hideImages}
           onChange={(e) => toggleImagesHiding(e)}
         ></input>
       </div>

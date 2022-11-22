@@ -92,6 +92,7 @@
   align-items: center;
   padding: 0 20px;
   position: relative;
+  cursor: pointer;
 }
 
 .b-navbar-option__linebar_effect-container{
@@ -129,7 +130,7 @@
   overflow: hidden;
    width: 0px;
   height: 0px;
-  border: 1px solid darkgray;
+  border-top: 1px solid darkgray;
 
 }
 
@@ -139,7 +140,7 @@
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 10px 10px;
-  transition: .1s;
+  transition: .15s;
   cursor:pointer;
 }
 

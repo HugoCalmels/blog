@@ -4,7 +4,7 @@
   top: 75px;
   bottom: 0;
 
-  width: 250px;
+  width: 225px;
   background-color: #dddddd;
   font-family: "Quicksand";
   padding: 10px;
@@ -47,40 +47,44 @@
 .bdl-create-photo h5{
   margin:0;
   padding:0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9375rem;
-  padding: 15px 10px;
+  padding: 10px 10px;
 }
 .bdl-create-year h5{
   margin:0;
   padding:0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9375rem;
-  padding: 15px 10px;
+  padding: 10px 10px;
 }
 .bdl-create-year:hover{
-  background: #bbbbbb;
+  //background: #bbbbbb;
   transition: .3s ease;
+  color: #3598D8;
 
 }
 .bdl-create-photo:hover{
-  background: #bbbbbb;
+  //background: #bbbbbb;
+  color: #3598D8;
   transition: .3s ease;
 }
 
 .bdl-years-list h5{
   margin:0;
   padding:0;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 0.9375rem;
   cursor:pointer;
 
-  padding: 15px 10px;
+  padding: 10px 10px;
   transition: .3s ease;
   border-radius: 4px;
+
 }
 
 .bdl-years-list h5:hover{
-  background: #bbbbbb;
+  //background: #bbbbbb;
   transition: .3s ease;
+  color: #3598D8;
 }
