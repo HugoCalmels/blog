@@ -101,7 +101,7 @@ const Dessins = () => {
   const handleScroll = () => {
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
-    if (userScrollHeight >= windowBottomHeight) {
+    if (userScrollHeight >= windowBottomHeight - 25) {
       setCurrentPaginationIndex(currentPaginationIndex + 1);
     }
   };
