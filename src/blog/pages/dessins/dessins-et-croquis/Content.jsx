@@ -197,7 +197,7 @@ const Content = (props) => {
 
           <h2 >Dessins et croquis</h2>
 
-          <button onClick={props.paginateForward}>PAGINATE</button>
+       
           </div>
         {props.images && props.images.map((imageCategory, cateIndex) => (
           <>

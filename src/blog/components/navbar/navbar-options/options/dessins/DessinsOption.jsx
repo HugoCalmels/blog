@@ -4,19 +4,12 @@ import { useEffect, useRef, useState } from "react";
 const DessinsOption = (props) => {
 
   const navigate = useNavigate()
-
   const [menuIsBeingOpened, setMenuIsBeingOpened] = useState(false)
-
   const [menuIsOpen, setMenuIsOpen] = useState(false)
-
   const hidenMenuDessinsElem = useRef(null)
 
-
- 
   const openMenu = async (e) => {
- 
 
-    if (menuIsOpen === false) {
       setMenuIsBeingOpened(true)
       const menuElem = document.querySelector(
         ".b-navbar-dessins-opened-menu-list"
@@ -60,7 +53,7 @@ const DessinsOption = (props) => {
        
       })
       await aPromise
-    }
+
       
 
 
@@ -130,30 +123,48 @@ const DessinsOption = (props) => {
     });
   });
 
-  const navigateToCroquis = () => {
-    closeMenu()
+  const navigateToCroquis = (e) => {
+    closeMenu(e)
     navigate('/gaelle-boucherit/dessins-et-croquis')
   }
-  const navigateToPaysages = () => {
-    closeMenu()
+  const navigateToPaysages = (e) => {
+    closeMenu(e)
     navigate('/gaelle-boucherit/paysages')
   }
 
-  const navigateToCarnets = () => {
-    closeMenu()
+  const navigateToCarnets = (e) => {
+    closeMenu(e)
     navigate('/gaelle-boucherit/carnets-de-voyages')
   }
 
+  const navigateToAdmin = (e) => {
+    closeMenu(e)
+    navigate('/admin')
+  }
 
 
+  const testMouseMove = (e) => {
+    console.log("MOUSE MOVE")
+    console.log("MOUSE MOVE")
+    console.log("MOUSE MOVE")
+    console.log(e)
+    console.log(e.target.className)
+    console.log("MOUSE MOVE")
+    console.log("MOUSE MOVE")
+    if (menuIsOpen === false && e.target.id === "dessin__nav__btn_option_list") {
+      openMenu()
+    }
+  }
 
+//testToggleMenu
+  // onMouseEnter={(e)=>openMenu(e)} onMouseLeave={(e)=>closeMenu(e)}
   return (
     <>
       <li className="b-navbar-option-container" >
-        <div className="b-navbar-option dessins" onMouseEnter={(e)=>openMenu(e)} onMouseLeave={(e)=>closeMenu(e)} >
-          <span >Dessins</span>
+        <div className="b-navbar-option dessins" onMouseEnter={(e)=>openMenu(e)} onMouseLeave={(e)=>closeMenu(e)}>
+          <span id="dessin__nav__btn_option_list"  >Dessins</span>
           <div className="b-navbar-dessins-opened-menu-list">
-            <div className="b-navbar-dessins-oml-hiddenDiv"></div>
+        
           <ul id="b-navbar-dropdown-menu" ref={hidenMenuDessinsElem}>
           <li className="b-navbar-dessins-opened-menu-unit dessins" onClick={navigateToCroquis}>
             <span>Dessins et croquis</span>

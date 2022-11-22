@@ -107,6 +107,8 @@ const PerformancesOption = (props) => {
     closeMenu()
     navigate('/gaelle-boucherit/performances/à-plusieurs')
   }
+
+  
   return (
     <>
       <li className="b-navbar-option-container">

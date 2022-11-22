@@ -16,9 +16,9 @@
   height: 0px;
 
   position: absolute;
-  left: -3px;
-  top: 64px;
-  background-color: #dddddd;
+  top:60px;
+
+  background-color: #bbbbbb;
   list-style-type: none;
   display: none;
   flex-direction: column;
@@ -27,16 +27,18 @@
   z-index:99;
   overflow: hidden;
   display: flex;
-
+  border: 2px solid blue;
 }
 .b-navbar-dessins-opened-menu-list ul{
   
  //border-top: 1px solid darkgray;
  display: flex;
  flex-direction: column;
- border: 2px solid blue;
+
  margin: 0;
  padding: 0;
+
+
 
 
 }
@@ -52,7 +54,7 @@
 
   width: 100%;
   opacity: 1;
-  border: 2px solid red;
+
 
 }
 .b-navbar-dessins-opened-menu-unit span{
@@ -74,7 +76,7 @@
 
 .b-navbar-option.dessins{
 
-  
+  border: 2px solid lightgreen;
 }
 
 .b-navbar-dropdown-menu-2{
@@ -88,10 +90,3 @@
   display: none;
 }
 
-.b-navbar-dessins-oml-hiddenDiv{
-  width: 100%;
-  height: 10px;
-  background-color: #dddddd;
-
-
-}
