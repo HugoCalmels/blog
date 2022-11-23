@@ -15,7 +15,7 @@ const Dessins = () => {
   const [hideImages, setHideImages] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [value, setValue] = useState([]); // useContext
-
+  const [currentPaginationIndex, setCurrentPaginationIndex] = useState(1);
   const getCategories = async () => {
     const response = await fetch(`${BASE_URL}/api/v1/dessin_categories`, {
       method: "GET",
@@ -43,59 +43,87 @@ const Dessins = () => {
     getAllImages();
   }, []);
 
-  let imagesFilteredByCategory = value.filter((cate) => {
-    return cate.title === selectedCategory;
-  });
-
   let filteredImages = [];
+  let totalImagesCount = 0;
 
-  if (hideImages === false && value.length > 0) {
-    filteredImages = imagesFilteredByCategory;
-  } else if (hideImages === true && value.length > 0) {
-    filteredImages = imagesFilteredByCategory.map((cate) => {
+
+  const imagesFilter = (initialData) => {
+    // select the category 
+    if (hideImages === false && initialData.length > 0) {
+      // small filter
+      const filteredCategory = filterCategory(initialData)
+      const initializedImagesReader = initImagesReader(filteredCategory)
+      filteredImages = sliceDataForPagination(initializedImagesReader)
+    } else if (hideImages === true && initialData.length > 0) {
+      // same plus hide image system
+      console.log("---")
+      console.log(initialData)
+      const filteredCategory = filterCategory(initialData)
+      console.log(filteredCategory)
+      const initializedImagesReader = initImagesReader(filteredCategory)
+      const initializedImagesHiding = addDisplayedAttributeToImages(initializedImagesReader)
+      filteredImages = sliceDataForPagination(initializedImagesHiding)
+    }
+  }
+
+  const filterCategory = (array) => {
+    let filteredArray = array.filter((cate) => {
+      return cate.title === selectedCategory;
+    });
+    return filteredArray
+  }
+
+  const initImagesReader = (array) => {
+    let count = 0;
+    let filteredArray = array.map((cate) => {
+      return {
+        ...cate,
+        dessins: cate.dessins.map((img) => {
+          count += 1;
+          return {
+            ...img,
+            customIndex: count,
+          };
+        }),
+      };
+    });
+  
+    totalImagesCount = count;
+    return filteredArray
+  }
+
+  const sliceDataForPagination = (array) => {
+
+     let filteredArray = array.map((cate) => {
+        return {
+          ...cate,
+          dessins: cate.dessins.slice(0, currentPaginationIndex * 20),
+        };
+      });
+      return filteredArray
+  }
+
+  const addDisplayedAttributeToImages = (array) => {
+    let filteredArray = array.map((cate) => {
       return {
         ...cate,
         dessins: cate.dessins.filter((img) => img.has_to_be_displayed === true),
       };
     });
+    return filteredArray
   }
-  let count = 0;
-  filteredImages = filteredImages.map((cate) => {
-    return {
-      ...cate,
-      dessins: cate.dessins.map((img) => {
-        count += 1;
-        return {
-          ...img,
-          customIndex: count,
-        };
-      }),
-    };
-  });
 
-  let totalImagesCount = count || 0;
 
-  // filtre pagination
-  const [currentPaginationIndex, setCurrentPaginationIndex] = useState(1);
-  // sera remis a zero a chaque cgt de catégorie
+  // séquence filter
+  imagesFilter(value)
 
-  let finalImagesFilteredArray = [];
-  if (filteredImages.length > 0 && hideImages === true) {
-    filteredImages = filteredImages.map((cate) => {
-      return {
-        ...cate,
-        dessins: cate.dessins.slice(0, currentPaginationIndex * 20),
-      };
-    });
-  }
 
   const paginateForward = () => {
     setCurrentPaginationIndex(currentPaginationIndex + 1);
   };
 
   useEffect(() => {
-    //fetchImages();
-    window.addEventListener("scroll", handleScroll); // attaching scroll event listener
+    window.addEventListener("scroll", handleScroll);
   }, [currentPaginationIndex]);
 
   const handleScroll = () => {

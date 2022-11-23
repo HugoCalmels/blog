@@ -1,10 +1,10 @@
 import "./CreateYear.scss";
 import { useEffect, useState, useRef } from "react";
-import xCloseIcon from "../../../../assets/icons/xCloseIcon.png"
-const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN
+import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
+const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreateYear = () => {
   const [categories, setCategories] = useState([]);
-  const createYearBtn = useRef(null)
+  const createYearBtn = useRef(null);
 
   const closeModal = () => {
     const modal = document.querySelector(".bdl-create-year-modal");
@@ -30,12 +30,9 @@ const CreateYear = () => {
   };
 
   const getCategories = async () => {
-    const response = await fetch(
-      `${BASE_URL}/api/v1/dessin_categories`,
-      {
-        method: "GET",
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/v1/dessin_categories`, {
+      method: "GET",
+    });
     const data = await response.json();
     setCategories(data);
   };
@@ -64,31 +61,37 @@ const CreateYear = () => {
     getCategories();
   }, []);
 
-
-
   return (
     <div className="bdl-create-year-modal">
       <div className="bdl-create-year-modal-title">
-      <h5>Créer une catégorie</h5>
+        <h5>Créer une catégorie</h5>
       </div>
 
-      
-      <div className="bdl-create-year-modal-close" onClick={closeModal}><img src={xCloseIcon} alt="close"/></div>
+      <div className="bdl-create-year-modal-close" onClick={closeModal}>
+        <img src={xCloseIcon} alt="close" />
+      </div>
       <form className="bdl-create-year-form" onSubmit={(e) => handleSubmit(e)}>
         <label>Ajouter une catégorie ( exemple : 2022 )</label>
-        <input id="bdl-create-year-text-input"type="text"></input>
+        <input id="bdl-create-year-text-input" type="text"></input>
         <div className="bdl-send-input">
-          <input className="bdl-create-year-form-send-btn"type="submit" value="Valider"ref={createYearBtn}></input>
+          <input
+            className="bdl-create-year-form-send-btn"
+            type="submit"
+            value="Valider"
+            ref={createYearBtn}
+          ></input>
         </div>
-
       </form>
 
       <div className="bdl-custom-hr"></div>
       <div className="bdl-create-year-modal-title">
-      <h5>Supprimer une catégorie existante</h5>
+        <h5>Supprimer une catégorie existante</h5>
       </div>
 
-      <form className="bdl-year-delete-year-form"onSubmit={(e) => tryToDestroyCategory(e)}>
+      <form
+        className="bdl-year-delete-year-form"
+        onSubmit={(e) => tryToDestroyCategory(e)}
+      >
         <select id="remove-categories">
           {categories.map((category) => (
             <option
@@ -101,9 +104,12 @@ const CreateYear = () => {
           ))}
         </select>
         <div className="bdl-send-input-container">
-          <input id="bdl-submit-delete-year"type="submit" value="supprimer"></input>
+          <input
+            id="bdl-submit-delete-year"
+            type="submit"
+            value="supprimer"
+          ></input>
         </div>
-
       </form>
     </div>
   );
