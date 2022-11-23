@@ -7,7 +7,6 @@
   position: fixed;
   left: 0;
   right: 0;
-
   top: 0;
   bottom: 0;
   margin: auto;
@@ -26,13 +25,11 @@
 .bdl-create-photo-modal h5{
   margin: 0;
   padding: 0;
-
   font-size: 1.5rem;
   font-weight: 800;
 }
 
 .bdl-create-photo-form {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,7 +40,6 @@
   position: absolute;
   top: 20px;
   right: 20px;
-
 }
 
 .bdl-create-photo-close img{
@@ -52,12 +48,9 @@
   cursor:pointer;
 }
 
-
 .bdl-create-photo-form-input{
   display: flex;
   flex-direction: column;
-
-
 }
 
 .bdl-create-photo-form-input input{
@@ -71,13 +64,10 @@
 .bdl-create-photo-form-input.submit{
   display: flex;
   align-items: center;
-
   margin-top: 10px;
 }
 .bdl-create-photo-form-input.submit input{
-  
 cursor:pointer;
-
 padding: 5px 20px;
 border-radius: 5px;
 font-size: 1.25rem;

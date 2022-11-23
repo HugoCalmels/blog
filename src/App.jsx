@@ -5,7 +5,7 @@ import Redirection from "./redirection/Redirection"
 import Navbar from "./blog/components/navbar/Navbar"
 import IndexBlog from "./blog/IndexBlog"
 import IndexCie from "./cie/IndexCie"
-import Dessins from "./blog/pages/dessins/dessins-et-croquis/Dessins";
+import ImagesGalery from "./blog/pages/dessins/dessins-et-croquis/ImagesGalery";
 import Paysages from "./blog/pages/dessins/paysages/Paysages";
 import Carnets from "./blog/pages/dessins/carnets-de-voyages/Carnets";
 import Solo from "./blog/pages/performances/solo/Solo"
@@ -32,9 +32,9 @@ function App() {
         
         {/* Blog router */}
         <Route path="/gaelle-boucherit" element={<IndexBlog />}  exact/>
-        <Route path="/gaelle-boucherit/dessins-et-croquis" element={<Dessins />}  exact/>
-        <Route path="/gaelle-boucherit/paysages" element={<Paysages />}  exact/>
-        <Route path="/gaelle-boucherit/carnets-de-voyages" element={<Carnets />} />
+        <Route path="/gaelle-boucherit/dessins-et-croquis" element={<ImagesGalery arg="dessins" />}  exact/>
+        <Route path="/gaelle-boucherit/paysages" element={<ImagesGalery arg="paysages" />}  exact/>
+        <Route path="/gaelle-boucherit/carnets-de-voyages" element={<ImagesGalery arg="carnets" />} />
         <Route path="/gaelle-boucherit/performances/solo" element={<Solo />}  exact/>
         <Route path="/gaelle-boucherit/performances/à-plusieurs" element={<Group />}  exact/>
         

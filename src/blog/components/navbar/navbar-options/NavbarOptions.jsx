@@ -22,41 +22,29 @@ const NavbarOptions = () => {
   const dropdownSubmenuDessins = useRef(null)
   const dropdownSubmenuPaysages = useRef(null)
   const dropdownSubmenuCarnets = useRef(null)
-  const [menuOpenedDessins, setMenuOpenedDessins]= useState(false)
-  const [menuOpenedPerformances, setMenuOpenedPerformances] = useState(false)
-  
-  const navigateToAdmin = (e) => {
-    //closeMenu(e)
-    navigate('/admin')
-  }
 
   const selectMenu = (e, tag, willOpen) => {
     e.preventDefault();
     //fontAnimationForward(e, tag)
     switch (tag) {
       case "contact":
-        console.log("contact")
         fontAnimation(optionEffectContact, willOpen)
         linebarAnimation(linebarElemContact, willOpen)
         break;
       case "partenaires":
-        console.log("contact")
         fontAnimation(optionEffectPartenaires, willOpen)
         linebarAnimation(linebarElemPartenaires, willOpen)
         break;
       case "performances":
-        console.log("contact")
         fontAnimation(optionEffectPerformances, willOpen)
         linebarAnimation(linebarElemPerformances, willOpen)
         break;
       case "dessins":
-        console.log("contact")
         fontAnimation(optionEffectDessins, willOpen)
         linebarAnimation(linebarElemDessins, willOpen)
         dropdownAnimation(dropdownElemDessins, willOpen)
         break;
       case "admin":
-        console.log("contact")
         fontAnimation(optionEffectAdmin, willOpen)
         linebarAnimation(linebarElemAdmin, willOpen)
         break;
@@ -98,8 +86,7 @@ const NavbarOptions = () => {
   const selectDropdownMenu = (e, tag) => {
     e.preventDefault();
 
-    console.log('selecte dropdown menu')
-    console.log(tag)
+
     switch (tag) {
       case "dessins":
         console.log("1")

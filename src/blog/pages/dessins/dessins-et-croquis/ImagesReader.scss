@@ -1,97 +1,26 @@
 .bd-images-reader {
-
   position: fixed;
   top: 75px;
   left: 0;
   width: 100%;
   height:calc(100vh - 75px);
-  
   z-index: 9;
-  //overflow: hidden;
   background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  //width: auto;
-
   display: none;
-
 }
-
-.bd-image-container{
-
-  border: 6px solid magenta;
- 
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: 100vw;
-  height: calc(100vh - 75px);
-  flex-direction: row;
-
-}
-
-.bd-image-selected {
-  border: 4px solid green;
-  display: flex;
-  justify-content: center;
-
-  width: 100vw;
-  background-color: yellow;
-
-  align-items: center;
-}
-
-.bd-image-selected img {
-
-  max-width:100%; 
-  height:auto;
-  border: 4px solid greenyellow;
-}
-
-.bd-images-reade-close-menu {
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  position: absolute;
-  color: white;
-  font-size: 3rem;
-  background-color: black;
-  padding: 2px;
-}
-
-.bd-images-reader-references {
-  position: absolute;
-  height: auto;
-  width: auto;
-  left: 50px;
-
-  color: black;
-  background-color: white;
-}
-
-////////////////////////
-/// 
-/// 
-/// 
-/// 
-
 
 .bd-images-reader-carrousel{
   box-sizing:border-box;
   height: auto;
   width: 100%;
-
-  //border: 4px solid red;
   display: flex;
   position: relative;
-
-
 }
 
 .bd-images-reader-carrousel img{
-  //height: 100%;
-  //max-width: 100%;
   width: 100%;
   height: auto;
 }
@@ -115,7 +44,6 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +52,6 @@
   opacity: 0.7;
 }
 #chevron-right{
-  // transform: translateY(-50%);
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -138,78 +65,20 @@
   opacity: 1;
   height: 55px;
   width: 55px;
-
   transition: .3s ease;
 }
 #chevron-left:hover{
   opacity: 1;
   height: 55px;
   width: 55px;
-
   transition: .3s ease;
 }
-
-.bd-images-reader-container{
-  display: flex;
-  flex-direction: row;
-
-  width:800px;
-  height: 500px;
-  position: relative;
-  display: inline-block;
-}
-
-.bd-images-reader-image img{
-  width:800px;
-
-  height: auto;
-
-  background-size: cover;
-}
-.bd-images-reader-image{
-  position: absolute;
-
-  width: 100%;
-  height: auto;
-  //aspect-ratio: 1/1;
-  border:4px solid blue
-}
-
-.bd-images-reader-image-close-menu{
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  position: absolute;
-  color: white;
-  font-size: 3rem;
-  background-color: black;
-  padding: 2px;
-}
-
-.bd-images-reader-image-references{
-  position: absolute;
-  height: auto;
-  width: auto;
-  right:0px;
-
-  color: black;
-  background-color: white;
-}
-
-////////////////////////
-/// 
-/// 
-///  ///
-///   
-/// 
 
 .bd-images-reader-main{
   height: 400px;
   width:800px;
-  border:4px solid orange;
   width: 100vw;
   height: calc(100vh - 75px);
-  border: 4px solid magenta;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -218,7 +87,6 @@
 
 .bd-images-reader-unit{
   position: absolute;
-
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -231,14 +99,8 @@
   max-height: calc(100vh - 75px);
   width: 100%;
   height: auto;
-
-
 }
 
-.bd-images-reader-unit-container{
-
-
-}
 .bd-images-reader-unit-references:hover{
   opacity: 1;
   transition: .3s ease;
@@ -250,7 +112,7 @@
   right:20px;
   height: auto;
   width: auto;
-  background-color: white;
+  background-color: #f2f2f2;
   opacity: 0.7;
   padding: 15px;
   font-family: 'Quicksand';
@@ -271,49 +133,38 @@
   margin:0;
 }
 
-
-
 .bd-images-reader-close-modal{
   box-sizing: content-box;
   position: absolute;
   left: 20px;
   margin-top:20px;
-  
   display: flex;
   cursor: pointer;
-
   transition: .3s ease;
-
   border-radius: 50%;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-
 }
 .bd-images-reader-close-modal img{
-
   background-color: white;
   border-radius: 50%;
   width: 30px;
   height: 30px;
   padding: 6px;
-
   opacity: 0.7;
   transition: .3s ease;
 }
 
 .bd-images-reader-close-modal img:hover{
   opacity: 1;
-
   transform: scale(1.1);
   transition: .3s ease;
 }
 
-
 .bd-irur-title::first-letter {
   text-transform: uppercase;
-  
 }
 .bd-irur-title{
   font-weight: 600 !important;

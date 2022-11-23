@@ -7,7 +7,6 @@
   position: fixed;
   left: 0;
   right: 0;
-
   top: 0;
   bottom: 0;
   margin: auto;
@@ -17,11 +16,6 @@
   padding: 20px;
   flex-direction: column;
 }
-
-
-
-
-
 
 .bdl-edit-year-photo-title h5{
   margin:0;
@@ -33,16 +27,13 @@
   position: absolute;
   right: 20px;
   top: 20px;
-
 }
-
 
 .bd-edit-close-btn img{
   width: 30px;
   height: 30px;
   cursor:pointer;
 }
-
 
 .bd-edit-form{
   display:flex;
@@ -70,10 +61,8 @@
   margin-top: 20px;
 }
 
-
 .bd-edit-input-send-container input{
   cursor:pointer;
-
 padding: 5px 20px;
 border-radius: 5px;
 font-size: 1.25rem;

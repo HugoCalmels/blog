@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
-import "./Dessins.scss";
+import React, { useState, useEffect } from "react";
+import "./ImagesGalery.scss";
 import LeftBar from "./LeftBar";
 import CreateYear from "./CreateYear";
 import CreatePhoto from "./CreatePhoto";
 import Content from "./Content";
 import { DessinsContext } from "./DessinsContext";
-import { LoginContext } from "../../../../authentication/LoginContext";
-import NewComponent from "./NewComponent";
+
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 //const LazyContent = React.lazy(()=>import('./Content'))
 
-const Dessins = () => {
+const ImagesGalery = (props) => {
   const [categories, setCategories] = useState([]); // fetch and list all categories
   const [hideImages, setHideImages] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -46,32 +45,33 @@ const Dessins = () => {
   let filteredImages = [];
   let totalImagesCount = 0;
 
-
   const imagesFilter = (initialData) => {
-    // select the category 
+    // select the category
     if (hideImages === false && initialData.length > 0) {
       // small filter
-      const filteredCategory = filterCategory(initialData)
-      const initializedImagesReader = initImagesReader(filteredCategory)
-      filteredImages = sliceDataForPagination(initializedImagesReader)
+      const filteredCategory = filterCategory(initialData);
+      const initializedImagesReader = initImagesReader(filteredCategory);
+      filteredImages = sliceDataForPagination(initializedImagesReader);
     } else if (hideImages === true && initialData.length > 0) {
       // same plus hide image system
-      console.log("---")
-      console.log(initialData)
-      const filteredCategory = filterCategory(initialData)
-      console.log(filteredCategory)
-      const initializedImagesReader = initImagesReader(filteredCategory)
-      const initializedImagesHiding = addDisplayedAttributeToImages(initializedImagesReader)
-      filteredImages = sliceDataForPagination(initializedImagesHiding)
+      console.log("---");
+      console.log(initialData);
+      const filteredCategory = filterCategory(initialData);
+      console.log(filteredCategory);
+      const initializedImagesReader = initImagesReader(filteredCategory);
+      const initializedImagesHiding = addDisplayedAttributeToImages(
+        initializedImagesReader
+      );
+      filteredImages = sliceDataForPagination(initializedImagesHiding);
     }
-  }
+  };
 
   const filterCategory = (array) => {
     let filteredArray = array.filter((cate) => {
       return cate.title === selectedCategory;
     });
-    return filteredArray
-  }
+    return filteredArray;
+  };
 
   const initImagesReader = (array) => {
     let count = 0;
@@ -87,21 +87,20 @@ const Dessins = () => {
         }),
       };
     });
-  
+
     totalImagesCount = count;
-    return filteredArray
-  }
+    return filteredArray;
+  };
 
   const sliceDataForPagination = (array) => {
-
-     let filteredArray = array.map((cate) => {
-        return {
-          ...cate,
-          dessins: cate.dessins.slice(0, currentPaginationIndex * 20),
-        };
-      });
-      return filteredArray
-  }
+    let filteredArray = array.map((cate) => {
+      return {
+        ...cate,
+        dessins: cate.dessins.slice(0, currentPaginationIndex * 20),
+      };
+    });
+    return filteredArray;
+  };
 
   const addDisplayedAttributeToImages = (array) => {
     let filteredArray = array.map((cate) => {
@@ -110,13 +109,11 @@ const Dessins = () => {
         dessins: cate.dessins.filter((img) => img.has_to_be_displayed === true),
       };
     });
-    return filteredArray
-  }
-
+    return filteredArray;
+  };
 
   // séquence filter
-  imagesFilter(value)
-
+  imagesFilter(value);
 
   const paginateForward = () => {
     setCurrentPaginationIndex(currentPaginationIndex + 1);
@@ -133,6 +130,12 @@ const Dessins = () => {
       setCurrentPaginationIndex(currentPaginationIndex + 1);
     }
   };
+
+  console.log(props.arg)
+
+  useEffect(() => {
+    console.log(props.arg)
+  },[props.arg])
 
   return (
     <>
@@ -160,4 +163,4 @@ const Dessins = () => {
     </>
   );
 };
-export default Dessins;
+export default ImagesGalery;
