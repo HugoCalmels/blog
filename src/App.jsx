@@ -1,49 +1,43 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Authentication from "./pages/admin/authentication/Authentication";
+import Navbar from "./components/navbar/Navbar";
+import IndexBlog from "./pages/blog/index/IndexBlog";
+import IndexCie from "./pages/cie/IndexCie";
+import ImagesGalery from "./pages/blog/images_galery/ImagesGalery";
 
-import Authentication from "./authentication/Authentication"
-import Redirection from "./redirection/Redirection"
-import Navbar from "./blog/components/navbar/Navbar"
-import IndexBlog from "./blog/IndexBlog"
-import IndexCie from "./cie/IndexCie"
-import ImagesGalery from "./blog/pages/dessins/dessins-et-croquis/ImagesGalery";
-import Paysages from "./blog/pages/dessins/paysages/Paysages";
-import Carnets from "./blog/pages/dessins/carnets-de-voyages/Carnets";
-import Solo from "./blog/pages/performances/solo/Solo"
-import Group from "./blog/pages/performances/group/Group"
-import { LoginContext } from "./authentication/LoginContext"
-import {useState} from "react"
 //const LazyDessins = React.lazy(()=>import('./blog/pages/dessins/dessins-et-croquis/Dessins'))
 function App() {
-
-  const [isAuth, setIsAuth] = useState(false) // useConte
   return (
     <>
-      <LoginContext.Provider value={{isAuth, setIsAuth}} >
       <Router>
-
         <Navbar />
-        
-        <Routes>
 
-        {/* Authentication router*/}
-        {/* <Route path="/" element={<Redirection />} />*/}
-        <Route path="/admin" element={<Authentication />} exact/>
-  
-        
-        {/* Blog router */}
-        <Route path="/gaelle-boucherit" element={<IndexBlog />}  exact/>
-        <Route path="/gaelle-boucherit/dessins-et-croquis" element={<ImagesGalery arg="dessins" />}  exact/>
-        <Route path="/gaelle-boucherit/paysages" element={<ImagesGalery arg="paysages" />}  exact/>
-        <Route path="/gaelle-boucherit/carnets-de-voyages" element={<ImagesGalery arg="carnets" />} />
-        <Route path="/gaelle-boucherit/performances/solo" element={<Solo />}  exact/>
-        <Route path="/gaelle-boucherit/performances/à-plusieurs" element={<Group />}  exact/>
-        
-        {/* Cie router */}
+        <Routes>
+          {/* Authentication router*/}
+          {/* <Route path="/" element={<Redirection />} />*/}
+          <Route path="/admin" element={<Authentication />} exact />
+
+          {/* Blog router */}
+          <Route path="/gaelle-boucherit" element={<IndexBlog />} exact />
+          <Route
+            path="/gaelle-boucherit/dessins-et-croquis"
+            element={<ImagesGalery arg="dessins" />}
+            exact
+          />
+          <Route
+            path="/gaelle-boucherit/paysages"
+            element={<ImagesGalery arg="paysages" />}
+            exact
+          />
+          <Route
+            path="/gaelle-boucherit/carnets-de-voyages"
+            element={<ImagesGalery arg="carnets" />}
+          />
+
+          {/* Cie router */}
           <Route path="/" element={<IndexCie />} />
-          
         </Routes>
-        </Router>
-        </LoginContext.Provider>
+      </Router>
     </>
   );
 }

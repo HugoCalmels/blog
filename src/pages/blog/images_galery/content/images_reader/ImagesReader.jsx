@@ -1,12 +1,15 @@
 import "./ImagesReader.scss";
 import { useEffect, useState, useRef } from "react";
-import customChevron from "../../../../assets/icons/chevronDroit.png";
-import closeMenuIcon from "../../../../assets/icons/xCloseIcon.png";
+import customChevron from "../../../../../assets/icons/chevronDroit.png";
+import closeMenuIcon from "../../../../../assets/icons/xCloseIcon.png";
+import ImagesReaderCategory from "./ImagesReaderCategory"
 const ImagesReader = (props) => {
   const [defaultCurrentIndex, setDefaultCurrentIndex] = useState("");
   const readerMain = useRef(null);
   const paginateLeft = useRef(null);
   const paginateRight = useRef(null);
+
+
 
   const closeMenu = () => {
     props.imagesReaderElement.current.style.display = "none";
@@ -59,35 +62,20 @@ const ImagesReader = (props) => {
     }
   };
 
+
   return (
     <div className="bd-images-reader" ref={props.imagesReaderElement}>
       <div className="bd-images-reader-carrousel">
         <div className="bd-images-reader-main" ref={readerMain}>
-          {props.images.map((category) =>
-            category.dessins.map((image) => (
-              <div
-                className="bd-images-reader-unit"
-                style={{ left: addDistance() + "vw" }}
-              >
-                <div className="bd-images-reader-unit-container">
-                  <img src={image.image_url} />
-                </div>
-                <div className="bd-images-reader-unit-references">
-                  <p className="bd-irur-title">{image.title} </p>
-                  <p className="bd-irur-ref">
-                    Référence : <span>#{image.ref}</span>{" "}
-                  </p>
-                  <p>Longueur : {image.width} cm</p>
-                  <p>Largeur : {image.height} cm</p>
-                  {image.material !== "" ? (
-                    <p>Matériel : {image.material}</p>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              </div>
-            ))
-          )}
+          {props.images.map((category) => (
+          <>
+              <ImagesReaderCategory
+                arg={props.arg}
+                category={category}
+                addDistance={addDistance}
+              />
+            </>
+          ))}
         </div>
 
         <div className="bd-images-reader-chevron left" ref={paginateLeft}>

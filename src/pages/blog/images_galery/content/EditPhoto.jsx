@@ -1,13 +1,13 @@
 import "./EditPhoto.scss";
 import { useState, useEffect, useContext, useRef } from "react";
-import { DessinsContext } from "./DessinsContext";
+import { ImagesContext } from "../../../../context/ImagesContext";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 
 const EditPhoto = (props) => {
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState(null);
-  const { value, setValue } = useContext(DessinsContext);
+  const { value, setValue } = useContext(ImagesContext);
   const [imageRef, setImageRef] = useState(0);
   const [imageTitle, setImageTitle] = useState("");
   const [imageMaterial, setImageMaterial] = useState("");
@@ -16,8 +16,8 @@ const EditPhoto = (props) => {
   const editFormElem = useRef(null);
 
   const submitEditImageToAPI = async (newImage, cateID) => {
-    let data;
-    if (newImage === null) {
+    let data
+    if (props.arg === "dessins") {
       data = {
         dessin: {
           dessin_category_id: cateID,
@@ -28,11 +28,13 @@ const EditPhoto = (props) => {
           height: imageHeight,
         },
       };
-    } else {
+      if (newImage !== null) {
+        data.dessin.image_url = newImage.image_url
+      }
+    } else if (props.arg === "paysages") {
       data = {
-        dessin: {
-          image_url: newImage.image_url,
-          dessin_category_id: cateID,
+        paysage: {
+          paysage_category_id: cateID,
           title: imageTitle,
           ref: imageRef,
           material: imageMaterial,
@@ -40,7 +42,12 @@ const EditPhoto = (props) => {
           height: imageHeight,
         },
       };
+      if (newImage !== null) {
+        data.paysage.image_url = newImage.image_url
+      }
     }
+ 
+    
     const config = {
       method: "PUT",
       headers: {
@@ -48,48 +55,96 @@ const EditPhoto = (props) => {
       },
       body: JSON.stringify(data),
     };
-    const res = await fetch(
-      `${BASE_URL}/api/v1/dessin_categories/${props.editSelectedCategory.id}/dessins/${props.editSelectedImage.id}`,
-      config
-    );
+    let res 
+    if (props.arg === "dessins") {
+      res = await fetch(
+        `${BASE_URL}/api/v1/dessin_categories/${props.editSelectedCategory.id}/dessins/${props.editSelectedImage.id}`,
+        config
+      );
+    } else if (props.arg === "paysages") {
+      res = await fetch(
+        `${BASE_URL}/api/v1/paysage_categories/${props.editSelectedCategory.id}/paysages/${props.editSelectedImage.id}`,
+        config
+      );
+    }
+ 
     const datafetched = await res.json();
     let newValue;
     // handle context
-    if (props.editSelectedCategory.id !== datafetched.dessin_category_id) {
-      // changement de catégorie
-      const removedImage = value.map((category) => {
-        return {
-          ...category,
-          dessins: category.dessins.filter((image) => {
-            return image.id !== datafetched.id;
-          }),
-        };
-      });
-      const reAddedImage = removedImage.map((category) => {
-        if (category.id === datafetched.dessin_category_id) {
-          category.dessins.push(datafetched);
-          return category;
-        } else {
-          return category;
-        }
-      });
-      newValue = reAddedImage;
-    } else {
-      // aucun changement de catégorie
-      let test = value.map((category) => {
-        return {
-          ...category,
-          dessins: category.dessins.map((img) => {
-            if (img.id === datafetched.id) {
-              return datafetched;
-            } else {
-              return img;
-            }
-          }),
-        };
-      });
-      newValue = test;
+    if (props.arg === "dessins") {
+      if (props.editSelectedCategory.id !== datafetched.dessin_category_id) {
+        // changement de catégorie
+        const removedImage = value.map((category) => {
+          return {
+            ...category,
+            dessins: category.dessins.filter((image) => {
+              return image.id !== datafetched.id;
+            }),
+          };
+        });
+        const reAddedImage = removedImage.map((category) => {
+          if (category.id === datafetched.dessin_category_id) {
+            category.dessins.push(datafetched);
+            return category;
+          } else {
+            return category;
+          }
+        });
+        newValue = reAddedImage;
+      } else {
+        // aucun changement de catégorie
+        let test = value.map((category) => {
+          return {
+            ...category,
+            dessins: category.dessins.map((img) => {
+              if (img.id === datafetched.id) {
+                return datafetched;
+              } else {
+                return img;
+              }
+            }),
+          };
+        });
+        newValue = test;
+      }
+    } else if (props.arg === "paysages") {
+      if (props.editSelectedCategory.id !== datafetched.paysage_category_id) {
+        // changement de catégorie
+        const removedImage = value.map((category) => {
+          return {
+            ...category,
+            paysages: category.paysages.filter((image) => {
+              return image.id !== datafetched.id;
+            }),
+          };
+        });
+        const reAddedImage = removedImage.map((category) => {
+          if (category.id === datafetched.paysage_category_id) {
+            category.paysages.push(datafetched);
+            return category;
+          } else {
+            return category;
+          }
+        });
+        newValue = reAddedImage;
+      } else {
+        // aucun changement de catégorie
+        let test = value.map((category) => {
+          return {
+            ...category,
+            paysages: category.paysages.map((img) => {
+              if (img.id === datafetched.id) {
+                return datafetched;
+              } else {
+                return img;
+              }
+            }),
+          };
+        });
+        newValue = test;
+      }
     }
+    
     editFormElem.current.reset();
     props.EditModalElem.current.style.display = "none";
     setValue(newValue);

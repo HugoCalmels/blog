@@ -1,14 +1,13 @@
 import "./Authentication.scss"
 import { useState, useEffect, useContext } from "react"
 import Cookies from "js-cookie";
-import { LoginContext } from "./LoginContext"
+
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN
 const Authentication = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
-  const {isAuth, setIsAuth} = useContext(LoginContext)
 
   const tryToLogin = async (e) => {
     e.preventDefault()

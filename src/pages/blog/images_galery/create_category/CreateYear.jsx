@@ -1,9 +1,9 @@
 import "./CreateYear.scss";
-import { useEffect, useState, useRef } from "react";
+import {useRef } from "react";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
-const CreateYear = () => {
-  const [categories, setCategories] = useState([]);
+const CreateYear = (props) => {
+
   const createYearBtn = useRef(null);
 
   const closeModal = () => {
@@ -13,11 +13,21 @@ const CreateYear = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = {
-      dessin_category: {
-        title: e.target[0].value,
-      },
-    };
+    let body
+    if (props.arg === "dessins") {
+      body = {
+        dessin_category: {
+          title: e.target[0].value,
+        },
+      };
+    } else if (props.arg === "paysages") {
+      body = {
+        paysage_category: {
+          title: e.target[0].value,
+        },
+      };
+    }
+   
     const config = {
       method: "POST",
       headers: {
@@ -25,17 +35,15 @@ const CreateYear = () => {
       },
       body: JSON.stringify(body),
     };
-    await fetch(`${BASE_URL}/api/v1/dessin_categories`, config);
+    if (props.arg === "dessins") {
+      await fetch(`${BASE_URL}/api/v1/dessin_categories`, config);
+    } else if (props.arg === "paysages") {
+      await fetch(`${BASE_URL}/api/v1/paysage_categories`, config);
+    }
+
     window.location.reload(false);
   };
 
-  const getCategories = async () => {
-    const response = await fetch(`${BASE_URL}/api/v1/dessin_categories`, {
-      method: "GET",
-    });
-    const data = await response.json();
-    setCategories(data);
-  };
 
   const tryToDestroyCategory = (e) => {
     let getSelects = document.querySelectorAll(".bdl-custom-select-destroy");
@@ -51,15 +59,20 @@ const CreateYear = () => {
   };
 
   const destroyCategoryAPI = async (id) => {
-    await fetch(`${BASE_URL}/api/v1/dessin_categories/${id}`, {
-      method: "DELETE",
-    });
+    if (props.arg === "dessins") {
+      await fetch(`${BASE_URL}/api/v1/dessin_categories/${id}`, {
+        method: "DELETE",
+      });
+    } else if (props.arg === "paysages") {
+      await fetch(`${BASE_URL}/api/v1/paysage_categories/${id}`, {
+        method: "DELETE",
+      });
+    }
+    
     window.location.reload(false);
   };
 
-  useEffect(() => {
-    getCategories();
-  }, []);
+
 
   return (
     <div className="bdl-create-year-modal">
@@ -93,7 +106,7 @@ const CreateYear = () => {
         onSubmit={(e) => tryToDestroyCategory(e)}
       >
         <select id="remove-categories">
-          {categories.map((category) => (
+          {props.categories && props.categories.map((category) => (
             <option
               className="bdl-custom-select-destroy"
               key={category.id}
