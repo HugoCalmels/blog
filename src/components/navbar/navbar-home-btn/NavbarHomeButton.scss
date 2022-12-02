@@ -1,3 +1,70 @@
 .b-navbar-home-button-wrapper{
-  border: 2px solid red;
+
+}
+.b-navbar-main-home-button{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  gap: 10px;
+}
+.b-navbar-index-link{
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.15rem;
+
+}
+
+.b-navbar-main-home-button span{
+  cursor: pointer;
+  font-size: 2rem;
+  transition: .5s;
+}
+.b-navbar-index-list-modal{
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  transform: translateX(-350px);
+  transition: .5s cubic-bezier(.1,1.28,.74,1.17);
+  display: flex;
+}
+.b-navbar-index-list-modal.active{
+  display: flex;
+}
+.b-navbar-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 10px 5px 0;
+border-color: transparent #dddddd transparent transparent;
+}
+
+.b-navbar-container{
+
+  display: flex;
+  flex-direction: column;
+  background-color: #dddddd;
+  height: 50px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.b-navbar-container h5{
+
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  background-color: #dddddd;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 2px;
+
+}
+
+.b-navbar-container h5:hover{
+  background-color: #bbbbbb;
+  color: #3598D8;
 }

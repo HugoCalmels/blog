@@ -156,9 +156,9 @@ const NavbarOptions = () => {
         </div>
         <div className="b-navbar-option-dessins__dropdown" ref={dropdownElemDessins} >
           <div className="dessins__dropdown-menu" onMouseEnter={(e)=>selectDropdownMenu(e)}>
-          <p  ref={dropdownSubmenuDessins} onClick={()=>navigateTo("gaelle-boucherit/dessins-et-croquis")}>Dessins et croquis</p>
-          <p ref={dropdownSubmenuPaysages} onClick={()=>navigateTo("gaelle-boucherit/paysages")}>Paysages</p>
-            <p ref={dropdownSubmenuCarnets} onClick={()=>navigateTo("gaelle-boucherit/carnets-de-voyages")} >Carnets de voyages</p>
+          <a  ref={dropdownSubmenuDessins} onClick={()=>navigateTo("gaelle-boucherit/dessins-et-croquis")}>Dessins et croquis</a>
+          <a ref={dropdownSubmenuPaysages} onClick={()=>navigateTo("gaelle-boucherit/paysages")}>Paysages</a>
+            <a ref={dropdownSubmenuCarnets} onClick={()=>navigateTo("gaelle-boucherit/carnets-de-voyages")} >Carnets de voyages</a>
           </div>
         </div>
       </li>

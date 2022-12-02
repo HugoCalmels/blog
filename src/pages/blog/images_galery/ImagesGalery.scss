@@ -1,37 +1,14 @@
 
 @import "../../../variables";
 
-.bd-container {
+.b-main-wrapper {
   position: relative;
 }
 
-.bd-content-wrapper {
+.bd-category-wrapper {
   max-width: 100%;
   position: relative;
   margin-left: 225px;
   display: flex;
-  margin-top: 150px;
-}
-.bd-dessins-title{
-  display: flex;
-  height: 75px;
-  align-items: center;
-  position: fixed;
-  top: 75px;
-  left: 225px;
-  right: 0;
-  height: 75px;
-  z-index: 5;
-  background-color: #f2f2f2;
-  overflow: hidden;
-
-}
-.bd-dessins-title h2{
-  margin: 0;
-  padding: 0;
-  font-size: 1.5rem;
-  color: black;
-  font-family: 'Quicksand';
-  font-weight:700;
-  margin-left: 20px;
+  margin-top: 125px;
 }

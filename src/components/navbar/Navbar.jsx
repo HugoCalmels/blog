@@ -14,8 +14,15 @@ const Navbar = () => {
 
 
 
+  useEffect(() => {
+    if (isAuthCookie) {
+      navbarContainerElem.current.classList.add("alert")
+    }
+  },[])
+
   
   return (
+    <header>
     <nav className="b-navbar" alt="blog navbar" ref={navbarContainerElem}>
 
       <div className="b-navbar-overlay" ></div>
@@ -28,7 +35,8 @@ const Navbar = () => {
       <NavbarOptions />
 
   
-    </nav>
+      </nav>
+      </header>
   )
 }
 

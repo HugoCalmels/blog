@@ -1,0 +1,124 @@
+
+.b-index-content-card-edit-btn-open-modal:hover{
+  background-color: white;
+}
+
+.b-index-content-card-edit-btn-open-modal{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #bbbbbb;
+  padding: 5px;
+  border: 2px solid black;
+  display: none;
+  cursor: pointer;
+}
+.b-index-content-card-edit-btn-open-modal.active{
+  display: flex;
+}
+
+.b-index-content-card-edit-btn-open-modal img{
+  width: 30px;
+  height: 30px;
+}
+
+.b-index-content-card-edit-modal__elem{
+  position: absolute;
+
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 6px;
+  background-color:#ddfadd;
+  width: 1180px;
+  height: 400px;
+  display: none;
+  flex-direction: column;
+;
+}
+.b-index-content-card-edit-modal__elem.active{
+  display: flex;
+}
+
+.b-index-content-card-edit-modal__elem h4{
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.b-index-content-card-edit-modal__elem__close-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  border: 2px solid black;
+  display: flex;
+
+}
+.b-index-content-card-edit-modal__elem__close-btn img{
+  height: 20px;
+  width: 20px;
+}
+
+.b-index-content-card-edit-modal__input{
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+}
+.b-index-content-card-edit-modal__input label{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.b-index-content-card-edit-modal__input input{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px;
+  
+}
+.b-index-content-card-edit-modal__input textarea{
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 5px;
+  font-family: "Quicksand";
+  height: 200px;
+
+min-width: 100%;
+  
+}
+
+
+.b-index-content-card-edit-modal__elem form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.b-index-content-card-edit-modal-top{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+}
+
+.b-index-content-card-edit-modal__input.send{
+  align-items: flex-start;
+
+}
+
+.b-index-content-card-edit-modal__input span{
+
+  padding: 2px 6px;
+  cursor: pointer;
+
+
+  margin-left: 10px;
+
+}
+.b-index-content-card-edit-modal__input span:hover{
+  text-decoration: underline;
+}
+

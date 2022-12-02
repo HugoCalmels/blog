@@ -5,7 +5,8 @@ import CreateYear from "./create_category/CreateYear";
 import CreatePhoto from "./create_image/CreatePhoto";
 import Content from "./content/Content";
 import { ImagesContext } from "../../../context/ImagesContext";
-
+import { getCategoriesAPI } from "../../../features/images/getCategoriesAPI";
+import Footer from "../../../components/footer/Footer"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 
 const ImagesGalery = (props) => {
@@ -15,38 +16,26 @@ const ImagesGalery = (props) => {
   const [value, setValue] = useState([]); // useContext
   const [currentPaginationIndex, setCurrentPaginationIndex] = useState(1);
 
-  const [filteredImages, setFilteredImages] = useState([])
-  const [totalImagesCount, setTotalImagesCount] = useState(0)
+  const [filteredImages, setFilteredImages] = useState([]);
+  const [totalImagesCount, setTotalImagesCount] = useState(0);
 
-  const getCategories = async (arg) => {
-    let response
-    if (arg === "dessins") {
-      response = await fetch(`${BASE_URL}/api/v1/dessin_categories`, {
-        method: "GET",
-      });
-    } else if ( arg === "paysages"){
-      response = await fetch(`${BASE_URL}/api/v1/paysage_categories`, {
-        method: "GET",
-      });
-    }
-    const data = await response.json();
-    console.log("1111")
-    console.log(response)
-    console.log(data)
-    setCategories(data);
-    if (data.length > 0) {
-      setSelectedCategory(data[0].title);
-    }
+  const getCategories = (arg) => {
+    getCategoriesAPI(arg).then((data) => {
+      setCategories(data);
+      if (data.length > 0) {
+        setSelectedCategory(data[0].title);
+      }
+    });
   };
 
   const getAllImages = async (arg) => {
-    let response
+    let response;
     if (arg === "dessins") {
       response = await fetch(`${BASE_URL}/api/v1/getAllDessins`);
     } else if (arg === "paysages") {
       response = await fetch(`${BASE_URL}/api/v1/getAllPaysages`);
     }
-    
+
     const data = await response.json();
     setValue(data);
   };
@@ -55,37 +44,23 @@ const ImagesGalery = (props) => {
     setSelectedCategory(cateTitle);
   };
 
-
-
-
-
-
   const imagesFilter = (initialData) => {
-    console.log("FILTER That BUGS")
-    console.log("FILTER That BUGS")
-    console.log(initialData)
-    console.log(props.arg)
-
-    console.log("FILTER That BUGS")
-    console.log("FILTER That BUGS")
-
     // select the category
     if (hideImages === false && initialData.length > 0) {
       // small filter
       const filteredCategory = filterCategory(initialData);
       const initializedImagesReader = initImagesReader(filteredCategory);
-      setFilteredImages(sliceDataForPagination(initializedImagesReader))
+      setFilteredImages(sliceDataForPagination(initializedImagesReader));
     } else if (hideImages === true && initialData.length > 0) {
       // same plus hide image system
-      console.log("---");
-      console.log(initialData);
+
       const filteredCategory = filterCategory(initialData);
-      console.log(filteredCategory);
+
       const initializedImagesReader = initImagesReader(filteredCategory);
       const initializedImagesHiding = addDisplayedAttributeToImages(
         initializedImagesReader
       );
-      setFilteredImages(sliceDataForPagination(initializedImagesHiding))
+      setFilteredImages(sliceDataForPagination(initializedImagesHiding));
     }
   };
 
@@ -106,7 +81,7 @@ const ImagesGalery = (props) => {
             if (img.has_to_be_displayed === true) {
               count += 1;
             }
-        
+
             return {
               ...img,
               customIndex: count,
@@ -127,16 +102,9 @@ const ImagesGalery = (props) => {
           }),
         };
       }
-      
     });
 
-    console.log('FILLTER')
-    console.log('FILLTER')
-    console.log('FILLTER')
-    console.log(count)
-    console.log('FILLTER')
-    console.log('FILLTER')
-    setTotalImagesCount(count)
+    setTotalImagesCount(count);
 
     return filteredArray;
   };
@@ -154,30 +122,30 @@ const ImagesGalery = (props) => {
           paysages: cate.paysages.slice(0, currentPaginationIndex * 20),
         };
       }
-      
     });
     return filteredArray;
   };
 
   const addDisplayedAttributeToImages = (array) => {
     let filteredArray = array.map((cate) => {
-      if (props.arg === "dessins"){
+      if (props.arg === "dessins") {
         return {
           ...cate,
-          dessins: cate.dessins.filter((img) => img.has_to_be_displayed === true),
+          dessins: cate.dessins.filter(
+            (img) => img.has_to_be_displayed === true
+          ),
         };
-      } else if (props.arg === "paysages"){
+      } else if (props.arg === "paysages") {
         return {
           ...cate,
-          paysages: cate.paysages.filter((img) => img.has_to_be_displayed === true),
+          paysages: cate.paysages.filter(
+            (img) => img.has_to_be_displayed === true
+          ),
         };
       }
-   
     });
     return filteredArray;
   };
-
-
 
   const paginateForward = () => {
     setCurrentPaginationIndex(currentPaginationIndex + 1);
@@ -195,42 +163,29 @@ const ImagesGalery = (props) => {
     }
   };
 
- 
   // séquence filter
   useEffect(() => {
     imagesFilter(value);
- }, [value])
+  }, [value]);
 
   useEffect(() => {
-    imagesFilter(value)
-  },[selectedCategory])
-
+    imagesFilter(value);
+  }, [selectedCategory]);
 
   useEffect(() => {
     getCategories(props.arg);
     getAllImages(props.arg);
-  },[props.arg])
+  }, [props.arg]);
 
-  useEffect(()=>{
-    imagesFilter(value)
-  },[hideImages])
-
-
-  console.log("IMAGE GALERY")
-  console.log("IMAGE GALERY")
-  console.log("IMAGE GALERY")
-  console.log(props.arg)
-  console.log(filteredImages)
-  console.log(totalImagesCount)
-  console.log("IMAGE GALERY")
-  console.log("IMAGE GALERY")
-  console.log("IMAGE GALERY")
-
+  useEffect(() => {
+    imagesFilter(value);
+  }, [hideImages]);
 
   return (
     <>
       <ImagesContext.Provider value={{ value, setValue }}>
-        <div className="bd-container">
+     
+        <main className="b-main-wrapper">
           <LeftBar
             categories={categories}
             setHideImages={setHideImages}
@@ -240,7 +195,7 @@ const ImagesGalery = (props) => {
             selectedCategory={selectedCategory}
           />
           <CreateYear arg={props.arg} categories={categories} />
-          <CreatePhoto arg={props.arg} categories={categories}  />
+          <CreatePhoto arg={props.arg} categories={categories} />
 
           <Content
             arg={props.arg}
@@ -249,7 +204,8 @@ const ImagesGalery = (props) => {
             selectedCategory={selectedCategory}
             paginateForward={paginateForward}
           />
-        </div>
+        </main>
+        <Footer/>
       </ImagesContext.Provider>
     </>
   );

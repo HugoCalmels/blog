@@ -40,7 +40,7 @@ const LeftBar = (props) => {
   }
 
   return (
-    <div className="bd-left-bar">
+    <aside className="bd-left-bar">
       {cookieIsAuth === true ? (
         <>
           <div
@@ -79,7 +79,7 @@ const LeftBar = (props) => {
           </h5>
         ))}
       </div>
-    </div>
+    </aside>
   );
 };
 

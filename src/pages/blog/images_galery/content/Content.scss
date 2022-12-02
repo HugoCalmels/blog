@@ -7,30 +7,23 @@
   min-height: calc(100vh - 150px);
   min-width: calc(100vw - 250px);
 }
-.bd-images-grid {
-  padding: 20px 20px;
+.images-grid-per-category {
+  padding: 0 20px 20px 20px;
 
 }
 
-.bd-images-grid h5{
-  font-family: 'Quicksand', sans-serif;
-  font-weight:600;
-  font-size: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
 
-.grid-item {
+.image-grid-item {
   position: relative;
   transition: .3s ease;
 }
 
-.grid-item:hover {
+.image-grid-item:hover {
   transform: scale(1.05);
   transition: .3s ease;
 }
 
-.grid-item.red {
+.image-grid-item.red {
   border: 4px solid red;
 }
 
@@ -137,4 +130,29 @@
 }
 .bd-image-edit:hover{
   background: #bbbbbb;
+}
+
+.bd-dessins-title{
+  display: flex;
+  height: 75px;
+  align-items: flex-end;
+  position: fixed;
+  top: 75px;
+  left: 225px;
+  right: 0;
+  height: 50px;
+  z-index: 5;
+  background-color: #f2f2f2;
+  overflow: hidden;
+
+}
+.bd-dessins-title h2{
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  color: black;
+  font-family: 'Quicksand';
+  font-weight:700;
+  padding-left:10px;
+  display: inline-block;
 }

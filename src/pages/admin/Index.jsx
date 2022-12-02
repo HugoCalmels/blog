@@ -1,10 +1,12 @@
-import "./Authentication.scss"
+import "./Index.scss"
 import { useState, useEffect, useContext } from "react"
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import Login from "./Login"
 
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN
-const Authentication = () => {
-
+const Index = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
@@ -43,6 +45,7 @@ const Authentication = () => {
       // reload the page
       // setIsAuth(true)
       window.location.reload(false)
+      //navigate('/gaelle-boucherit/index')
     } else {
       setErrorMessage("Mauvais mot de passe, ou mauvais identifiant.")
     }
@@ -64,7 +67,26 @@ const Authentication = () => {
 
   useEffect(() => {
     
-  },[errorMessage])
+  }, [errorMessage])
+  
+  const tryToLogout = () => {
+    submitLogoutAPI()
+  }
+
+  const submitLogoutAPI = async () => {
+    const config = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("cie-lutin-auth-token")}`,
+      },
+    };
+    const response = await fetch(`${BASE_URL}/users/sign_out`, config);
+    if (response.status === 200) {
+      Cookies.remove("cie-lutin-auth");
+      Cookies.remove("cie-lutin-isAuth");
+      window.location.reload(false);
+    }
+  }
 
   return (
     <div className="auth-wrapper">
@@ -74,19 +96,17 @@ const Authentication = () => {
 
         <h1>123123</h1>
 
-        <div className="auth-login">
-          {errorMessage}
-          <form className="auth-form">
-          <label>Identifiant :</label>
-            <input type="text" onChange={(e)=>setEmail(e.target.value)} ></input>
-          <label>Mot de passe :</label>
-            <input type="password" onChange={(e)=>setPassword(e.target.value)}></input>
-            <input type="submit" value="envoyer" onClick={(e)=>tryToLogin(e)}></input>
-            </form>
-        </div>
+        <button onClick={tryToLogout}>logout</button>
+
+        <Login
+          tryToLogin={tryToLogin}
+          errorMessage={errorMessage}
+          setEmail={setEmail}
+          setPassword={setPassword}
+        />
       </div>
     </div>
   )
 }
 
-export default Authentication
+export default Index

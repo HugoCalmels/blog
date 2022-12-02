@@ -2,7 +2,8 @@ import { useState, useContext, useRef } from "react";
 import "./CreatePhoto.scss";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
-import imageCompression from "browser-image-compression";
+
+import {resizeImages} from "../../../../utils/resizeImages"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreatePhoto = (props) => {
 
@@ -16,7 +17,7 @@ const CreatePhoto = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    resizeImageFunction(e.target[1].files[0]).then((imageFile) => {
+    resizeImages(e.target[1].files[0]).then((imageFile) => {
       const data = new FormData();
       if (props.arg === "dessins"){
         data.append("dessin_temp_image[image]", imageFile);
@@ -35,15 +36,7 @@ const CreatePhoto = (props) => {
     });
   };
 
-  const resizeImageFunction = async (file) => {
-    const options = {
-      maxSizeMB: 0.1,
-      maxWidthOrHeight: 4000,
-      useWebWorker: true,
-    };
-    const compressedFile = await imageCompression(file, options);
-    return compressedFile;
-  };
+
 
   const createTempImage = async (data) => {
 

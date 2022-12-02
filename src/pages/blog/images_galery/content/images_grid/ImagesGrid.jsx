@@ -24,8 +24,8 @@ const ImagesGrid = (props) => {
   // Masonry will build only if "my-masonry-grid" &&  "grid-item" are the same component.
   // Means I cant handle better conditionnal rendering.
   return (
-    <div className={`bd-images-grid ${props.imageCategory.title}`}>
-      <h5>{props.imageCategory.title}</h5>
+    <div className={`images-grid-per-category ${props.imageCategory.title}`}>
+   
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
@@ -35,7 +35,7 @@ const ImagesGrid = (props) => {
           imagesArray().map((image, imageIndex) => (
             <>
               {image.has_to_be_displayed === true ? (
-                <div className="grid-item" key={image.id}>
+                <article className="image-grid-item" key={image.id}>
                   <GridItem
                     cookieIsAuth={props.cookieIsAuth}
                     handleHideImage={props.handleHideImage}
@@ -47,9 +47,9 @@ const ImagesGrid = (props) => {
                     imageIndex={imageIndex}
                     cateIndex={props.cateIndex}
                   />
-                </div>
+                </article>
               ) : (
-                <div className="grid-item red" key={image.id}>
+                <article className="image-grid-item red" key={image.id}>
                   <GridItem
                     cookieIsAuth={props.cookieIsAuth}
                     handleHideImage={props.handleHideImage}
@@ -61,7 +61,7 @@ const ImagesGrid = (props) => {
                     imageIndex={imageIndex}
                     cateIndex={props.cateIndex}
                   />
-                </div>
+                </article>
               )}
             </>
           ))}

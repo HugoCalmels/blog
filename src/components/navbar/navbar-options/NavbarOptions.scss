@@ -95,7 +95,7 @@
   cursor: pointer;
 }
 .b-navbar-option-btn-container.admin{
-  border: 2px solid red;
+
   border-radius: 4px;
 
 }
@@ -139,9 +139,10 @@
 
 }
 
-.b-navbar-option-dessins__dropdown p{
+.b-navbar-option-dessins__dropdown a{
 
   margin: 0;
+  padding: 0;
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 10px 10px;
@@ -149,12 +150,13 @@
   cursor:pointer;
 }
 
-.b-navbar-option-dessins__dropdown p:hover{
+.b-navbar-option-dessins__dropdown a:hover{
   //background-color: red;
   color: #3598D8;
 }
 .dessins__dropdown-menu{
   padding: 10px;
-
+  display: flex;
+  flex-direction: column;
 
 }

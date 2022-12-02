@@ -178,7 +178,7 @@ const Content = (props) => {
   }
 
   return (
-    <div className="bd-content-wrapper">
+    <section className="bd-category-wrapper">
       <ImagesReader
         totalImagesCount={props.totalImagesCount}
         defaultCustomIndex={defaultCustomIndex}
@@ -195,7 +195,8 @@ const Content = (props) => {
       />
       <div className="bd-images-container">
         <div className="bd-dessins-title">
-          {displayedTitle()}
+          <h2>{displayedTitle()} : {props.selectedCategory}</h2>
+  
         </div>
         {props.images &&
           props.images.map((imageCategory, cateIndex) => (
@@ -213,7 +214,7 @@ const Content = (props) => {
             </>
           ))}
       </div>
-    </div>
+    </section>
   );
 };
 

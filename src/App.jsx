@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Authentication from "./pages/admin/authentication/Authentication";
+import Index from "./pages/admin/Index";
+import Footer from "./components/footer/Footer"
 import Navbar from "./components/navbar/Navbar";
 import IndexBlog from "./pages/blog/index/IndexBlog";
 import IndexCie from "./pages/cie/IndexCie";
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           {/* Authentication router*/}
           {/* <Route path="/" element={<Redirection />} />*/}
-          <Route path="/admin" element={<Authentication />} exact />
+          <Route path="/admin" element={<Index />} exact />
 
           {/* Blog router */}
           <Route path="/gaelle-boucherit" element={<IndexBlog />} exact />
@@ -37,7 +38,9 @@ function App() {
           {/* Cie router */}
           <Route path="/" element={<IndexCie />} />
         </Routes>
+        <Footer />
       </Router>
+
     </>
   );
 }
