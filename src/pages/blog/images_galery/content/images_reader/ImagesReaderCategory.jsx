@@ -22,8 +22,18 @@ const ImagesReaderCategory = (props) =>{
                    />
       ))}
           </>
+        : props.arg === "carnets" ?
+        <>
+        {props.category.carnets &&  props.category.carnets.map((image) => (
+          <ImagesReaderImage
+          image={image}
+          addDistance={props.addDistance}
+          category={props.category}
+          />
+))}
+ </>
         :
-        <></>
+      <></>
       }
  
   </>

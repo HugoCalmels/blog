@@ -69,6 +69,13 @@ const Content = (props) => {
           method: "DELETE",
         }
       );
+    } else if (props.arg === "carnets") {
+      await fetch(
+        `${BASE_URL}/api/v1/carnet_categories/${category.id}/carnets/${image.id}`,
+        {
+          method: "DELETE",
+        }
+      );
     }
 
     const newValue = value.map((category) => {
@@ -83,6 +90,13 @@ const Content = (props) => {
         return {
           ...category,
           paysages: category.paysages.filter((img) => {
+            return image.id !== img.id;
+          }),
+        };
+      } else if (props.arg === "carnets") {
+        return {
+          ...category,
+          carnets: category.carnets.filter((img) => {
             return image.id !== img.id;
           }),
         };
@@ -113,6 +127,12 @@ const Content = (props) => {
           has_to_be_displayed: !image.has_to_be_displayed,
         },
       };
+    } else if (props.arg === "carnets") {
+      body = {
+        carnet: {
+          has_to_be_displayed: !image.has_to_be_displayed,
+        },
+      };
     }
     
     const config = {
@@ -131,6 +151,11 @@ const Content = (props) => {
     } else if (props.arg === "paysages") {
       res = await fetch(
         `${BASE_URL}/api/v1/paysage_categories/${category.id}/paysages/${image.id}`,
+        config
+      );
+    } else if (props.arg === "carnets") {
+      res = await fetch(
+        `${BASE_URL}/api/v1/carnet_categories/${category.id}/carnets/${image.id}`,
         config
       );
     }
@@ -159,6 +184,17 @@ const Content = (props) => {
             }
           }),
         };
+      } else if (props.arg === "carnets") {
+        return {
+          ...category,
+          carnets: category.carnets.map((image) => {
+            if (image.id === data.id) {
+              return { ...image, has_to_be_displayed: data.has_to_be_displayed };
+            } else {
+              return image;
+            }
+          }),
+        };
       }
       
     });
@@ -171,13 +207,7 @@ const Content = (props) => {
     cookieIsAuth = JSON.parse(cookie);
   }
 
-  const displayedTitle = () => {
-    if (props.arg === "dessins"){
-      return (<h2>Dessins et croquis</h2>)
-    } else if (props.arg === "paysages"){
-      return (<h2>Paysages</h2>)
-    }
-  }
+
 
   useEffect(() => {
 

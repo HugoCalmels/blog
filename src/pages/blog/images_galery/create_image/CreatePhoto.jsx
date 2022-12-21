@@ -49,6 +49,8 @@ const CreatePhoto = (props) => {
         data.append("dessin_temp_image[image]", imageFile);
       } else if (props.arg === "paysages"){
         data.append("paysage_temp_image[image]", imageFile);
+      } else if (props.arg === "carnets"){
+        data.append("carnet_temp_image[image]", imageFile);
       }
       createTempImage(data).then((data) => {
         // I need the category ID, I dont want anymore this select menu.
@@ -75,6 +77,11 @@ const CreatePhoto = (props) => {
         method: "POST",
         body: data,
       });
+    } else if (props.arg === "carnets") {
+      await fetch(`${BASE_URL}/api/v1/carnet_temp_images`, {
+        method: "POST",
+        body: data,
+      });
     }
     // get latest image
     let latestImageResponse
@@ -82,6 +89,8 @@ const CreatePhoto = (props) => {
       latestImageResponse = await fetch(`${BASE_URL}/api/v1/dessin-latest`);
     } else if (props.arg === "paysages") {
       latestImageResponse = await fetch(`${BASE_URL}/api/v1/paysage-latest`);
+    } else if (props.arg === "carnets") {
+      latestImageResponse = await fetch(`${BASE_URL}/api/v1/carnet-latest`);
     }
     const latestImage = await latestImageResponse.json();
     return latestImage;
@@ -113,6 +122,18 @@ const CreatePhoto = (props) => {
           height: imageHeight,
         },
       };
+    } else if (props.arg === "carnets") {
+      body = {
+        carnet: {
+          carnet_category_id: categoryID,
+          image_url: image.image_url,
+          title: imageTitle,
+          ref: imageRef,
+          material: imageMaterial,
+          width: imageWidth,
+          height: imageHeight,
+        },
+      };
     }
 
     const config = {
@@ -135,6 +156,11 @@ const CreatePhoto = (props) => {
           `${BASE_URL}/api/v1/paysage_categories/${categoryID}/paysages`,
           config
         );
+      } else if (props.arg === "carnets") {
+        res = await fetch(
+          `${BASE_URL}/api/v1/carnet_categories/${categoryID}/carnets`,
+          config
+        );
       }
       const data = await res.json();
       subArrayToChange = value.map((category) => {
@@ -148,6 +174,13 @@ const CreatePhoto = (props) => {
         } else if (props.arg === "paysages") {
           if (category.id === data.paysage_category_id) {
             category.paysages.push(data);
+            return category;
+          } else {
+            return category;
+          }
+        } else if (props.arg === "carnets") {
+          if (category.id === data.carnet_category_id) {
+            category.carnets.push(data);
             return category;
           } else {
             return category;

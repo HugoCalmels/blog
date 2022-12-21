@@ -31,6 +31,12 @@ const CreateYear = (props) => {
           title: e.target[0].value,
         },
       };
+    } else if (props.arg === "carnets") {
+      body = {
+        carnet_category: {
+          title: e.target[0].value,
+        },
+      };
     }
    
     const config = {
@@ -44,6 +50,8 @@ const CreateYear = (props) => {
       await fetch(`${BASE_URL}/api/v1/dessin_categories`, config);
     } else if (props.arg === "paysages") {
       await fetch(`${BASE_URL}/api/v1/paysage_categories`, config);
+    } else if (props.arg === "carnets") {
+      await fetch(`${BASE_URL}/api/v1/carnet_categories`, config);
     }
 
     window.location.reload(false);
@@ -70,6 +78,10 @@ const CreateYear = (props) => {
       });
     } else if (props.arg === "paysages") {
       await fetch(`${BASE_URL}/api/v1/paysage_categories/${id}`, {
+        method: "DELETE",
+      });
+    } else if (props.arg === "carnets") {
+      await fetch(`${BASE_URL}/api/v1/carnet_categories/${id}`, {
         method: "DELETE",
       });
     }

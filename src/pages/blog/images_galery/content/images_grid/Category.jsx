@@ -35,8 +35,24 @@ const Category = (props) => {
   />
 ))}
           </>
+        : props.arg === "carnets" ?
+        <>
+        {props.imageCategory.carnets && props.imageCategory.carnets.map((image, imageIndex) => (
+<CategoryContent
+image={image}
+imageIndex={imageIndex}
+cateIndex={props.cateIndex}
+cookieIsAuth={props.cookieIsAuth}
+handleHideImage={props.handleHideImage}
+imageCategory={props.imageCategory}
+openEditModal={props.openEditModal}
+tryToDestroyImage={props.tryToDestroyImage}
+openImagesReader={props.openImagesReader}
+/>
+))}
+      </>
         :
-        <></>
+      <></>
       }
     </>
   )

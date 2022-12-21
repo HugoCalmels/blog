@@ -18,6 +18,8 @@ const ImagesGrid = (props) => {
       return props.imageCategory.dessins;
     } else if (props.arg === "paysages") {
       return props.imageCategory.paysages;
+    } else if (props.arg === "carnets") {
+      return props.imageCategory.carnets;
     }
   };
 

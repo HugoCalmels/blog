@@ -57,6 +57,8 @@ const ImagesGalery = (props) => {
       response = await fetch(`${BASE_URL}/api/v1/getAllDessins`);
     } else if (arg === "paysages") {
       response = await fetch(`${BASE_URL}/api/v1/getAllPaysages`);
+    } else if (arg === "carnets") {
+      response = await fetch(`${BASE_URL}/api/v1/getAllCarnets`);
     }
 
     const data = await response.json();
@@ -78,12 +80,32 @@ const ImagesGalery = (props) => {
     // select the category
     if (hideImages === false && initialData.length > 0) {
       // small filter
+      console.log('1111111111111111111111111')
+      console.log('1111111111111111111111111')
+      console.log(initialData)
+      console.log('1111111111111111111111111')
+      console.log('1111111111111111111111111')
       const filteredCategory = filterCategory(initialData);
+      console.log('222222222222222222222222222')
+      console.log('222222222222222222222222222')
+      console.log(filteredCategory)
+      console.log('222222222222222222222222222')
+      console.log('222222222222222222222222222')
       const initializedImagesReader = initImagesReader(filteredCategory);
+      console.log("333333333333333333333333333")
+      console.log("333333333333333333333333333")
+      console.log(initializedImagesReader)
+      console.log("333333333333333333333333333")
+      console.log("333333333333333333333333333")
       setFilteredImages(sliceDataForPagination(initializedImagesReader));
     } else if (hideImages === true && initialData.length > 0) {
       // same plus hide image system
+      console.log("THE OTHER THING")
+      console.log("THE OTHER THING")
+      console.log(initialData)
+      console.log("THE OTHER THING")
 
+      console.log("THE OTHER THING")
       const filteredCategory = filterCategory(initialData);
 
       const initializedImagesReader = initImagesReader(filteredCategory);
@@ -102,6 +124,11 @@ const ImagesGalery = (props) => {
   };
 
   const initImagesReader = (array) => {
+    console.log("????????????????????????????")
+    console.log("????????????????????????????")
+    console.log(array)
+    console.log("????????????????????????????")
+    console.log("????????????????????????????")
     let count = 0;
     let filteredArray = array.map((cate) => {
       if (props.arg === "dessins") {
@@ -131,6 +158,19 @@ const ImagesGalery = (props) => {
             };
           }),
         };
+      } else if (props.arg === "carnets") {
+        return {
+          ...cate,
+          carnets: cate.carnets.map((img) => {
+            if (img.has_to_be_displayed === true) {
+              count += 1;
+            }
+            return {
+              ...img,
+              customIndex: count,
+            };
+          }),
+        };
       }
     });
 
@@ -151,8 +191,21 @@ const ImagesGalery = (props) => {
           ...cate,
           paysages: cate.paysages.slice(0, currentPaginationIndex * 9),
         };
+      } else if (props.arg === "carnets") {
+        return {
+          ...cate,
+          carnets: cate.carnets.slice(0, currentPaginationIndex * 9),
+        };
       }
     });
+    console.log("))))))))))))))))))))))")
+    console.log("))))))))))))))))))))))")
+    console.log(props.arg)
+    console.log(array)
+    console.log(filteredArray)
+    console.log("))))))))))))))))))))))")
+    console.log("))))))))))))))))))))))")
+    console.log("))))))))))))))))))))))")
     return filteredArray;
   };
 
@@ -169,6 +222,13 @@ const ImagesGalery = (props) => {
         return {
           ...cate,
           paysages: cate.paysages.filter(
+            (img) => img.has_to_be_displayed === true
+          ),
+        };
+      } else if (props.arg === "carnets") {
+        return {
+          ...cate,
+          carnets: cate.carnets.filter(
             (img) => img.has_to_be_displayed === true
           ),
         };
@@ -207,7 +267,8 @@ const ImagesGalery = (props) => {
   useEffect(() => {
     console.log("SELECTED CATEGORY")
     console.log(value)
-    imagesFilter(value);
+
+    getAllImages(props.arg);
     console.log("??EZEZFZ")
 
     if (leftBarTriggerBtnElem.current && topBarElem.current){
@@ -229,6 +290,7 @@ const ImagesGalery = (props) => {
     getCategories(props.arg);
     getAllImages(props.arg);
     closeModals()
+    setCurrentPaginationIndex(1)
   }, [props.arg]);
 
   const closeModals = () => {
@@ -293,6 +355,18 @@ const loaderElem = useRef(null)
     }
 
   },[currentPaginationIndex])
+
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+  console.log(value)
+  console.log(filteredImages)
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
 
   return (
     <>

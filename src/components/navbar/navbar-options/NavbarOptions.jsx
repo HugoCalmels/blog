@@ -128,6 +128,7 @@ const NavbarOptions = (props) => {
 
 
   const navigateTo = (arg) => {
+    window.scrollTo({ top: '0px'});
     navigate(`/${arg}`)
   }
 

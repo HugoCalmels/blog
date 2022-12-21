@@ -10,6 +10,10 @@ export const getCategoriesAPI = async (arg) => {
       response = await fetch(`${BASE_URL}/api/v1/paysage_categories`, {
         method: "GET",
       });
+    } else if ( arg === "carnets"){
+      response = await fetch(`${BASE_URL}/api/v1/carnet_categories`, {
+        method: "GET",
+      });
     }
   const data = await response.json();
   return data

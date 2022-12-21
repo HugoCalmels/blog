@@ -16,17 +16,20 @@ const Card = (props) => {
     modalEditRef.current.classList.remove("active")
     editModalOpenButtonRef.current.classList.add("active")
   }
-
-  const descriptionWithLineBreaks = props.data.desc.split("<br/>")
-  console.log('CARD')
-  console.log("===================")
-  console.log(props.data.desc.split("<br/>"))
-  console.log(props.data.desc)
-  console.log("===================")
   let newArrayOfStrings = []
-  descriptionWithLineBreaks.forEach((subString) => {
-    newArrayOfStrings.push(subString)
-  })
+  if (props.data.desc) {
+    const descriptionWithLineBreaks = props.data.desc.split("<br/>")
+    console.log('CARD')
+    console.log("===================")
+    console.log(props.data.desc.split("<br/>"))
+    console.log(props.data.desc)
+    console.log("===================")
+  
+    descriptionWithLineBreaks.forEach((subString) => {
+      newArrayOfStrings.push(subString)
+    })
+  }
+
 
 
   console.log("TESTTTTTTTTTTTTTTTTTTTTTTT")

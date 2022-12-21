@@ -45,6 +45,20 @@ const EditPhoto = (props) => {
       if (newImage !== null) {
         data.paysage.image_url = newImage.image_url
       }
+    } else if (props.arg === "carnets") {
+      data = {
+        carnet: {
+          carnet_category_id: cateID,
+          title: imageTitle,
+          ref: imageRef,
+          material: imageMaterial,
+          width: imageWidth,
+          height: imageHeight,
+        },
+      };
+      if (newImage !== null) {
+        data.carnet.image_url = newImage.image_url
+      }
     }
  
     
@@ -67,6 +81,11 @@ const EditPhoto = (props) => {
       } else if (props.arg === "paysages") {
         res = await fetch(
           `${BASE_URL}/api/v1/paysage_categories/${props.editSelectedCategory.id}/paysages/${props.editSelectedImage.id}`,
+          config
+        );
+      } else if (props.arg === "carnets") {
+        res = await fetch(
+          `${BASE_URL}/api/v1/carnet_categories/${props.editSelectedCategory.id}/carnets/${props.editSelectedImage.id}`,
           config
         );
       }
@@ -136,6 +155,42 @@ const EditPhoto = (props) => {
             return {
               ...category,
               paysages: category.paysages.map((img) => {
+                if (img.id === datafetched.id) {
+                  return datafetched;
+                } else {
+                  return img;
+                }
+              }),
+            };
+          });
+          newValue = test;
+        }
+      } else if (props.arg === "carnets") {
+        if (props.editSelectedCategory.id !== datafetched.carnet_category_id) {
+          // changement de catégorie
+          const removedImage = value.map((category) => {
+            return {
+              ...category,
+              carnets: category.carnets.filter((image) => {
+                return image.id !== datafetched.id;
+              }),
+            };
+          });
+          const reAddedImage = removedImage.map((category) => {
+            if (category.id === datafetched.carnet_category_id) {
+              category.carnets.push(datafetched);
+              return category;
+            } else {
+              return category;
+            }
+          });
+          newValue = reAddedImage;
+        } else {
+          // aucun changement de catégorie
+          let test = value.map((category) => {
+            return {
+              ...category,
+              carnets: category.carnets.map((img) => {
                 if (img.id === datafetched.id) {
                   return datafetched;
                 } else {
