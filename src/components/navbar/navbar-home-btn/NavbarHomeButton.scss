@@ -1,32 +1,36 @@
+@import "../../../variables";
 .b-navbar-home-button-wrapper{
-
+margin-left:15px;
 }
 .b-navbar-main-home-button{
   display: flex;
   flex-direction: row;
   align-items:center;
   gap: 10px;
+  height: 75px;
 }
 .b-navbar-index-link{
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1.15rem;
-
+  font-weight: 900;
+  font-size: 0.9375rem;
+  color: $darkgrey_1;
+  transition: .3s;
+}
+.b-navbar-index-link:hover{
+  transition: .3s;
+  color: $default_blue;
 }
 
-.b-navbar-main-home-button span{
-  cursor: pointer;
-  font-size: 2rem;
+
+.b-navbar-main-home-button img{
+  height: 15px;
+  width: 15px;
   transition: .5s;
+  cursor: pointer;
+
 }
-.b-navbar-index-list-modal{
-  display: none;
-  flex-direction: row;
-  align-items: center;
-  transform: translateX(-350px);
-  transition: .5s cubic-bezier(.1,1.28,.74,1.17);
-  display: flex;
-}
+
+
 .b-navbar-index-list-modal.active{
   display: flex;
 }
@@ -67,4 +71,15 @@ border-color: transparent #dddddd transparent transparent;
 .b-navbar-container h5:hover{
   background-color: #bbbbbb;
   color: #3598D8;
+}
+
+.b-navbar-option-btn-container-index{
+  
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  position: relative;
+  cursor: pointer;
 }

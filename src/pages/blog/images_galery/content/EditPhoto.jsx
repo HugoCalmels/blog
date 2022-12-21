@@ -56,102 +56,113 @@ const EditPhoto = (props) => {
       body: JSON.stringify(data),
     };
     let res 
-    if (props.arg === "dessins") {
-      res = await fetch(
-        `${BASE_URL}/api/v1/dessin_categories/${props.editSelectedCategory.id}/dessins/${props.editSelectedImage.id}`,
-        config
-      );
-    } else if (props.arg === "paysages") {
-      res = await fetch(
-        `${BASE_URL}/api/v1/paysage_categories/${props.editSelectedCategory.id}/paysages/${props.editSelectedImage.id}`,
-        config
-      );
-    }
- 
-    const datafetched = await res.json();
     let newValue;
-    // handle context
-    if (props.arg === "dessins") {
-      if (props.editSelectedCategory.id !== datafetched.dessin_category_id) {
-        // changement de catégorie
-        const removedImage = value.map((category) => {
-          return {
-            ...category,
-            dessins: category.dessins.filter((image) => {
-              return image.id !== datafetched.id;
-            }),
-          };
-        });
-        const reAddedImage = removedImage.map((category) => {
-          if (category.id === datafetched.dessin_category_id) {
-            category.dessins.push(datafetched);
-            return category;
-          } else {
-            return category;
-          }
-        });
-        newValue = reAddedImage;
-      } else {
-        // aucun changement de catégorie
-        let test = value.map((category) => {
-          return {
-            ...category,
-            dessins: category.dessins.map((img) => {
-              if (img.id === datafetched.id) {
-                return datafetched;
-              } else {
-                return img;
-              }
-            }),
-          };
-        });
-        newValue = test;
+
+    try {
+      if (props.arg === "dessins") {
+        res = await fetch(
+          `${BASE_URL}/api/v1/dessin_categories/${props.editSelectedCategory.id}/dessins/${props.editSelectedImage.id}`,
+          config
+        );
+      } else if (props.arg === "paysages") {
+        res = await fetch(
+          `${BASE_URL}/api/v1/paysage_categories/${props.editSelectedCategory.id}/paysages/${props.editSelectedImage.id}`,
+          config
+        );
       }
-    } else if (props.arg === "paysages") {
-      if (props.editSelectedCategory.id !== datafetched.paysage_category_id) {
-        // changement de catégorie
-        const removedImage = value.map((category) => {
-          return {
-            ...category,
-            paysages: category.paysages.filter((image) => {
-              return image.id !== datafetched.id;
-            }),
-          };
-        });
-        const reAddedImage = removedImage.map((category) => {
-          if (category.id === datafetched.paysage_category_id) {
-            category.paysages.push(datafetched);
-            return category;
-          } else {
-            return category;
-          }
-        });
-        newValue = reAddedImage;
-      } else {
-        // aucun changement de catégorie
-        let test = value.map((category) => {
-          return {
-            ...category,
-            paysages: category.paysages.map((img) => {
-              if (img.id === datafetched.id) {
-                return datafetched;
-              } else {
-                return img;
-              }
-            }),
-          };
-        });
-        newValue = test;
+   
+      const datafetched = await res.json();
+
+      // handle context
+      if (props.arg === "dessins") {
+        if (props.editSelectedCategory.id !== datafetched.dessin_category_id) {
+          // changement de catégorie
+          const removedImage = value.map((category) => {
+            return {
+              ...category,
+              dessins: category.dessins.filter((image) => {
+                return image.id !== datafetched.id;
+              }),
+            };
+          });
+          const reAddedImage = removedImage.map((category) => {
+            if (category.id === datafetched.dessin_category_id) {
+              category.dessins.push(datafetched);
+              return category;
+            } else {
+              return category;
+            }
+          });
+          newValue = reAddedImage;
+        } else {
+          // aucun changement de catégorie
+          let test = value.map((category) => {
+            return {
+              ...category,
+              dessins: category.dessins.map((img) => {
+                if (img.id === datafetched.id) {
+                  return datafetched;
+                } else {
+                  return img;
+                }
+              }),
+            };
+          });
+          newValue = test;
+        }
+      } else if (props.arg === "paysages") {
+        if (props.editSelectedCategory.id !== datafetched.paysage_category_id) {
+          // changement de catégorie
+          const removedImage = value.map((category) => {
+            return {
+              ...category,
+              paysages: category.paysages.filter((image) => {
+                return image.id !== datafetched.id;
+              }),
+            };
+          });
+          const reAddedImage = removedImage.map((category) => {
+            if (category.id === datafetched.paysage_category_id) {
+              category.paysages.push(datafetched);
+              return category;
+            } else {
+              return category;
+            }
+          });
+          newValue = reAddedImage;
+        } else {
+          // aucun changement de catégorie
+          let test = value.map((category) => {
+            return {
+              ...category,
+              paysages: category.paysages.map((img) => {
+                if (img.id === datafetched.id) {
+                  return datafetched;
+                } else {
+                  return img;
+                }
+              }),
+            };
+          });
+          newValue = test;
+        }
       }
+    } catch (e) {
+      console.log(e)
+    } finally {
+      editFormElem.current.reset();
+      props.EditModalElem.current.style.display = "none";
+      setValue(newValue);
+      props.setIsLoading(false)
     }
     
-    editFormElem.current.reset();
-    props.EditModalElem.current.style.display = "none";
-    setValue(newValue);
+    
+
   };
   const tryToEditImage = (e) => {
     e.preventDefault();
     let cateID;
+    props.setIsLoading(true)
     if (categorySelected === null) {
       // category unchanged
       console.log(props.editSelectedCategory.id);
@@ -225,13 +236,13 @@ const EditPhoto = (props) => {
       >
         <div className="bd-edit-input-container-upload">
           <label htmlFor="bd-edit-image">
-            1. Upload nouvelle image ( optionnel )
+           Upload nouvelle image :
           </label>
           <input id="bd-edit-image" type="file"></input>
         </div>
 
         <div className="bd-edit-input-container">
-          <label>2. Sélectionner catégorie</label>
+          <label>Sélectionner catégorie :</label>
 
           <select
             id="select-categories-edit"
@@ -251,7 +262,7 @@ const EditPhoto = (props) => {
         </div>
 
         <div className="bd-edit-input-container">
-          <label>3. Titre de l'image</label>
+          <label>Titre image :</label>
           <input
             type="text"
             onChange={(e) => setImageTitle(e.target.value)}
@@ -259,35 +270,35 @@ const EditPhoto = (props) => {
           ></input>
         </div>
 
-        <div className="bd-edit-input-container">
-          <label>4. Référence de l'image </label>
+        <div className="bd-edit-input-container int">
+          <label>Référence image :</label>
           <input
-            type="number"
+            type="integer"
             onChange={(e) => setImageRef(e.target.value)}
             value={imageRef}
           ></input>
         </div>
 
-        <div className="bd-edit-input-container">
-          <label>5. Longueur en cm</label>
+        <div className="bd-edit-input-container int">
+          <label>Longueur image :</label>
           <input
-            type="text"
+            type="integer"
             onChange={(e) => setImageWidth(e.target.value)}
             value={imageWidth}
           ></input>
         </div>
 
-        <div className="bd-edit-input-container">
-          <label>6. Largeur en cm</label>
+        <div className="bd-edit-input-container int">
+          <label>Largeur image :</label>
           <input
-            type="text"
+            type="integer"
             onChange={(e) => setImageHeight(e.target.value)}
             value={imageHeight}
           ></input>
         </div>
 
         <div className="bd-edit-input-container">
-          <label>7. Matériau utilisé ( optionnel )</label>
+          <label>Matériau utilisé :</label>
           <input
             type="text"
             onChange={(e) => setImageMaterial(e.target.value)}
@@ -296,7 +307,7 @@ const EditPhoto = (props) => {
         </div>
 
         <div className="bd-edit-input-send-container">
-          <input type="submit" value="valider"></input>
+          <input type="submit" value="Valider"></input>
         </div>
       </form>
     </div>

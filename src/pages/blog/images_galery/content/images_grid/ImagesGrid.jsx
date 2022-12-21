@@ -4,10 +4,10 @@ import Masonry from "react-masonry-css";
 const ImagesGrid = (props) => {
 
   const breakpointColumnsObj = {
-    default: 4,
-    1100: 3,
-    700: 2,
-    500: 1,
+    default: 3,
+    1180: 2,
+    700: 1,
+  
   };
   console.log("IMAGE GRID");
   console.log("IMAGE GRID");
@@ -25,7 +25,7 @@ const ImagesGrid = (props) => {
   // Means I cant handle better conditionnal rendering.
   return (
     <div className={`images-grid-per-category ${props.imageCategory.title}`}>
-   
+               
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

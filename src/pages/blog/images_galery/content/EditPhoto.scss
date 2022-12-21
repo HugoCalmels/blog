@@ -1,8 +1,10 @@
+@import "../../../../variables";
 .bd-edit-photo {
-  width: 600px;
-  height: 560px;
-  background-color: rgb(221, 250, 221);
-  border: 4px solid black;
+  max-width: 600px;
+  width: auto;
+  height: 525px;
+  background-color: $edit_green;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 8px;
   position: fixed;
   left: 0;
@@ -13,25 +15,31 @@
   display: none;
   z-index: 15;
   font-family: "Quicksand";
-  padding: 20px;
+  padding: 15px;
   flex-direction: column;
+  @media  (max-width:650px){
+
+    left: 15px;
+    right: 15px;
+  }
 }
 
 .bdl-edit-year-photo-title h5{
   margin:0;
   padding:0;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
 }
 
 .bd-edit-close-btn {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 15px;
+  top: 15px;
 }
 
 .bd-edit-close-btn img{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   cursor:pointer;
 }
 
@@ -48,27 +56,55 @@
 }
 
 .bd-edit-input-container input{
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
+  padding: 5px 10px;
+  font-weight: 700;
+  color: $font_grey_1;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid $darkgrey_1;
 }
 .bd-edit-input-container select{
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
+  padding: 5px 10px;
+  font-weight: 700;
+  color: $darkgrey_1;
+}
+.bd-edit-input-container option{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $font_grey_1;
+  border-radius: 0px;
+}
+
+.bd-edit-input-container label{
+  font-size:0.9375rem;
+  font-weight: 500;
+  color: $darkgrey_1;
 }
 
 .bd-edit-input-send-container{
   display:flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20px;
 }
 
 .bd-edit-input-send-container input{
   cursor:pointer;
-padding: 5px 20px;
+padding: 5px 10px;
 border-radius: 5px;
-font-size: 1.25rem;
+font-size: 0.9375rem;
+font-weight: 700;
+border: 1px solid $darkgrey_1;
+outline: none;
 }
 
 .bd-edit-input-container-upload{
   display: flex;
   flex-direction: column;
+}
+
+.bd-edit-input-container.int input{
+  width: 100px;
 }

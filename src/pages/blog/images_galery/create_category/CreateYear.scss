@@ -1,19 +1,29 @@
+@import "../../../../variables";
+
 .bdl-create-year-modal {
-  width: 500px;
+  max-width: 500px;
+  width: auto;
   height: 335px;
-  background-color: #dddddd;
-  border: 4px solid black;
-  border-radius: 8px;
+  background-color: $lightgrey_1;
+
+  border-radius: 4px;
   position: fixed;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
-  margin: auto;
+
   display: none;
   z-index: 15;
   font-family: "Quicksand";
-  padding: 20px;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+margin: auto;
+  @media  (max-width:550px){
+    height: 350px;
+    left: 15px;
+    right: 15px;
+  }
 }
 
 .bdl-create-year-modal.active {
@@ -23,7 +33,9 @@
 .bdl-create-year-modal h5{
   margin:0;
   padding:0;
-  font-size: 1.5rem;
+  font-size: 0.9375rem;
+  font-size: 700;
+  color: $darkgrey_1;
 }
 
 .bdl-create-year-form {
@@ -32,14 +44,19 @@
   flex-direction: column;
   justify-content: center;
 }
+.bdl-create-year-form label{
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: $darkgrey_1;
+}
 .bdl-create-year-modal-close{
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
 }
 .bdl-create-year-modal-close img{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   cursor:pointer;
 }
 
@@ -47,29 +64,67 @@
   margin-top: 10px;
   display: flex;
   align-items: center;
+
 }
 .bdl-send-input input{
+  margin-top: 10px;
+  font-family: "Quicksand";
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid $lightgrey_3;
+
+}
+.bdl-send-input input.active{
+  border: 1px solid $darkgrey_1;
+  color: $darkgrey_1;
   cursor:pointer;
-  font-size: 1.1rem;
+}
+.bdl-send-input input.active:hover{
+  background-color: $lightgrey_2;
 }
 .bdl-custom-hr{
   width: 100%;
-  height: 4px;
-  background-color: black;
+  height: 1px;
+  background-color: $darkgrey_1;
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 #bdl-create-year-text-input{
-  font-size: 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $font_grey_1;
+  padding: 5px 10px;
+  border: 1px solid $lightgrey_3;
+  outline: none;
+  border-radius: 4px;
 }
 
+
 #remove-categories{
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: $font_grey_1;
+  padding: 5px 10px;
+  border: 1px solid $lightgrey_3;
+  border-radius: 4px;
+  outline: none;
 }
 
 #bdl-submit-delete-year{
-  font-size: 1.1rem;
+  font-size: 0.9375rem;
+  padding: 5px 10px;
+  margin-top: 10px;
+  background-color: $lightgrey_1;
+  color: $darkgrey_1;
+  outline: none;
+  border: 1px solid $darkgrey_1;
+  border-radius: 4px;
+  cursor:pointer;
+}
+#bdl-submit-delete-year:hover{
+  background-color: $lightgrey_2;
 }
 
 .bdl-year-delete-year-form{

@@ -1,32 +1,65 @@
+@import "../../../../variables";
 .b-index-carrousel-wrapper{
   box-sizing: content-box;
-  width: 100%;
+  margin: 0 15px;
+  width: auto;
   height: 500px;
   position: relative;
 
   overflow: hidden;
   z-index: 2;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  @media  (max-width:650px){
+    height: 300px;
+
+  }
+
 }
 
 .b-index-carrousel__img_unit{
   position: absolute;
   height: 500px;
-  width: 1180px;
+  width: 100%;
 
+  left: 150px;
+  display: flex;
+  border-radius: 6px;
+
+  @media (max-width: 1250px) {
+    height: 100%;
+    width: 100%;
+  }
+    
+  
 }
 
 .b-index-carrousel__img_unit img{
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 6px;
+
 }
 
 .b-index-carrousel-images-container{
   position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   display:flex;
   flex-direction: row;
+
+  justify-content: center;
   transition: 1.8s ease-in-out;
 
+
+  @media  (max-width:650px){
+    justify-content:center;
+  }
 }
 
 .b-index-carrousel-btns-container{
@@ -47,49 +80,59 @@
 }
 
 .b-index-carrousel__img_unit__btn{
-  background: gray;
+  background: $font_grey_1;
   z-index:20;
   width: 16px;
   height: 16px;
   border-radius: 50%;
   cursor:pointer;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 6px;
 }
 .b-index-carrousel__img_unit__btn.selected{
-  background: white;
+  background: $lightgrey_3;
 }
 
 .b-index-carrousel__img_unit__btn:hover{
-  background-color:white;
+  background-color:$lightgrey_3;
 }
 
 
 .b-index-carrousel-btn-pause{
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 3px;
   padding-right: 10px;
   cursor:pointer;
+  z-index: 3000;
+
 }
 
 .b-index-cbp-bar{
+  position: relative;
   height: 16px;
   width: 7px;
-  background-color: white;
+  background-color: $font_grey_1;
   border-radius: 2px;
 
 }
+
 
 .b-index-carrousel-btn-play{
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 8px 0 8px 16px;
-  border-color: transparent transparent transparent white;
+  border-width: 9px 0 9px 18px;
+  border-color: transparent transparent transparent $font_grey_1;
   border-radius: 2px;
 padding-right: 10px;
 cursor:pointer;
 
+}
+
+
+.b-index-carrousel-btn-play:hover{
+  border-color: transparent transparent transparent $lightgrey_3;
 }
 
 
@@ -98,7 +141,7 @@ cursor:pointer;
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: #bbbbbb;
+  background-color : $lightgrey-1;
 
   z-index: 10;
   padding: 5px;
@@ -113,7 +156,7 @@ cursor:pointer;
 }
 .b-index-carrousel-edit-modal-toggle-btn:hover{
   transition: .2s;
-  background-color : white;
+  background-color : $lightgrey-2;
 }
 
 .b-index-carrousel-edit-modal-toggle-btn.active{

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import Grid from "./grid/Grid"
 import Footer from "../../../components/footer/Footer"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
-const IndexBlog = () => {
+const IndexBlog = (props) => {
 
   const [fetchedData, setFetchedData] = useState([])
 
@@ -84,9 +84,9 @@ const IndexBlog = () => {
     <>
       <section className="b-index-content">
 
-        <Carrousel fetchedData={fetchedData} />
+        <Carrousel fetchedData={fetchedData} page={props.page} />
 
-        <h2 className="b-index-title">Blog de Gaëlle Boucherit</h2>
+        <h2 className="b-index-title">BLOG DE GAËLLE</h2>
         <Grid fetchedData={fetchedData} />
      
       </section>

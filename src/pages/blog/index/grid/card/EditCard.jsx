@@ -149,7 +149,7 @@ const EditCard = (props) => {
           ></input>
         </div>
         </div>
-        <div className="b-index-content-card-edit-modal__input">
+        <div className="b-index-content-card-edit-modal__input  textarea">
         <label onClick={addBr}>3. Editer description <span onClick={(e)=>addBr(e)}>{`< sauter une ligne >`}</span></label>
           <textarea
             ref={textareaRef}

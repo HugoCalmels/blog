@@ -1,13 +1,13 @@
-
+@import "../../../../../variables";
 .b-index-content-card-edit-btn-open-modal:hover{
-  background-color: white;
+  background-color: $lightgrey-2;
 }
 
 .b-index-content-card-edit-btn-open-modal{
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: #bbbbbb;
+  background-color: $lightgrey-1;
   padding: 5px;
   border: 2px solid black;
   display: none;
@@ -15,6 +15,7 @@
 }
 .b-index-content-card-edit-btn-open-modal.active{
   display: flex;
+ 
 }
 
 .b-index-content-card-edit-btn-open-modal img{
@@ -24,19 +25,21 @@
 
 .b-index-content-card-edit-modal__elem{
   position: absolute;
-
-  padding: 10px;
-  border: 2px solid black;
+left : 0;
+right: 0;
+bottom: 0;
+top:0;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 6px;
-  background-color:#ddfadd;
-  width: 1180px;
-  height: 400px;
+
+  background-color: $edit_green;
   display: none;
   flex-direction: column;
-;
 }
 .b-index-content-card-edit-modal__elem.active{
   display: flex;
+  width: 100%;
 }
 
 .b-index-content-card-edit-modal__elem h4{
@@ -44,14 +47,16 @@
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 10px;
+  color: $darkgrey_1;
 }
+
 
 .b-index-content-card-edit-modal__elem__close-btn{
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px;
-  border: 2px solid black;
+  cursor:pointer;
   display: flex;
 
 }
@@ -77,7 +82,9 @@
   font-size: 0.9375rem;
   font-weight: 700;
   padding: 5px;
-  
+  color: $font_grey_1;
+  outline:none;
+
 }
 .b-index-content-card-edit-modal__input textarea{
   font-size: 0.9375rem;
@@ -85,8 +92,11 @@
   padding: 5px;
   font-family: "Quicksand";
   height: 200px;
-
+  color: $font_grey_1;
+  font-weight: 600;
 min-width: 100%;
+outline:none;
+
   
 }
 
@@ -95,18 +105,27 @@ min-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
 }
 
 .b-index-content-card-edit-modal-top{
   display: grid;
   grid-template-columns: 1fr 1fr;
-
+  @media (max-width: 600px){
+    display:flex;
+    flex-direction: column;
+  }
 
 }
 
 .b-index-content-card-edit-modal__input.send{
   align-items: flex-start;
 
+}
+.b-index-content-card-edit-modal__input.send input{
+  color: $darkgrey_1;
+  padding: 5px 10px;
+  cursor:pointer;
 }
 
 .b-index-content-card-edit-modal__input span{
@@ -122,3 +141,15 @@ min-width: 100%;
   text-decoration: underline;
 }
 
+
+
+.b-index-content-card-edit-modal__input.textarea{
+  height: 100%;
+
+  display: flex;
+  align-items: stretch;
+}
+
+.b-index-content-card-edit-modal__input.textarea textarea{
+  height: 100%;
+}

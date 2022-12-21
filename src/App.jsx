@@ -8,6 +8,9 @@ import ImagesGalery from "./pages/blog/images_galery/ImagesGalery";
 
 //const LazyDessins = React.lazy(()=>import('./blog/pages/dessins/dessins-et-croquis/Dessins'))
 function App() {
+
+
+ 
   return (
     <>
       <Router>
@@ -16,23 +19,23 @@ function App() {
         <Routes>
           {/* Authentication router*/}
           {/* <Route path="/" element={<Redirection />} />*/}
-          <Route path="/admin" element={<Index />} exact />
+          <Route path="/admin" element={<Index page="admin"/>} exact />
 
           {/* Blog router */}
-          <Route path="/gaelle-boucherit" element={<IndexBlog />} exact />
+          <Route path="/gaelle-boucherit" element={<IndexBlog page="b-index"/>}  exact />
           <Route
             path="/gaelle-boucherit/dessins-et-croquis"
-            element={<ImagesGalery arg="dessins" />}
+            element={<ImagesGalery arg="dessins" page="b-dessins"/>}
             exact
           />
           <Route
             path="/gaelle-boucherit/paysages"
-            element={<ImagesGalery arg="paysages" />}
+            element={<ImagesGalery arg="paysages" page="b-dessins" />}
             exact
           />
           <Route
             path="/gaelle-boucherit/carnets-de-voyages"
-            element={<ImagesGalery arg="carnets" />}
+            element={<ImagesGalery arg="carnets" page="b-dessins"/>}
           />
 
           {/* Cie router */}

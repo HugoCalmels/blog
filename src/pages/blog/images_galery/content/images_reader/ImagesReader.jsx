@@ -13,6 +13,7 @@ const ImagesReader = (props) => {
 
   const closeMenu = () => {
     props.imagesReaderElement.current.style.display = "none";
+    props.leftBarTriggerBtnElem.current.classList.remove("inactive")
   };
 
   useEffect(() => {

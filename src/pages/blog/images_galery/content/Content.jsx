@@ -1,6 +1,6 @@
 import "./Content.scss";
 
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef , useEffect} from "react";
 import ImagesReader from "./images_reader/ImagesReader";
 import EditPhoto from "./EditPhoto";
 import { ImagesContext } from "../../../../context/ImagesContext";
@@ -21,6 +21,7 @@ const Content = (props) => {
 
   const imagesReaderElement = useRef(null);
   const EditModalElem = useRef(null);
+  const imagesGaleryContainerElem = useRef(null)
 
   const openImagesReader = (
     e,
@@ -43,6 +44,7 @@ const Content = (props) => {
       arrayIndex: arrayIndex,
     });
     setDefaultCustomIndex(customIndex);
+    props.leftBarTriggerBtnElem.current.classList.add("inactive")
   };
 
   const tryToDestroyImage = (image, category) => {
@@ -177,8 +179,37 @@ const Content = (props) => {
     }
   }
 
+  useEffect(() => {
+
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
+  }, [])
+  
+  useEffect(() => {
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
+
+    window.scrollTo({ top: '0px'});
+    
+    
+  }, [props.selectedCategory])
+
+
+  console.log("from content")
+  console.log(props.images)
+
+  const capitalizeAndStyleString = (string) => {
+    if (string === "dessins") {
+      return "DESSINS ET CROQUIS"
+    }
+    if (string === "paysages") {
+      return "PAYSAGES"
+    }
+    if (string === "carnets") {
+      return "CARNETS DE VOYAGE"
+    }
+  }
+
   return (
-    <section className="bd-category-wrapper">
+    <section className="bd-category-wrapper" ref={props.contentWrapperRef}>
       <ImagesReader
         totalImagesCount={props.totalImagesCount}
         defaultCustomIndex={defaultCustomIndex}
@@ -186,18 +217,17 @@ const Content = (props) => {
         images={props.images}
         imagesReaderElement={imagesReaderElement}
         arg={props.arg}
+        leftBarTriggerBtnElem={props.leftBarTriggerBtnElem}
       />
       <EditPhoto
         editSelectedImage={editSelectedImage}
         editSelectedCategory={editSelectedCategory}
         EditModalElem={EditModalElem}
         arg={props.arg}
+        setIsLoading={props.setIsLoading}
       />
-      <div className="bd-images-container">
-        <div className="bd-dessins-title">
-          <h2>{displayedTitle()} : {props.selectedCategory}</h2>
-  
-        </div>
+      <div className="bd-images-container" ref={imagesGaleryContainerElem}>
+      <h2 id="b-images-galery-title">{capitalizeAndStyleString (props.arg)}</h2>
         {props.images &&
           props.images.map((imageCategory, cateIndex) => (
             <>

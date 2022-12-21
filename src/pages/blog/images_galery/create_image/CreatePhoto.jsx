@@ -2,10 +2,17 @@ import { useState, useContext, useRef } from "react";
 import "./CreatePhoto.scss";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
-
+import {useEffect} from "react"
 import {resizeImages} from "../../../../utils/resizeImages"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreatePhoto = (props) => {
+  const [imagesFilesLength, setImagesFilesLength] = useState(0)
+  const [category, setCategory] = useState("")
+
+  useEffect(() => {
+    console.log(props.selectedCategory)
+    setCategory(props.selectedCategory);
+  },[props.selectedCategory])
 
   const [imageRef, setImageRef] = useState(0);
   const [imageTitle, setImageTitle] = useState("");
@@ -13,33 +20,51 @@ const CreatePhoto = (props) => {
   const [imageWidth, setImageWidth] = useState("");
   const [imageHeight, setImageHeight] = useState("");
   const formCreatePhoto = useRef(null);
-  const modalCreatePhoto = useRef(null);
+
+
+
+  const canSave = Boolean(imageTitle) && Boolean(imageHeight) && Boolean(imageWidth) &&  Boolean(imagesFilesLength) && Boolean(imageRef)|| false 
+  
+
+  useEffect(() => {
+      
+  console.log("SELECTED CATEGORY")
+  console.log("SELECTED CATEGORY")
+  console.log(category)
+  console.log("SELECTED CATEGORY")
+  console.log("SELECTED CATEGORY")
+  },[category])
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    resizeImages(e.target[1].files[0]).then((imageFile) => {
+    if (canSave) {
+      props.setIsLoading(true)
+      console.log("!!!!!!!!!!!!")
+      console.dir(e.target[0].files[0])
+      console.log(props.selectedCategoryID)
+      console.log("!!!!!!!!!!!!!")
+    resizeImages(e.target[0].files[0]).then((imageFile) => {
       const data = new FormData();
       if (props.arg === "dessins"){
         data.append("dessin_temp_image[image]", imageFile);
       } else if (props.arg === "paysages"){
         data.append("paysage_temp_image[image]", imageFile);
       }
-
-      let getSelects = document.querySelectorAll(".bdl-custom-select");
-      const foundSelect = Array.from(getSelects).filter(
-        (select) => select.value == e.target[0].value
-      );
-      const categoryID = foundSelect[0].dataset.id;
       createTempImage(data).then((data) => {
-        createImage(data, categoryID);
+        // I need the category ID, I dont want anymore this select menu.
+        
+        createImage(data, props.selectedCategoryID);
       });
     });
+    }
+
+    
   };
 
 
 
   const createTempImage = async (data) => {
-
+    
     if (props.arg === "dessins") {
       await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, {
         method: "POST",
@@ -98,40 +123,56 @@ const CreatePhoto = (props) => {
       body: JSON.stringify(body),
     };
     let res
-    if (props.arg === "dessins") {
-      res = await fetch(
-        `${BASE_URL}/api/v1/dessin_categories/${categoryID}/dessins`,
-        config
-      );
-    } else if (props.arg === "paysages") {
-      res = await fetch(
-        `${BASE_URL}/api/v1/paysage_categories/${categoryID}/paysages`,
-        config
-      );
-    }
-    const data = await res.json();
-    let subArrayToChange = value.map((category) => {
+    let subArrayToChange
+    try {
       if (props.arg === "dessins") {
-        if (category.id === data.dessin_category_id) {
-          category.dessins.push(data);
-          return category;
-        } else {
-          return category;
-        }
+        res = await fetch(
+          `${BASE_URL}/api/v1/dessin_categories/${categoryID}/dessins`,
+          config
+        );
       } else if (props.arg === "paysages") {
-        if (category.id === data.paysage_category_id) {
-          category.paysages.push(data);
-          return category;
-        } else {
-          return category;
-        }
+        res = await fetch(
+          `${BASE_URL}/api/v1/paysage_categories/${categoryID}/paysages`,
+          config
+        );
       }
-
-     
-    });
-    formCreatePhoto.current.reset();
-    modalCreatePhoto.current.classList.remove("active");
-    setValue(subArrayToChange);
+      const data = await res.json();
+      subArrayToChange = value.map((category) => {
+        if (props.arg === "dessins") {
+          if (category.id === data.dessin_category_id) {
+            category.dessins.push(data);
+            return category;
+          } else {
+            return category;
+          }
+        } else if (props.arg === "paysages") {
+          if (category.id === data.paysage_category_id) {
+            category.paysages.push(data);
+            return category;
+          } else {
+            return category;
+          }
+        }
+  
+       
+      });
+    } catch (e) {
+      console.log(e)
+    } finally {
+      props.setIsLoading(false)
+      formCreatePhoto.current.reset();
+      props.modalCreatePhoto.current.classList.remove("active");
+      setValue(subArrayToChange);
+      setImagesFilesLength(0)
+      setImageTitle("")
+      setImageRef("")
+      setImageHeight("")
+      setImageWidth("")
+      setImageMaterial("")
+      setCategory(props.selectedCategory)
+    }
+    
+    
   };
 
   const closeModal = () => {
@@ -155,8 +196,26 @@ const CreatePhoto = (props) => {
     submitInput.current.disabled = true;
   }
 
+  console.log("OOO")
+  console.log(canSave)
+
+
+  useEffect(() => {
+    if (canSave ) {
+      submitInput.current.classList.add("active")
+    } else {
+      submitInput.current.classList.remove("active")
+    }
+  
+  }, [canSave])
+  
+  const testDisabledBtn = () => {
+    console.log("test disabled btn")
+    console.log(canSave)
+  }
+
   return (
-    <div className="bdl-create-photo-modal" ref={modalCreatePhoto}>
+    <div className="bdl-create-photo-modal" ref={props.modalCreatePhoto}>
       <h5>Créer une image</h5>
       <div className="bdl-create-photo-close" onClick={closeModal}>
         <img src={xCloseIcon} alt="close photo creation" />
@@ -167,28 +226,18 @@ const CreatePhoto = (props) => {
         ref={formCreatePhoto}
       >
         <div className="bdl-create-photo-form-input">
-          <label>1.Sélectionner une catégorie</label>
+          <label>Catégorie : {props.selectedCategory}</label>
 
-          <select id="select-categories">
-            {props.categories && props.categories.length > 0 && props.categories.map((category) => (
-              <option
-                className="bdl-custom-select"
-                key={category.id}
-                data-id={category.id}
-              >
-                {category.title}
-              </option>
-            ))}
-          </select>
+          
         </div>
 
         <div className="bdl-create-photo-form-input">
-          <label htmlFor="dessin-image">2. Upload de l'image</label>
-          <input type="file" id="dessin-image" name="dessin-image"></input>
+          <label htmlFor="dessin-image">Upload image :</label>
+          <input type="file" id="dessin-image" name="dessin-image" onChange={(e)=>setImagesFilesLength(e.target.files.length)}></input>
         </div>
 
         <div className="bdl-create-photo-form-input">
-          <label>3. Titre de l'image</label>
+          <label>Titre image :</label>
           <input
             type="text"
             onChange={(e) => setImageTitle(e.target.value)}
@@ -196,7 +245,7 @@ const CreatePhoto = (props) => {
         </div>
 
         <div className="bdl-create-photo-form-input number">
-          <label>4. Référence de l'image ( par exemple : 5 ) </label>
+          <label>Référence image : </label>
           <input
             type="number"
             onChange={(e) => setImageRef(e.target.value)}
@@ -204,7 +253,7 @@ const CreatePhoto = (props) => {
         </div>
 
         <div className="bdl-create-photo-form-input number">
-          <label>5. Longueur en cm ( par exemple : 24 )</label>
+          <label>Longueur image :</label>
           <input
             type="number"
             onChange={(e) => setImageWidth(e.target.value)}
@@ -212,7 +261,7 @@ const CreatePhoto = (props) => {
         </div>
 
         <div className="bdl-create-photo-form-input number">
-          <label>6. Largeur en cm ( par exemple : 21 )</label>
+          <label>Largeur image :</label>
           <input
             type="number"
             onChange={(e) => setImageHeight(e.target.value)}
@@ -220,7 +269,7 @@ const CreatePhoto = (props) => {
         </div>
 
         <div className="bdl-create-photo-form-input">
-          <label>7. Matériau utilisé ( optionnel )</label>
+          <label>Matériau utilisé (optionnel) :</label>
           <input
             type="text"
             onChange={(e) => setImageMaterial(e.target.value)}
@@ -230,8 +279,9 @@ const CreatePhoto = (props) => {
           <input
             type="submit"
             value="Valider"
-            disabled={true}
+            disabled={!canSave}
             ref={submitInput}
+            onClick={testDisabledBtn}
           ></input>
         </div>
       </form>

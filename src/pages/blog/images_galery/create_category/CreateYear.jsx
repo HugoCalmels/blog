@@ -1,10 +1,15 @@
 import "./CreateYear.scss";
 import {useRef } from "react";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
+import {useState, useEffect} from "react"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreateYear = (props) => {
 
+  const [category, setCategory] = useState("")
+
   const createYearBtn = useRef(null);
+
+  const canSave = Boolean(category) || false
 
   const closeModal = () => {
     const modal = document.querySelector(".bdl-create-year-modal");
@@ -72,10 +77,18 @@ const CreateYear = (props) => {
     window.location.reload(false);
   };
 
+  useEffect(() => {
 
+    if (canSave && createYearBtn.current !== undefined) {
+      createYearBtn.current.classList.add('active')
+    } else {
+      createYearBtn.current.classList.remove('active')
+    }
+  
+  },[category])
 
   return (
-    <div className="bdl-create-year-modal">
+    <div className="bdl-create-year-modal" ref={props.modalCreateCate}>
       <div className="bdl-create-year-modal-title">
         <h5>Créer une catégorie</h5>
       </div>
@@ -84,13 +97,14 @@ const CreateYear = (props) => {
         <img src={xCloseIcon} alt="close" />
       </div>
       <form className="bdl-create-year-form" onSubmit={(e) => handleSubmit(e)}>
-        <label>Ajouter une catégorie ( exemple : 2022 )</label>
-        <input id="bdl-create-year-text-input" type="text"></input>
+        <label>Ajouter une catégorie :</label>
+        <input id="bdl-create-year-text-input" type="text" value={category} onChange={(e)=>setCategory(e.target.value)}></input>
         <div className="bdl-send-input">
           <input
             className="bdl-create-year-form-send-btn"
             type="submit"
             value="Valider"
+            disabled = {!canSave}
             ref={createYearBtn}
           ></input>
         </div>
@@ -98,7 +112,7 @@ const CreateYear = (props) => {
 
       <div className="bdl-custom-hr"></div>
       <div className="bdl-create-year-modal-title">
-        <h5>Supprimer une catégorie existante</h5>
+        <h5>Supprimer une catégorie</h5>
       </div>
 
       <form
@@ -120,7 +134,7 @@ const CreateYear = (props) => {
           <input
             id="bdl-submit-delete-year"
             type="submit"
-            value="supprimer"
+            value="Supprimer"
           ></input>
         </div>
       </form>

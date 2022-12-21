@@ -1,8 +1,11 @@
+@import "../../../../variables";
+
 .bdl-create-photo-modal {
-  width: 600px;
-  height: 555px;
-  background-color: #dddddd;
-  border: 4px solid black;
+  max-width: 600px;
+  width: auto;
+  height: 525px;
+  background-color: $lightgrey_1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 8px;
   position: fixed;
   left: 0;
@@ -13,9 +16,14 @@
   display: none;
   z-index: 15;
   font-family: "Quicksand";
-  padding: 20px;
+  padding: 15px;
   flex-direction: column;
   gap: 20px;
+  @media  (max-width:650px){
+
+    left: 15px;
+    right: 15px;
+  }
 }
 
 .bdl-create-photo-modal.active {
@@ -25,8 +33,8 @@
 .bdl-create-photo-modal h5{
   margin: 0;
   padding: 0;
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 0.9375rem;
+  font-weight: 700;
 }
 
 .bdl-create-photo-form {
@@ -38,13 +46,13 @@
 }
 .bdl-create-photo-close{
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
 }
 
 .bdl-create-photo-close img{
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   cursor:pointer;
 }
 
@@ -52,27 +60,72 @@
   display: flex;
   flex-direction: column;
 }
+.bdl-create-photo-form-input label{
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
 
 .bdl-create-photo-form-input input{
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid $lightgrey_3;
+  border-radius: 4px;
+  color: $font_grey_1;
+
 }
 
 .bdl-create-photo-form-input select{
-  font-size: 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 2px;
+
 }
+.bdl-create-photo-form-input option{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $font_grey_1;
+
+}
+
 
 .bdl-create-photo-form-input.submit{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 10px;
 }
 .bdl-create-photo-form-input.submit input{
-cursor:pointer;
-padding: 5px 20px;
+
+padding: 5px 10px;
 border-radius: 5px;
-font-size: 1.25rem;
+font-size: 0.9375rem;
+font-weight: 700;
+border: 1px solid $lightgrey_3;
+color: $lightgrey_3;
+}
+.bdl-create-photo-form-input.submit input.active{
+  cursor:pointer;
+  border: 1px solid $darkgrey_1;
+  color: $darkgrey_1;
 }
 
 .bdl-create-photo-form-input.number input{
   width: 100px;
+}
+
+#select-categories{
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid $lightgrey_3;
+  color: $font_grey_1;
+}
+
+#dessin-image{
+  font-size: 0.9375rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  border: none;
 }

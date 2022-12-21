@@ -1,25 +1,43 @@
+@import "../../variables";
 .b-navbar{
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 75px;
+  font-family: "Quicksand";
+  border-bottom: 1px solid $lightgrey_3;
+  background-color: $lightgrey_1;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
 
+}
+
+.b-navbar-wrapper{
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  z-index: 10;
+  max-width: 1180px;
+  width: 100%;
 
-  background-color: #dddddd;
-  font-family: "Quicksand";
-  border-bottom: 1px solid darkgray;
+  background-color: $lightgrey_1;
+  height: 75px;
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid $lightgrey_3;
 }
 
 .b-navbar.alert{
-  background-color: #ff6666;
+  background-color: $alert_red;
+  border-bottom: 1px solid $darkgrey_1;
+  
+}
+.b-navbar-wrapper.alert{
+  background-color: $alert_red;
+  border-bottom: 1px solid $darkgrey_1;
 }
 
 /*

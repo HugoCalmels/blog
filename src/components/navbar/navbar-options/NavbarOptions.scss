@@ -1,3 +1,4 @@
+@import "../../../variables";
 .b-nabvar-options-list{
   list-style-type: none;
 
@@ -6,6 +7,10 @@
   align-items: center;
 
   height: 100%;
+  color: $darkgrey_1;
+  @media  (max-width:900px){
+    display: none;
+  }
 }
 
 
@@ -13,7 +18,7 @@
 
 .b-navbar-option span{
   font-size: 0.9375rem;
-  font-weight:500;
+  font-weight:700;
   //border: 1px solid green;
   padding: 0px 32px;
   height: 100%;
@@ -65,7 +70,7 @@
   opacity: 0;
 }
 .b-navbar-option__effect span:nth-child(1){
-
+  font-weight:600;
 
 }
 .b-navbar-option__effect span:nth-child(2){
@@ -81,7 +86,7 @@
   flex-direction: column;
 
   //transform: translateY(calc(-0.975rem - 5px));
-  transition: .15s;
+  transition: .3s;
 }
 
 .b-navbar-option-btn-container{
@@ -106,19 +111,33 @@
   left: 0;
   z-index: 50;
   padding: 0 20px;
-  height: 2px;
+  height: 3px;
   width: 100%;
 }
+
 
 .b-navbar-option__linebar_effect{
 
 
-  height: 2px;
+  height: 3px;
   background-color: #3598D8;
   width:0;
-  transition: .15s;
+  transition: .3s;
 
 
+}
+.b-navbar-option__linebar_selected_option{
+
+
+  height: 3px;
+  background-color: green;
+  width:100%;
+  display: none;
+
+
+}
+.b-navbar-option__linebar_selected_option.active{
+  display: block;
 }
 
 .b-navbar-option-dessins__dropdown{
@@ -128,15 +147,16 @@
   left:0;
   width: 300px;
 
-  background-color: #dddddd;
+  background-color: $lightgrey_1;
   transition: .3s;
   //width: 0px;
   //height: 0px;
   overflow: hidden;
    width: 0px;
   height: 0px;
-  border-top: 1px solid darkgray;
-
+  border: 1px solid $lightgrey_3;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .b-navbar-option-dessins__dropdown a{
@@ -146,7 +166,7 @@
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 10px 10px;
-  transition: .15s;
+  transition: .3s;
   cursor:pointer;
 }
 
@@ -159,4 +179,30 @@
   display: flex;
   flex-direction: column;
 
+}
+
+.b-navbar-option-icon{
+  position: absolute;
+
+  height: 12px;
+  width: 12px;
+  display: flex;
+  transition: .3s;
+  right: 0;
+  top:50%;
+  bottom: 50%;
+  transform: translateY(-50%);
+  align-items:center;
+}
+.b-navbar-option-icon.active{
+  transform:  translateY(-50%) rotate(180deg);
+  transition: .3s;
+}
+
+.b-navbar-option-btn-container.contact{
+  padding-right: 15px;
+}
+
+.b-navbar-option-btn-container.dessins{
+  margin-right: 20px;
 }

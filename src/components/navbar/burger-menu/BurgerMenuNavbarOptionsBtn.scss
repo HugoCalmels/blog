@@ -1,0 +1,9 @@
+.b-navbar-burger-menu-btn-container{
+  display: none;
+
+  margin-right: 15px;
+  cursor:pointer;
+  @media (max-width:900px){
+    display: flex;
+  }
+}

@@ -1,6 +1,12 @@
 import "./LeftBar.scss";
 import Cookies from "js-cookie";
+import {useRef, useEffect} from "react"
+import { RxCross1 } from "react-icons/rx"
 const LeftBar = (props) => {
+
+
+  const btnStyle = { color: "#424242", width: "20px", height: "20px" }
+  
   const toggleModalCreateYearDisplay = () => {
     const mainModalElem = document.querySelector(".bdl-create-year-modal");
     const secondaryModalElem = document.querySelector(
@@ -39,10 +45,31 @@ const LeftBar = (props) => {
     cookieIsAuth = JSON.parse(cookie);
   }
 
+  // props.topBarElem pour la topbar width
+
+  useEffect(() => {
+    console.log("INITTTTT")
+    console.log("INITTTTT")
+    console.log("INITTTTT")
+    console.log(props.topBarElem.current.offsetWidth)
+    
+    props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
+  }, [])
+
+  useEffect(() => {
+    props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
+  },[props.selectedCategory])
+  
+
+
   return (
-    <aside className="bd-left-bar">
-      {cookieIsAuth === true ? (
-        <>
+    <aside className="bd-left-bar" ref={props.leftBarElem}>
+
+      <div className="bd-left-bar-btn-to-display-elem" onClick={(e)=>props.closeLeftBar(e)}>
+        <h5>Retour</h5>
+        <RxCross1 style={btnStyle} />
+      </div>
+   
           <div
             className="bdl-create-year"
             onClick={toggleModalCreateYearDisplay}
@@ -63,22 +90,9 @@ const LeftBar = (props) => {
               onChange={(e) => toggleImagesHiding(e)}
             ></input>
           </div>
-        </>
-      ) : (
-        <></>
-      )}
-
-      <div className="bdl-years-list">
-        {props.categories.map((category) => (
-          <h5
-            key={category.id}
-            id={`bdl-year-unit_${category.title}`}
-            onClick={() => props.displaySelectedCategory(category.title)}
-          >
-            {category.title}
-          </h5>
-        ))}
-      </div>
+     
+   
+      
     </aside>
   );
 };
