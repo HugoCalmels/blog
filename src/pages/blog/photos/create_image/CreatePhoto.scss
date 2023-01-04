@@ -1,0 +1,131 @@
+@import "../../../../variables";
+
+.bdl-create-photo-modal {
+  max-width: 600px;
+  width: auto;
+  height: 525px;
+  background-color: $lightgrey_1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+  z-index: 15;
+  font-family: "Quicksand";
+  padding: 15px;
+  flex-direction: column;
+  gap: 20px;
+  @media  (max-width:650px){
+
+    left: 15px;
+    right: 15px;
+  }
+}
+
+.bdl-create-photo-modal.active {
+  display: flex;
+}
+
+.bdl-create-photo-modal h5{
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.bdl-create-photo-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+
+}
+.bdl-create-photo-close{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.bdl-create-photo-close img{
+  width: 20px;
+  height: 20px;
+  cursor:pointer;
+}
+
+.bdl-create-photo-form-input{
+  display: flex;
+  flex-direction: column;
+}
+.bdl-create-photo-form-input label{
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.bdl-create-photo-form-input input{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid $lightgrey_3;
+  border-radius: 4px;
+  color: $font_grey_1;
+
+}
+
+.bdl-create-photo-form-input select{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 2px;
+
+}
+.bdl-create-photo-form-input option{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: $font_grey_1;
+
+}
+
+
+.bdl-create-photo-form-input.submit{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px;
+}
+.bdl-create-photo-form-input.submit input{
+
+padding: 5px 10px;
+border-radius: 5px;
+font-size: 0.9375rem;
+font-weight: 700;
+border: 1px solid $lightgrey_3;
+color: $lightgrey_3;
+}
+.bdl-create-photo-form-input.submit input.active{
+  cursor:pointer;
+  border: 1px solid $darkgrey_1;
+  color: $darkgrey_1;
+}
+
+.bdl-create-photo-form-input.number input{
+  width: 100px;
+}
+
+#select-categories{
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid $lightgrey_3;
+  color: $font_grey_1;
+}
+
+#dessin-image{
+  font-size: 0.9375rem;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  border: none;
+}

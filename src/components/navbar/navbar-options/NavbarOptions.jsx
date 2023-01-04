@@ -26,9 +26,11 @@ const NavbarOptions = (props) => {
   const optionEffectCie = useRef(null)
   const linebarElemCie = useRef(null)
   const dessinsIconContainerElem = useRef(null)
+  const linebarElemPhotos = useRef(null)
 
   const linebarSelectedOptionAdminRef = useRef(null)
   const linebarSelectedOptionDessinsRef = useRef(null)
+  const optionEffectPhotos = useRef(null)
   const btnStyle = { color: "#424242" , width: "12px", height: "12px"}
   const selectMenu = (e, tag, willOpen) => {
     e.preventDefault();
@@ -55,9 +57,9 @@ const NavbarOptions = (props) => {
         fontAnimation(optionEffectAdmin, willOpen)
         linebarAnimation(linebarElemAdmin, willOpen)
         break;
-      case "compagnie":
-        fontAnimation(optionEffectCie, willOpen)
-        linebarAnimation(linebarElemCie, willOpen)
+      case "photos":
+        fontAnimation(optionEffectPhotos, willOpen)
+        linebarAnimation(linebarElemPhotos, willOpen)
         break;
     }
   }
@@ -208,6 +210,21 @@ const NavbarOptions = (props) => {
           </div>
         </div>
       </li>
+      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "photos", true)} onMouseLeave={(e)=>selectMenu(e, "photos", false)} onClick={()=>navigateTo("gaelle-boucherit/photos")}>
+        <div className="b-navbar-option__btn">
+        <span className="b-navbar-option__btn__first-span">PHOTOS</span>
+          <div className="b-navbar-option__effect" ref={optionEffectPhotos}>
+       
+          <span>PHOTOS</span>
+          <span>PHOTOS</span>
+          </div>
+  
+        </div>
+        <div className="b-navbar-option__linebar_effect-container">
+        <div className="b-navbar-option__linebar_effect" ref={linebarElemPhotos}>
+        </div>
+        </div>
+      </li>
       <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "performances", true)} onMouseLeave={(e)=>selectMenu(e, "performances", false)} onClick={()=>navigateTo("gaelle-boucherit/performances")}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">PERFORMANCES</span>
@@ -225,11 +242,11 @@ const NavbarOptions = (props) => {
       </li>
       <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "partenaires", true)} onMouseLeave={(e)=>selectMenu(e, "partenaires", false)}  >
         <div className="b-navbar-option__btn">
-        <span className="b-navbar-option__btn__first-span">RESEAU</span>
+        <span className="b-navbar-option__btn__first-span">COUPS DE COEUR</span>
           <div className="b-navbar-option__effect" ref={optionEffectPartenaires}>
        
-          <span>RESEAU</span>
-          <span>RESEAU</span>
+          <span>COUPS DE COEUR</span>
+          <span>COUPS DE COEUR</span>
           </div>
   
         </div>
@@ -238,21 +255,7 @@ const NavbarOptions = (props) => {
         </div>
         </div>
       </li>
-      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "compagnie", true)} onMouseLeave={(e)=>selectMenu(e, "compagnie", false)} onClick={()=>navigateTo("gaelle-boucherit/performances")}>
-        <div className="b-navbar-option__btn">
-        <span className="b-navbar-option__btn__first-span">COMPAGNIE</span>
-          <div className="b-navbar-option__effect" ref={optionEffectCie}>
-       
-          <span>COMPAGNIE</span>
-          <span>COMPAGNIE</span>
-          </div>
-  
-        </div>
-        <div className="b-navbar-option__linebar_effect-container">
-        <div className="b-navbar-option__linebar_effect" ref={linebarElemCie}>
-        </div>
-        </div>
-      </li>
+      
       <li className="b-navbar-option-btn-container contact" onMouseEnter={(e)=>selectMenu(e, "contact", true)} onMouseLeave={(e)=>selectMenu(e, "contact", false)}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">CONTACT</span>

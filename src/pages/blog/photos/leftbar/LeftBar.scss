@@ -1,0 +1,151 @@
+@import "../../../../variables";
+
+.bd-left-bar {
+  position: fixed;
+  left: 0;
+  top: 75px;
+  bottom: 0;
+
+  width: auto;
+  //background-color: $alert_red;
+  font-family: "Quicksand";
+  padding: 10px;
+
+  z-index: 6;
+
+ transform: translateX(-175px);
+  transition: .3s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 20px;
+
+ 
+}
+
+.bd-left-bar.active {
+  transform: translateX(0px);
+  transition: .3s;
+}
+
+
+.bdl-create-year {
+  width: 140px;
+  font-size: 0.9375rem;
+  cursor:pointer;
+  transition: .3s ease;
+  border: 1px solid $alert_red;
+  padding:5px 10px;
+  border-radius: 4px;;
+  border: 1px solid $alert_red;
+  padding:5px 10px;
+  height: 35px;
+  display:flex;
+  align-items: center;
+  background-color: $lightgrey_1;
+}
+
+.bdl-create-photo {
+  background-color: $lightgrey_1;
+  cursor:pointer;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: .3s ease;
+  border-radius: 4px;;
+  border: 1px solid $alert_red;
+  padding:5px 10px;
+  display:flex;
+  align-items: center;
+   width: 140px;
+}
+.bdl-create-photo.hide{
+  justify-content: space-between;
+  padding-right: 5px;
+  cursor:auto;
+}
+.bdl-create-photo input{
+  height: 15px;
+  width: 15px;
+  cursor:pointer;
+  margin-right: 10px;
+}
+
+.bdl-years-list {
+
+}
+.bdl-create-photo h5{
+  margin:0;
+  padding:0;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+.bdl-create-year h5{
+  margin:0;
+  padding:0;
+  font-weight: 600;
+  font-size: 0.9375rem;
+
+}
+.bdl-create-year:hover{
+  //background: #bbbbbb;
+  transition: .15s ease;
+  background-color: $lightgrey_2;
+
+}
+.bdl-create-photo:hover{
+  //background: #bbbbbb;
+  background-color: $lightgrey_2;
+  transition: .15s ease;
+}
+
+.bdl-years-list h5{
+  margin:0;
+  padding:0;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  cursor:pointer;
+
+  padding: 5px 10px;
+  transition: .3s ease;
+
+  border: 1px solid $alert_red;
+  border-radius: 4px;
+}
+
+.bdl-years-list h5:hover{
+  //background: #bbbbbb;
+  transition: .15s ease;
+  background-color: $lightgrey_2;
+}
+
+.bd-left-bar-btn-to-display-elem{
+
+  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid $alert_red;
+  border-radius: 4px;
+  padding: 5px 10px;
+  height: 35px;
+  display:flex;
+  align-items: center;
+  justify-content:space-between;
+  width: 140px;
+  background-color: $lightgrey_1;
+  transition: .15s;
+}
+
+.bd-left-bar-btn-to-display-elem h5{
+  margin:0;
+  margin-right: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.bd-left-bar-btn-to-display-elem:hover{
+  transition: .15s;
+  background-color: $lightgrey_2;
+}

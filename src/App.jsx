@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import IndexBlog from "./pages/blog/index/IndexBlog";
 import IndexCie from "./pages/cie/IndexCie";
 import ImagesGalery from "./pages/blog/images_galery/ImagesGalery";
+import PhotosGalery from "./pages/blog/photos/PhotosGalery"
 
 //const LazyDessins = React.lazy(()=>import('./blog/pages/dessins/dessins-et-croquis/Dessins'))
 function App() {
@@ -36,6 +37,10 @@ function App() {
           <Route
             path="/gaelle-boucherit/carnets-de-voyages"
             element={<ImagesGalery arg="carnets" page="b-dessins"/>}
+          />
+            <Route
+            path="/gaelle-boucherit/photos"
+            element={<PhotosGalery page="b-photos"/>}
           />
 
           {/* Cie router */}
