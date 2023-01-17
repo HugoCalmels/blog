@@ -3,9 +3,15 @@ import { useState, useRef } from "react"
 import {resizeImages} from "../../../../../utils/resizeImages"
 import { useEffect } from "react"
 import closeIcon from "../../../../../assets/icons/xCloseIcon.png"
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const EditCard = (props) => {
+  let cookieToken = "";
+  const cookie = Cookies.get("cie-lutin-auth-token");
 
+  if (cookie !== undefined) {
+    cookieToken = cookie;
+  }
   const [title, setTitle] = useState("")
   const [desc, setDesc] = useState("")
 
@@ -21,7 +27,7 @@ const EditCard = (props) => {
 
   const tryToEditCard = (e) => {
     e.preventDefault();
-
+ props.setIsLoading(true)
     console.dir(e.target[0].files)
     console.dir(e.target[0].files.length)
     if (e.target[0].files.length > 0) {
@@ -30,21 +36,29 @@ const EditCard = (props) => {
         data.append("home_temp_image[image]", imageFile);
         submitImageToAPI(data).then((res) => {
           editCardImageAPI(res).then(() => {
-            editCardAPI()
+            editCardAPI().then(() => {
+              props.setIsLoading(false)
+            })
           })
         });
       });
     } else {
-      editCardAPI()
+      editCardAPI().then(() => {
+        props.setIsLoading(false)
+      })
     }
   
   };
 
   const submitImageToAPI = async (newImage) => {
-    const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, {
+    const config = {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
       body: newImage,
-    });
+    };
+    const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, config);
     console.log("/////");
     console.log(test1);
     const res = await fetch(`${BASE_URL}/api/v1/home-latest`, {
@@ -70,6 +84,7 @@ const EditCard = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`
       },
       body: JSON.stringify(body),
     };
@@ -98,6 +113,7 @@ const EditCard = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`
       },
       body: JSON.stringify(body),
     };

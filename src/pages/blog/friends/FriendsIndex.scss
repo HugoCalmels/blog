@@ -1,0 +1,179 @@
+@import "../../../variables";
+.b-friends-wrapper{
+  font-family:"Quicksand";
+  min-height: 100vh;
+
+  padding-top: 75px;
+  display:flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bp-link-preview-wrapper{
+  border-radius: 6px;
+
+  border: 1px solid $lightgrey-3;
+  display: flex;
+  flex-direction: row;
+  cursor:pointer;
+  transition: 0.3s;
+
+}
+.bp-link-preview-wrapper:hover{
+  transform: scale(1.025);
+  transition: 0.3s;
+}
+.bp-link-preview-wrapper img{
+  width: 300px;
+  height: auto;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+}
+
+.bp-link-preview-righ-side{
+  display:flex;
+  flex-direction: column;
+  padding: 15px ;
+  gap: 15px;
+}
+.bp-link-preview-righ-side h5{
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.bp-link-preview-righ-side p{
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.bp-link-preview-righ-side a{
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+#b-friends-content-title{
+  font-family: 'Quicksand';
+  width: 100%;
+  color: $darkgrey_1;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#b-friends-content-paragraph{
+  font-family: 'Quicksand';
+  width: 100%;
+  color: $darkgrey_1;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+}
+
+.b-friend-content{
+
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 150px);
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+
+  padding: 0 15px;
+
+}
+#b-friends-open-create-friend-modal-btn{
+  position: fixed;
+  top: 75px;
+  left: 75px;
+}
+
+.bp-left-bar-trigger-btn{
+  position: fixed;
+
+  left: 0;
+  margin-left: 20px;
+  top: 105px;
+  display:flex;
+  align-items: center;
+  cursor:pointer;
+  z-index: 7;
+  flex-direction: row;
+  border: 1px solid $alert_red;
+  background-color: $lightgrey_1;
+  border-radius: 4px;
+  padding: 5px 10px;
+  width: auto;
+  transition: .15s;
+  @media (max-width: 1090px) {
+    z-index: 10;
+    }
+}
+
+.bp-left-bar-trigger-btn:hover{
+  background-color: $lightgrey-2;
+}
+.bp-left-bar-trigger-btn.inactive{
+  display: none;
+}
+.bp-left-bar-trigger-btn h5 {
+  font-family: "Quicksand";
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-right: 10px;
+  display: block;
+}
+
+
+
+.b-friends-no-img{
+  height: 300px;
+  width: 300px;
+  background-color: $lightgrey-3;
+}
+
+
+.b-friends-list-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#b-friends-single-friend-img{
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.b-friends-hero{
+
+
+  height: 450px;;
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-color: $darkgrey_1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.b-friends-content-hero-infos-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  background-color: rgba(242, 242, 242, 0.75);
+  border-radius: 4px;
+  border: 1px solid $lightgrey-3;
+  max-width: 400px;
+  gap: 15px;
+}

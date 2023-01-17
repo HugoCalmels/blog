@@ -11,6 +11,7 @@ import TopBar from "./topbar/TopBar"
 import { RxGear } from "react-icons/rx"
 import Cookies from "js-cookie";
 import Loader from "./Loader"
+import {BsArrowDownCircle} from "react-icons/bs"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 
 const ImagesGalery = (props) => {
@@ -31,14 +32,17 @@ const ImagesGalery = (props) => {
   const topBarElem = useRef(null)
   const leftBarElem = useRef(null)
   const contentWrapperRef = useRef(null)
-
+  const btnStyle2 = {backgroundColor: "rgba(250,250,250,.75)", borderRadius: "50%", shapeRendering: "solidGeometricPrecision",color: "#424242", width: "35px", height: "35px" }
   let cookieIsAuth = false;
+  const scrollToTopElem = useRef(null)
   const cookie = Cookies.get("cie-lutin-isAuth");
+  const [unpaginatedImages, setUnpaginatedImages] = useState([])
   if (cookie !== undefined) {
     cookieIsAuth = JSON.parse(cookie);
   }
 
   const getCategories = (arg) => {
+   
     getCategoriesAPI(arg).then((data) => {
       setCategories(data);
       if (data.length > 0) {
@@ -76,6 +80,11 @@ const ImagesGalery = (props) => {
     setSelectedCategoryID(foundCategory[0].id)
   };
 
+  function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+
   const imagesFilter = (initialData) => {
     // select the category
     if (hideImages === false && initialData.length > 0) {
@@ -98,6 +107,7 @@ const ImagesGalery = (props) => {
       console.log("333333333333333333333333333")
       console.log("333333333333333333333333333")
       setFilteredImages(sliceDataForPagination(initializedImagesReader));
+      setUnpaginatedImages(initializedImagesReader)
     } else if (hideImages === true && initialData.length > 0) {
       // same plus hide image system
       console.log("THE OTHER THING")
@@ -113,6 +123,7 @@ const ImagesGalery = (props) => {
         initializedImagesReader
       );
       setFilteredImages(sliceDataForPagination(initializedImagesHiding));
+      setUnpaginatedImages(initializedImagesHiding)
     }
   };
 
@@ -265,14 +276,24 @@ const ImagesGalery = (props) => {
   }, [value]);
 
   useEffect(() => {
+    setIsLoading(true)
+    getCategories(props.arg);
+    getAllImages(props.arg).then(() => {
+      setIsLoading(false)
+    })
+  },[])
+
+  useEffect(() => {
     console.log("SELECTED CATEGORY")
     console.log(value)
 
-    getAllImages(props.arg);
-    console.log("??EZEZFZ")
+    getAllImages(props.arg).then(() => {
 
+    })
+    console.log("??EZEZFZ")
+    setCurrentPaginationIndex(1)
     if (leftBarTriggerBtnElem.current && topBarElem.current){
-      leftBarTriggerBtnElem.current.style.top = `calc(75px + ${topBarElem.current.offsetHeight}px + 30px)`
+     // leftBarTriggerBtnElem.current.style.top = `calc(75px + ${topBarElem.current.offsetHeight}px + 30px)`
     }
     //documentElement.scrollTo(75+30+topBarElem.current.offsetHeight)
     if (contentWrapperRef.current) {
@@ -287,8 +308,11 @@ const ImagesGalery = (props) => {
     console.log("ARG CHANGED WHEN DO YOU READ THAT")
     setIsScrollable(false)
     console.log(props.arg)
+
     getCategories(props.arg);
-    getAllImages(props.arg);
+    getAllImages(props.arg).then(() => {
+
+    })
     closeModals()
     setCurrentPaginationIndex(1)
   }, [props.arg]);
@@ -374,8 +398,13 @@ const loaderElem = useRef(null)
      
         <main className="b-main-wrapper">
        
-            <Loader loaderElem={loaderElem} />
-       
+          <Loader loaderElem={loaderElem} />
+          
+          <div className="scroll-to-top-btn-small-container-wrapper">
+            <div className="scroll-to-top-btn-small-container active" ref={scrollToTopElem} onClick={scrollToTop}>
+      <BsArrowDownCircle style={btnStyle2} />
+      </div>
+          </div>
           
           <TopBar
             categories={categories}
@@ -412,6 +441,8 @@ const loaderElem = useRef(null)
           <CreatePhoto arg={props.arg} categories={categories} selectedCategory={selectedCategory} setIsLoading={setIsLoading} selectedCategoryID={selectedCategoryID} modalCreatePhoto={modalCreatePhoto} />
 
           <Content
+            unpaginatedImages={unpaginatedImages}
+            scrollToTopElem={scrollToTopElem}
             contentWrapperRef={contentWrapperRef}
             setIsLoading={setIsLoading}
             topBarElem={topBarElem}

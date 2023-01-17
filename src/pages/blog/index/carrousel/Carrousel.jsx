@@ -220,7 +220,7 @@ const Carrousel = (props) => {
         :
         <></>}
       
-      <EditCarrousel carrouselArray={carrouselArray} editCarrouselRef={editCarrouselRef} closeEditModal={closeEditModal} />
+      <EditCarrousel setIsLoading={props.setIsLoading} carrouselArray={carrouselArray} editCarrouselRef={editCarrouselRef} closeEditModal={closeEditModal} />
 
       <div className="b-index-carrousel-images-container" ref={carrouselFrameElem}>
         {carrouselArray.homes && carrouselArray.homes.map((image, index) => (

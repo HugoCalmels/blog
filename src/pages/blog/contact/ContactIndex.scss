@@ -1,0 +1,282 @@
+@import "../../../variables";
+.b-contact-wrapper{
+  font-family:"Quicksand";
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 75px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.b-contact-content{
+  
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+margin-bottom: 100px;
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+
+  padding: 0 15px;
+
+}
+
+
+
+.b-contact-content form{
+  display: flex;
+  flex-direction: column;
+}
+
+.b-contact-content-left{
+  border-right: 2px solid $lightgrey-3;
+  padding: 15px;
+  flex: 2;
+  font-family: "Quicksand";
+}
+.b-contact-content-left form{
+  display: flex;
+
+  flex-direction: column;
+  gap: 15px;
+}
+.b-contact-content-right{
+
+  flex: 1;
+  padding: 15px;
+}
+.b-contact-content-container{
+  display: flex;
+  flex-direction: row;
+
+  border-radius: 4px;
+}
+
+.b-contact-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.b-contact-info span{
+  height: 15px;
+  width: 15px;
+}
+
+.b-contact-info p{
+  margin: 0;
+  margin-left: 5px;
+  color: $darkgrey_1;
+  font-size: 0.9375rem;
+}
+
+.b-contact-content-right h4{
+  color: #737373;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.b-contact-input-default{
+
+  display: flex;
+  flex-direction: row;
+
+}
+
+.b-contact-input-default label{
+  height: 40px;
+  width: 40px;
+  background-color: $lightgrey-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.b-contact-input-default label span{
+  font-family: "Arial";
+  font-size: 27px;
+  font-weight: 500;
+  color: $darkgrey_1;
+  margin-bottom: 2px;
+}
+
+.b-contact-input-default input{
+  font-family: "Quicksand";
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 1.125rem ;
+  font-weight: 500;
+  color: $font_grey_1;
+  background-color: white;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.b-contact-input-default textarea{
+  font-family: "Quicksand";
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  width: 100%;
+  min-height: 150px;
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: $font_grey_1;
+}
+
+.b-contact-input-default.send{
+  width: 105px;
+
+}
+
+.b-contact-input-default.send input{
+  font-family: "Quicksand";
+  display: flex;
+  border: none;
+  outline: none;
+  font-size: .9375rem;
+  padding: 10px 15px;
+  background-color: $lightgrey-2;
+
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  transition: .15s;
+  color: $darkgrey_1;
+}
+
+.b-contact-input-default.send input:hover{
+
+  transition: .15s;
+  background-color: $lightgrey-3;
+}
+
+#label-checkbox{
+  font-size: 0.9375rem;
+}
+
+.b-contact-input-checkbox{
+  display: flex;
+  flex-direction: row;
+
+}
+#b-contact-input-checkbox-item{
+  width: 18px;
+  height: 18px;
+  position: absolute;
+
+
+
+  left:-4px;
+}
+.b-contact-input-center{
+
+  position: relative;
+  min-width:30px;
+  height: 40px;
+
+}
+
+.b-contact-form-alerts-wrapper{
+
+}
+.b-contact-form-alert{
+  height: 100px;
+  width: 100%;
+  display: none;
+  margin-top: 15px;
+  border: 1px solid $lightgrey-3;
+  border-radius: 4px;
+}
+.b-contact-form-alert.danger{
+ background-color: $alert_red;
+}
+
+.b-contact-form-alert.success{
+  background-color: $edit_green;
+}
+
+.b-contact-form-alert.active{
+  display: flex;
+}
+
+.b-contact-input-default.error{
+  border: none;
+}
+
+.b-contact-input-checkbox.error{
+  border: none;
+}
+
+.b-contact-form-alert{
+  justify-content: center;
+  align-items: center;
+}
+
+.b-contact-form-alert p{
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: $darkgrey_1;
+}
+
+.b-contact-hero{
+
+
+  height: 450px;;
+  width: 100%;
+
+  background-size: cover;
+  background-position: center;
+  background-color: $darkgrey_1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Quicksand";
+}
+
+.b-contact-content-hero-infos-container{
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  background-color: rgba(242, 242, 242, 0.75);
+  border-radius: 4px;
+  border: 1px solid $lightgrey-3;
+  max-width: 400px;
+  gap: 15px;
+}
+
+#b-contact-content-title{
+  font-family: 'Quicksand';
+  width: 100%;
+  color: $darkgrey_1;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#b-contact-content-paragraph{
+  font-family: 'Quicksand';
+  width: 100%;
+  color: $darkgrey_1;
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+}
+
+.b-contact-form-alerts-wrapper{
+  width: 100%;
+  display: flex;
+  margin-top: 15px;
+}

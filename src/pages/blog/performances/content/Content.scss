@@ -1,0 +1,145 @@
+@import "../../../../variables";
+.bp-perf-content{
+
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 150px);
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+
+  padding: 0 15px;
+
+}
+
+.bp-link-preview-wrapper{
+  border-radius: 6px;
+
+  border: 1px solid $lightgrey-3;
+  display: flex;
+  flex-direction: row;
+  cursor:pointer;
+  transition: 0.3s;
+
+}
+.bp-link-preview-wrapper:hover{
+  transform: scale(1.025);
+  transition: 0.3s;
+}
+.bp-link-preview-wrapper img{
+  width: 300px;
+  height: auto;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+}
+.bp-link-preview-righ-side{
+  display:flex;
+  flex-direction: column;
+  padding: 15px ;
+  gap: 15px;
+}
+.bp-link-preview-righ-side h5{
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.bp-link-preview-righ-side p{
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.bp-link-preview-righ-side a{
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.bp-perf-content-wrapper{
+  //margin-top: 145px;
+
+  display: flex;
+  justify-content: center;
+}
+
+#bp-perf-content-title{
+  font-family: 'Quicksand';
+  width: 100%;
+  color: #737373;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#bp-video-player{
+  aspect-ratio: 16/9;
+}
+
+// BEAUX ARTS
+// 1.875rem;
+//     font-size: 1.125rem;
+// font-size: 1.25rem; ( navbar )
+
+.bp-perf-content-informations{
+  color: $darkgrey_1;
+}
+.bp-perf-content-informations h3{
+  font-size:1.875rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 15px;
+}
+.bp-perf-content-informations p{
+  font-size:1.125rem;
+  font-weight: 500;
+  margin: 0;
+  color: $font_grey_1;
+}
+
+.bp-perf-content-informations h5{
+  font-size:0.9375rem;
+  font-weight: 500;
+  margin: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.bp-perf-content-informations span{
+  font-size:0.9375rem;
+  font-weight: 500;
+}
+
+#bp-perf-content-feat-link{
+  font-weight: 700;
+  color: $darkgrey_1;
+  text-decoration: none;
+}
+
+#bp-perf-content-feat-link:hover{
+  text-decoration: underline;
+  cursor:pointer;
+  
+}
+
+.bp-custom-hr-perf{
+  width: 100%;
+  height: 1px;
+  background-color: $lightgrey-3;
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+#bp-perf-more-websites-title{
+  margin:0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.bp-content-no-photo{
+  width: 300px;
+  height: 300px;
+  background-color: $lightgrey-3;
+}

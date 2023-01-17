@@ -12,7 +12,7 @@ const Grid = (props) => {
   return (
     <div className="b-index-content-grid">
       {gridArray.map((type, index) => (
-        <Card data={type} index={index} />
+        <Card data={type} index={index}  setIsLoading={props.setIsLoading} />
       ))}
  
     </div>

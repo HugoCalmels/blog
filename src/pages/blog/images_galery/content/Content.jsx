@@ -9,6 +9,13 @@ import ImagesGrid from "./images_grid/ImagesGrid"
 
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const Content = (props) => {
+
+  let cookieToken = "";
+  const cookie2 = Cookies.get("cie-lutin-auth-token");
+
+  if (cookie2 !== undefined) {
+    cookieToken = cookie2;
+  }
   const [defaultCustomIndex, setDefaultCustomIndex] = useState("");
   const [defaultArrayAndIndex, setDefaultArrayAndIndex] = useState({
     category: [],
@@ -38,13 +45,17 @@ const Content = (props) => {
     console.log(customIndex)
     console.log("--------------------------------------")
     imagesReaderElement.current.style.display = "flex";
+    props.scrollToTopElem.current.classList.remove("active")
     setDefaultArrayAndIndex({
       category: category,
       imageIndex: imageIndex,
       arrayIndex: arrayIndex,
     });
     setDefaultCustomIndex(customIndex);
-    props.leftBarTriggerBtnElem.current.classList.add("inactive")
+    if (props.leftBarTriggerBtnElem.current) {
+      props.leftBarTriggerBtnElem.current.classList.add("inactive")
+    }
+  
   };
 
   const tryToDestroyImage = (image, category) => {
@@ -55,26 +66,26 @@ const Content = (props) => {
   };
 
   const submitImageDestroyAPI = async (image, category) => {
+    const config = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
+    };
     if (props.arg === "dessins") {
       await fetch(
         `${BASE_URL}/api/v1/dessin_categories/${category.id}/dessins/${image.id}`,
-        {
-          method: "DELETE",
-        }
+        config
       );
     } else if (props.arg === "paysages") {
       await fetch(
         `${BASE_URL}/api/v1/paysage_categories/${category.id}/paysages/${image.id}`,
-        {
-          method: "DELETE",
-        }
+        config
       );
     } else if (props.arg === "carnets") {
       await fetch(
         `${BASE_URL}/api/v1/carnet_categories/${category.id}/carnets/${image.id}`,
-        {
-          method: "DELETE",
-        }
+        config
       );
     }
 
@@ -139,6 +150,7 @@ const Content = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`,
       },
       body: JSON.stringify(body),
     };
@@ -241,10 +253,11 @@ const Content = (props) => {
   return (
     <section className="bd-category-wrapper" ref={props.contentWrapperRef}>
       <ImagesReader
+        scrollToTopElem={props.scrollToTopElem}
         totalImagesCount={props.totalImagesCount}
         defaultCustomIndex={defaultCustomIndex}
         defaultArrayAndIndex={defaultArrayAndIndex}
-        images={props.images}
+        images={props.unpaginatedImages}
         imagesReaderElement={imagesReaderElement}
         arg={props.arg}
         leftBarTriggerBtnElem={props.leftBarTriggerBtnElem}
@@ -257,7 +270,7 @@ const Content = (props) => {
         setIsLoading={props.setIsLoading}
       />
       <div className="bd-images-container" ref={imagesGaleryContainerElem}>
-      <h2 id="b-images-galery-title">{capitalizeAndStyleString (props.arg)}</h2>
+        <h2 id="b-images-galery-title">{capitalizeAndStyleString(props.arg)} {props.selectedCategory ? <>: {props.selectedCategory}</>:<></>}</h2>
         {props.images &&
           props.images.map((imageCategory, cateIndex) => (
             <>

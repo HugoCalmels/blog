@@ -1,16 +1,17 @@
 
 import "./Index.scss"
-import {useState} from "react"
+import {useState, useRef} from "react"
 import { resizeImages } from "../../../utils/resizeImages"
 import Carrousel from "./carrousel/Carrousel"
 import { useEffect } from "react";
 import Grid from "./grid/Grid"
 import Footer from "../../../components/footer/Footer"
+import Loader from "./Loader"
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const IndexBlog = (props) => {
-
+  const [isLoading, setIsLoading ] = useState(false)
   const [fetchedData, setFetchedData] = useState([])
-
+  const loaderElem = useRef(null)
   const tryToSubmitImage = (e) => {
     e.preventDefault();
 
@@ -78,16 +79,50 @@ const IndexBlog = (props) => {
   }
 
   useEffect(() => {
-    getAllIndexImagesAPI()
-  },[])
+    setIsLoading(true)
+    getAllIndexImagesAPI().then(() => {
+      setIsLoading(false)
+    })
+  }, [])
+  
+  useEffect(() => {
+    console.log("LOADER TRIGGERED")
+    console.log("LOADER TRIGGERED")
+    console.log("LOADER TRIGGERED")
+    if(isLoading ) {
+      loaderElem.current.classList.add('active')
+    } else {
+      loaderElem.current.classList.remove('active')
+    }
+
+  },[isLoading])
   return (
     <>
       <section className="b-index-content">
 
-        <Carrousel fetchedData={fetchedData} page={props.page} />
+        <Loader loaderElem={loaderElem} />
+        <Carrousel fetchedData={fetchedData} page={props.page} setIsLoading={setIsLoading} />
 
-        <h2 className="b-index-title">BLOG DE GAËLLE</h2>
-        <Grid fetchedData={fetchedData} />
+        
+        <div className="b-custom-hr-animated-top"></div>
+        <h2 class="b-index-title-animated">
+  <span>B</span>
+  <span>l</span>
+  <span>o</span>
+  <span>g</span>
+  <span>&nbsp;</span>
+  <span>d</span>
+          <span>e</span>
+          <span>&nbsp;</span>
+          <span>G</span>
+          <span>a</span>
+          <span>ë</span>
+          <span>l</span>
+          <span>l</span>
+          <span>e</span>
+</h2>
+<div className="b-custom-hr-animated-bot"></div>
+        <Grid fetchedData={fetchedData}  setIsLoading={setIsLoading} />
      
       </section>
       

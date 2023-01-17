@@ -47,9 +47,10 @@ const TopBar = (props) => {
 
         <div className="bd-top-bar-categories-mobile">
           <form >
-          <select onChange={(e) => handleSelect(e)}>
+          <select id="b-select-mobile-dessins"onChange={(e) => handleSelect(e)}>
             {props.categories.map((cate) => (
               <option
+                className="b-option-mobile-dessins"
                 key={cate.id} >{cate.title}</option>
             ))}
             </select>

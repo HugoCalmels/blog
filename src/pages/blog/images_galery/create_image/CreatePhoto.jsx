@@ -3,12 +3,18 @@ import "./CreatePhoto.scss";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
 import {useEffect} from "react"
-import {resizeImages} from "../../../../utils/resizeImages"
+import { resizeImages } from "../../../../utils/resizeImages"
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreatePhoto = (props) => {
   const [imagesFilesLength, setImagesFilesLength] = useState(0)
   const [category, setCategory] = useState("")
+  let cookieToken = "";
+  const cookie = Cookies.get("cie-lutin-auth-token");
 
+  if (cookie !== undefined) {
+    cookieToken = cookie;
+  }
   useEffect(() => {
     console.log(props.selectedCategory)
     setCategory(props.selectedCategory);
@@ -66,22 +72,19 @@ const CreatePhoto = (props) => {
 
 
   const createTempImage = async (data) => {
-    
+    const config = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
+      body: data,
+    };
     if (props.arg === "dessins") {
-      await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, {
-        method: "POST",
-        body: data,
-      });
+      await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, config);
     } else if (props.arg === "paysages") {
-      await fetch(`${BASE_URL}/api/v1/paysage_temp_images`, {
-        method: "POST",
-        body: data,
-      });
+      await fetch(`${BASE_URL}/api/v1/paysage_temp_images`, config);
     } else if (props.arg === "carnets") {
-      await fetch(`${BASE_URL}/api/v1/carnet_temp_images`, {
-        method: "POST",
-        body: data,
-      });
+      await fetch(`${BASE_URL}/api/v1/carnet_temp_images`, config);
     }
     // get latest image
     let latestImageResponse
@@ -140,6 +143,7 @@ const CreatePhoto = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`
       },
       body: JSON.stringify(body),
     };

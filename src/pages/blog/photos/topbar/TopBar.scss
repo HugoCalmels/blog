@@ -1,7 +1,7 @@
 @import "../../../../variables";
 .bd-top-bar{
-  position: fixed;
-  top: 75px;
+  position: relative;
+
   width: 100%;
   background-color: $lightgrey_1;
   font-family: "Quicksand";
@@ -9,7 +9,7 @@
   border-bottom: 1px solid $lightgrey_3;
   min-height: 50px;
   height: auto;
-  z-index:7;
+  z-index:12;
   display: flex;
   justify-content: center;
   overflow:hidden;
@@ -27,6 +27,10 @@
 
 
   margin: 0 15px;
+  @media (max-width:1090px) {
+    margin: 0 0px;
+  }
+
 
 }
 .bd-top-bar-categories{
@@ -61,6 +65,8 @@
 
 .bd-top-bar-categories-mobile{
   display: none;
+  position: relative;
+  z-index: 25;
   @media (max-width:550px){
     display:block
   }
@@ -96,4 +102,77 @@ border:none;
 .bd-top-bar-category.selected{
   background-color: $lightgrey-2;
   border-radius: 4px;
+}
+
+
+
+.bd-top-bar-categories-mobile{
+  z-index: 15;
+
+  background-color: $darkgrey_1;
+
+
+  height: 50px;
+
+  overflow: hidden;
+  @media (max-width:550px){
+    display:block
+  }
+}
+
+.bd-top-bar-categories-mobile select{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  background-color: $darkgrey_1;
+  padding: 5px 10px;
+border:none;
+  outline: none;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top:0;
+  text-indent: 5px;
+  border-radius: 0px;
+}
+.bd-top-bar-categories-mobile option{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  background-color: $darkgrey_1;
+
+  border-radius: 0px;
+}
+
+
+
+
+.bd-top-bar-category.selected{
+  background-color: $lightgrey-1;
+
+  border-radius: 4px;
+}
+
+.bd-top-bar-category.selected h5{
+  color: $darkgrey_1;
+}
+
+#b-select-mobile-photos{
+
+  font-family: "Quicksand";
+  color: $lightgrey_2;
+  background-color: $darkgrey_1;
+
+  height: 50px;
+
+  overflow: hidden;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#b-select-mobile-photos option{
+  background-color: $lightgrey_2;
+  color: $darkgrey_1;
+  padding-left: 15px;
+  cursor:pointer;
 }

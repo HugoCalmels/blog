@@ -3,26 +3,40 @@ import "./EditCarrousel.scss";
 import { resizeImages } from "../../../../utils/resizeImages";
 import { useState } from "react";
 import crossIcon from "../../../../assets/icons/xCloseIcon.png"
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const EditCarrousel = (props) => {
   const [optionSelected, setOptionSelected] = useState(0);
+  let cookieToken = "";
+  const cookie = Cookies.get("cie-lutin-auth-token");
 
+  if (cookie !== undefined) {
+    cookieToken = cookie;
+  }
   const tryToEditImage = (e, index) => {
+    
     e.preventDefault();
+    props.setIsLoading(true)
     resizeImages(e.target[1].files[0]).then((imageFile) => {
       const data = new FormData();
       data.append("home_temp_image[image]", imageFile);
       submitImageToAPI(data).then((res) => {
-        editImageAPI(res, index);
+        editImageAPI(res, index).then(() => {
+          props.setIsLoading(false)
+        })
       });
     });
   };
 
   const submitImageToAPI = async (newImage) => {
-    const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, {
+    const config = {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
       body: newImage,
-    });
+    };
+    const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, config);
     console.log("/////");
     console.log(test1);
     const res = await fetch(`${BASE_URL}/api/v1/home-latest`, {
@@ -44,6 +58,7 @@ const EditCarrousel = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`
       },
       body: JSON.stringify(body),
     };

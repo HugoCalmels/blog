@@ -1,0 +1,89 @@
+@import "../../variables";
+
+.auth-login{
+
+
+  max-width: calc(1180px / 2);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form{
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+.auth-form-input{
+  display: flex;
+  flex-direction: column;
+}
+.auth-form-input label{
+  font-size: 1.125rem;
+  color: $darkgrey_1;
+  font-weight: 500;
+}
+
+.auth-form-input input{
+  font-family: "Quicksand";
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #737373;
+  background-color: white;
+  width: 100%;
+  padding: 0 10px;
+
+}
+.auth-form-input.send{
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.auth-form-input.send input {
+    flex: 1;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 1.125rem;
+    padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  color: #424242;
+  background-color: #bbbbbb;
+
+  margin-top: 15px;
+}
+
+.auth-form-input.send button {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 1.125rem;
+  padding: 0 15px;
+display: flex;
+justify-content: center;
+cursor: pointer;
+font-weight: 500;
+border-radius: 4px;
+color: #424242;
+background-color: #bbbbbb;
+
+margin-top: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
+}

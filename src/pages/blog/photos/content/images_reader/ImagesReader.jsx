@@ -13,7 +13,11 @@ const ImagesReader = (props) => {
 
   const closeMenu = () => {
     props.imagesReaderElement.current.style.display = "none";
-    props.leftBarTriggerBtnElem.current.classList.remove("inactive")
+    if (props.leftBarTriggerBtnElem.current) {
+      props.leftBarTriggerBtnElem.current.classList.remove("inactive")
+    }
+
+    props.scrollToTopElem.current.classList.add("active")
   };
 
   useEffect(() => {

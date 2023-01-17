@@ -1,15 +1,15 @@
 @import "../../../../variables";
 .bd-top-bar{
-  position: fixed;
+
   top: 75px;
   width: 100%;
-  background-color: $lightgrey_1;
+  background-color: $darkgrey_1 !important;
   font-family: "Quicksand";
 
   border-bottom: 1px solid $lightgrey_3;
   min-height: 50px;
   height: auto;
-  z-index:7;
+  z-index:12;
   display: flex;
   justify-content: center;
   overflow:hidden;
@@ -24,9 +24,11 @@
 .bd-top-bar-container{
   max-width:1180px;
   width: 100%;
-
-
   margin: 0 15px;
+  @media (max-width:1090px) {
+    margin: 0 0px;
+  }
+
 
 }
 .bd-top-bar-categories{
@@ -35,7 +37,7 @@
   justify-content:center;
   flex-wrap: wrap;
   gap: 15px;
-  padding: 10px 0;
+
   @media (max-width:550px){
     display: none;
   }
@@ -53,14 +55,23 @@
   border-radius: 4px;
   cursor:pointer;
   padding: 5px 10px;
+  color: $lightgrey-2;
 }
 .bd-top-bar-category h5:hover{
-  background-color: $lightgrey_2;
+  background-color: $lightgrey_1;
+  color: $darkgrey_1;
 
 }
 
 .bd-top-bar-categories-mobile{
-  display: none;
+  z-index: 15;
+
+  background-color: $darkgrey_1;
+
+
+  height: 50px;
+
+  overflow: hidden;
   @media (max-width:550px){
     display:block
   }
@@ -69,7 +80,7 @@
 .bd-top-bar-categories-mobile select{
   font-size: 0.9375rem;
   font-weight: 700;
-  background-color: $lightgrey-1;
+  background-color: $darkgrey_1;
   padding: 5px 10px;
 border:none;
   outline: none;
@@ -85,7 +96,7 @@ border:none;
 .bd-top-bar-categories-mobile option{
   font-size: 0.9375rem;
   font-weight: 700;
-  background-color: $lightgrey-1;
+  background-color: $darkgrey_1;
 
   border-radius: 0px;
 }
@@ -94,6 +105,31 @@ border:none;
 
 
 .bd-top-bar-category.selected{
-  background-color: $lightgrey-2;
+  background-color: $lightgrey-1;
+
   border-radius: 4px;
+}
+
+.bd-top-bar-category.selected h5{
+  color: $darkgrey_1;
+}
+
+#b-select-mobile-dessins{
+
+  font-family: "Quicksand";
+  color: $lightgrey_2;
+  background-color: $darkgrey_1;
+
+  height: 50px;
+
+  overflow: hidden;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#b-select-mobile-dessins option{
+  background-color: $lightgrey_2;
+  color: $darkgrey_1;
+  padding-left: 15px;
+  cursor:pointer;
 }

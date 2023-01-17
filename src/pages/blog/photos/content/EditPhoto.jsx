@@ -2,9 +2,16 @@ import "./EditPhoto.scss";
 import { useState, useEffect, useContext, useRef } from "react";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 
 const EditPhoto = (props) => {
+  let cookieToken = "";
+  const cookie = Cookies.get("cie-lutin-auth-token");
+
+  if (cookie !== undefined) {
+    cookieToken = cookie;
+  }
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState(null);
   const { value, setValue } = useContext(ImagesContext);
@@ -66,6 +73,7 @@ const EditPhoto = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`,
       },
       body: JSON.stringify(data),
     };
@@ -241,10 +249,14 @@ const EditPhoto = (props) => {
   };
 
   const createTempImage = async (data) => {
-    await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, {
+    const config = {
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
       body: data,
-    });
+    };
+    await fetch(`${BASE_URL}/api/v1/dessin_temp_images`, config);
     // get latest image
     const latestImageResponse = await fetch(`${BASE_URL}/api/v1/dessin-latest`);
     const latestImage = await latestImageResponse.json();

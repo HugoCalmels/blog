@@ -1,0 +1,40 @@
+@import "../../../variables";
+
+.admin-topbar-container{
+  position: absolute;
+  top: 75px;
+  background-color: $darkgrey_1;
+  height: 50px;
+  left:0;
+  right:0;
+  display: flex;
+  z-index: 9;
+  justify-content: center;
+  border-bottom: 1px solid $lightgrey-3;
+} 
+
+.admin-topbar-container ul{
+  margin: 0;
+  padding:0;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+}
+.admin-topbar-container li{
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $lightgrey-2;
+  border-radius: 4px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  cursor:pointer;
+}
+.admin-topbar-container li:hover{
+  color: $darkgrey_1;
+  background-color: $lightgrey_2;
+}

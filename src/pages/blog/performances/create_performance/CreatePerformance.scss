@@ -1,0 +1,112 @@
+@import "../../../../variables";
+
+.bp-create-performance-modal{
+  position: fixed;
+
+  display:none;
+  z-index: 14;
+  max-width: 600px;
+  width: auto;
+  height: 585px;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin:auto;
+padding: 15px;
+background-color: $lightgrey_1;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+border-radius: 8px;
+  flex-direction: column;
+}
+.bp-create-performance-modal form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+}
+
+.bp-create-performance-modal.active{
+  display: flex;
+}
+
+.bp-close-modal-container{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  display:flex;
+}
+
+.bp-close-modal-container img{
+  width: 20px;
+  height: 20px;
+  cursor:pointer;
+}
+.bp-create-performance-modal-title{
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+
+}
+
+.bp-close-modal-container label{
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.bp-input-text{
+  font-size: 0.9375rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  outline: none;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  color: #737373;
+}
+
+.bp-create-perf-input{
+  display: flex;
+  flex-direction: column;
+}
+
+.bp-custom-hr{
+  height: 2px;
+  width: 100%;
+  background-color: purple;
+}
+.bp-create-performance-modal-secondary-title{
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+
+}
+
+.bp-input-text.textarea{
+  height: 200px;
+}
+.bp-create-perf-input.send{
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.bp-create-perf-input.send input{
+  cursor:default;
+  padding: 5px 10px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  display:flex;
+  justify-content: center;
+  color: $lightgrey_3;
+  width: 100px;
+}
+.bp-create-perf-input.send.active input{
+  cursor:pointer;
+  color: $darkgrey_1;
+}

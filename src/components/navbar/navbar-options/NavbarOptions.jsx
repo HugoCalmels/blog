@@ -27,10 +27,15 @@ const NavbarOptions = (props) => {
   const linebarElemCie = useRef(null)
   const dessinsIconContainerElem = useRef(null)
   const linebarElemPhotos = useRef(null)
-
+  const linebarSelectedOptionPhotosRef = useRef(null)
+  const linebarSelectedOptionFriendsRef= useRef(null)
+  const linebarSelectedOptionPerformancesRef= useRef(null)
   const linebarSelectedOptionAdminRef = useRef(null)
   const linebarSelectedOptionDessinsRef = useRef(null)
   const optionEffectPhotos = useRef(null)
+  const optionEffectNewsletter = useRef(null)
+  const linebarElemNewsletter = useRef(null)
+  const linebarSelectedOptionContactRef = useRef(null)
   const btnStyle = { color: "#424242" , width: "12px", height: "12px"}
   const selectMenu = (e, tag, willOpen) => {
     e.preventDefault();
@@ -87,8 +92,8 @@ const NavbarOptions = (props) => {
 
   const dropdownAnimation = (tag, willOpen) => {
     if (willOpen) {
-      tag.current.style.height = "137px"
-      tag.current.style.width = "186px"
+      tag.current.style.height = "140px"
+      tag.current.style.width = "205px"
       dessinsIconContainerElem.current.classList.add("active")
     } else {
       tag.current.style.height = "0"
@@ -134,24 +139,55 @@ const NavbarOptions = (props) => {
     navigate(`/${arg}`)
   }
 
+
+
   if (linebarSelectedOptionDessinsRef.current) {
+      // remove all styles 1st 
+  linebarSelectedOptionDessinsRef.current.classList.remove("active")
+
+
+    // linebarSelectedOptionDessinsRef.current.classList.remove("active")
     if (props.pathname === "/gaelle-boucherit/dessins-et-croquis" || props.pathname === "/gaelle-boucherit/paysages" || props.pathname === "/gaelle-boucherit/carnets-de-voyages") {
       linebarSelectedOptionDessinsRef.current.classList.add("active")
-    } else {
-      linebarSelectedOptionDessinsRef.current.classList.remove("active")
-    }
+    } 
  
   }
 
   if (linebarSelectedOptionAdminRef.current) {
+    linebarSelectedOptionAdminRef.current.classList.remove("active")
     if (props.pathname === "/admin") {
       linebarSelectedOptionAdminRef.current.classList.add("active")
-    } else {
-      linebarSelectedOptionAdminRef.current.classList.remove("active")
-    }
+    } 
   }
 
- 
+  if (linebarSelectedOptionPhotosRef.current) {
+    linebarSelectedOptionPhotosRef.current.classList.remove("active")
+    if (props.pathname === "/gaelle-boucherit/photos") {
+      linebarSelectedOptionPhotosRef.current.classList.add("active")
+    } 
+  }
+
+  if (linebarSelectedOptionPerformancesRef.current) {
+    linebarSelectedOptionPerformancesRef.current.classList.remove("active")
+    if (props.pathname === "/gaelle-boucherit/performances") {
+      linebarSelectedOptionPerformancesRef.current.classList.add("active")
+    } 
+  }
+
+
+  if (linebarSelectedOptionFriendsRef.current) {
+    linebarSelectedOptionFriendsRef.current.classList.remove("active")
+    if (props.pathname === "/gaelle-boucherit/coups-de-coeur") {
+      linebarSelectedOptionFriendsRef.current.classList.add("active")
+    } 
+  }
+
+  if (linebarSelectedOptionContactRef.current) {
+    linebarSelectedOptionContactRef.current.classList.remove("active")
+    if (props.pathname === "/gaelle-boucherit/contact") {
+      linebarSelectedOptionContactRef.current.classList.add("active")
+    } 
+  }
 
   return (
     <ul className="b-nabvar-options-list">
@@ -198,15 +234,15 @@ const NavbarOptions = (props) => {
         <div className="b-navbar-option__linebar_effect dessins" ref={linebarElemDessins}>
         </div>
         </div>
-        <div className="b-navbar-option__linebar_effect-container">
-        <div className="b-navbar-option__linebar_selected_option" ref={linebarSelectedOptionDessinsRef}>
+        <div className="b-navbar-option__linebar_effect-container selected-dessins">
+        <div className="b-navbar-option__linebar_selected_option dessins" ref={linebarSelectedOptionDessinsRef}>
               </div>
               </div>
         <div className="b-navbar-option-dessins__dropdown" ref={dropdownElemDessins} >
           <div className="dessins__dropdown-menu" onMouseEnter={(e)=>selectDropdownMenu(e)}>
-          <a  ref={dropdownSubmenuDessins} onClick={()=>navigateTo("gaelle-boucherit/dessins-et-croquis")}>Dessins et croquis</a>
-          <a ref={dropdownSubmenuPaysages} onClick={()=>navigateTo("gaelle-boucherit/paysages")}>Paysages</a>
-            <a ref={dropdownSubmenuCarnets} onClick={()=>navigateTo("gaelle-boucherit/carnets-de-voyages")} >Carnets de voyages</a>
+          <a  ref={dropdownSubmenuDessins} onClick={()=>navigateTo("gaelle-boucherit/dessins-et-croquis")}>DESSINS ET CROQUIS</a>
+          <a ref={dropdownSubmenuPaysages} onClick={()=>navigateTo("gaelle-boucherit/paysages")}>PAYSAGES</a>
+            <a ref={dropdownSubmenuCarnets} onClick={()=>navigateTo("gaelle-boucherit/carnets-de-voyages")} >CARNETS DE VOYAGES</a>
           </div>
         </div>
       </li>
@@ -224,6 +260,10 @@ const NavbarOptions = (props) => {
         <div className="b-navbar-option__linebar_effect" ref={linebarElemPhotos}>
         </div>
         </div>
+        <div className="b-navbar-option__linebar_effect-container photos">
+        <div className="b-navbar-option__linebar_selected_option photos" ref={linebarSelectedOptionPhotosRef}>
+              </div>
+              </div>
       </li>
       <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "performances", true)} onMouseLeave={(e)=>selectMenu(e, "performances", false)} onClick={()=>navigateTo("gaelle-boucherit/performances")}>
         <div className="b-navbar-option__btn">
@@ -239,8 +279,12 @@ const NavbarOptions = (props) => {
         <div className="b-navbar-option__linebar_effect" ref={linebarElemPerformances}>
         </div>
         </div>
+        <div className="b-navbar-option__linebar_effect-container perfs">
+        <div className="b-navbar-option__linebar_selected_option perfs" ref={linebarSelectedOptionPerformancesRef}>
+              </div>
+              </div>
       </li>
-      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "partenaires", true)} onMouseLeave={(e)=>selectMenu(e, "partenaires", false)}  >
+      <li className="b-navbar-option-btn-container" onMouseEnter={(e)=>selectMenu(e, "partenaires", true)} onMouseLeave={(e)=>selectMenu(e, "partenaires", false)} onClick={()=>navigateTo("gaelle-boucherit/coups-de-coeur")}  >
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">COUPS DE COEUR</span>
           <div className="b-navbar-option__effect" ref={optionEffectPartenaires}>
@@ -254,9 +298,13 @@ const NavbarOptions = (props) => {
         <div className="b-navbar-option__linebar_effect" ref={linebarElemPartenaires}>
         </div>
         </div>
+        <div className="b-navbar-option__linebar_effect-container friends">
+        <div className="b-navbar-option__linebar_selected_option friends" ref={linebarSelectedOptionFriendsRef}>
+              </div>
+              </div>
       </li>
       
-      <li className="b-navbar-option-btn-container contact" onMouseEnter={(e)=>selectMenu(e, "contact", true)} onMouseLeave={(e)=>selectMenu(e, "contact", false)}>
+      <li className="b-navbar-option-btn-container contact" onMouseEnter={(e)=>selectMenu(e, "contact", true)} onMouseLeave={(e)=>selectMenu(e, "contact", false)} onClick={()=>navigateTo("gaelle-boucherit/contact")}>
         <div className="b-navbar-option__btn">
         <span className="b-navbar-option__btn__first-span">CONTACT</span>
           <div className="b-navbar-option__effect" ref={optionEffectContact}>
@@ -270,6 +318,13 @@ const NavbarOptions = (props) => {
         <div className="b-navbar-option__linebar_effect" ref={linebarElemContact}>
         </div>
         </div>
+        <div className="b-navbar-option__linebar_effect-container friends">
+        <div className="b-navbar-option__linebar_selected_option friends" ref={linebarSelectedOptionContactRef}>
+              </div>
+              </div>
+      </li>
+      <li className="b-navbar-option-btn-container newsletter" >
+       <button className="b-navbar-subscribe-newsletter-open-btn" onMouseEnter={(e)=>selectMenu(e, "newsletter", true)} onMouseLeave={(e)=>selectMenu(e, "newsletter", false)} onClick={()=>navigateTo("gaelle-boucherit/newsletter")}>NEWSLETTER</button>
       </li>
     </ul>
   );

@@ -4,8 +4,8 @@ import { RxHamburgerMenu } from "react-icons/rx"
 import { GrClose } from "react-icons/gr"
 const BurgerMenuNavbarOptionsBtn = (props) => {
   const [btnCurrentColor, setBtnCurrentColor] = useState("#424242")
-  const btnStyle = { color: { btnCurrentColor }, width: "26px", height: "26px" }
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const btnStyle = { color: "#424242", width: "35px", height: "30px" }
+
   
   const disableHoverStyle = () => {
     console.log("leave")
@@ -17,20 +17,20 @@ const BurgerMenuNavbarOptionsBtn = (props) => {
   }
 
   const toggleModal = () => {
-    if (modalIsOpen === false) {
+    if (props.modalIsOpen === false) {
       props.burgerModalElem.current.style.transform = "translateY(0px)"
     } else {
-      props.burgerModalElem.current.style.transform = "translateY(-275px)"
+      props.burgerModalElem.current.style.transform = "translateY(-100vh)"
     }
-    setModalIsOpen(!modalIsOpen)
+    props.setModalIsOpen(!props.modalIsOpen)
   }
 
   return (
     <div className="b-navbar-burger-menu-btn-container">
-      {modalIsOpen ?
-        <GrClose fill={btnCurrentColor} style={btnStyle} onMouseEnter={enableHoverStyle} onMouseLeave={disableHoverStyle} onClick={toggleModal}/>
+      {props.modalIsOpen ?
+        <GrClose fill={btnCurrentColor} style={btnStyle}  onClick={toggleModal}/>
         :
-        <RxHamburgerMenu fill={btnCurrentColor} style={btnStyle} onMouseEnter={enableHoverStyle} onMouseLeave={disableHoverStyle} onClick={toggleModal} />
+        <RxHamburgerMenu fill={btnCurrentColor} style={btnStyle}  onClick={toggleModal} />
       }
       
       

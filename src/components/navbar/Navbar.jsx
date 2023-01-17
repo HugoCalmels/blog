@@ -6,8 +6,9 @@ import Cookies from "js-cookie";
 import { useRef, useEffect } from "react"
 import BurgerMenuNavbarOptionsBtn from "./burger-menu/BurgerMenuNavbarOptionsBtn"
 import BurgerModal from "./burger-menu/BurgerModal.jsx"
+import {useState} from "react"
 const Navbar = () => {
-
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   const isAuthCookie = Cookies.get("cie-lutin-isAuth") ? JSON.parse(Cookies.get("cie-lutin-isAuth")) : null
 
   const burgerModalElem = useRef(null)
@@ -39,13 +40,13 @@ const Navbar = () => {
   
       
 
-          <NavbarHomeButton pathname={pathname} />
+          <NavbarHomeButton pathname={pathname} burgerModalElem={burgerModalElem}setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
 
           <NavbarOptions pathname={pathname} />
-          <BurgerMenuNavbarOptionsBtn burgerModalElem={burgerModalElem} />
+          <BurgerMenuNavbarOptionsBtn burgerModalElem={burgerModalElem} setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen}/>
           
         </div>
-        <BurgerModal burgerModalElem={burgerModalElem} />
+        <BurgerModal burgerModalElem={burgerModalElem} setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
       </nav>
       </header>
   )

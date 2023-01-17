@@ -46,7 +46,7 @@ const Card = (props) => {
         :
         <></>}
       
-      <EditCard modalEditRef={modalEditRef} closeEditModal={closeEditModal} data={props.data} />
+      <EditCard modalEditRef={modalEditRef} closeEditModal={closeEditModal} data={props.data}  setIsLoading={props.setIsLoading} />
        {props.index % 2 === 0 ?
         <>
            <div className="b-index-content-card-image">

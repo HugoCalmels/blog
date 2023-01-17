@@ -53,11 +53,11 @@ const LeftBar = (props) => {
     console.log("INITTTTT")
     console.log(props.topBarElem.current.offsetWidth)
     
-    props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
+    //props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
   }, [])
 
   useEffect(() => {
-    props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
+    //props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
   },[props.selectedCategory])
   
 

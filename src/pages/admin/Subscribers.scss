@@ -1,0 +1,61 @@
+@import "../../variables";
+
+.admin-subscribers{
+  font-family: "Quicksand";
+  width:100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
+}
+
+.auth-title {
+  font-size: 1.875rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: #424242;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.admin-subs-table{
+  border: 1px solid $darkgrey_1;
+  border-collapse: collapse;
+}
+.admin-subs-table tr{
+  border: 1px solid $darkgrey_1;
+  border-collapse: collapse;
+}
+.admin-subs-table td{
+  font-size: 1.125rem;
+  color: $darkgrey_1;
+  font-weight: 500;
+  border: 1px solid $darkgrey_1;
+  border-collapse: collapse;
+
+}
+
+
+.b-td-index{
+  text-align: center;
+}
+
+.b-td-destroy-guest{
+  text-align: center;
+}
+
+.b-td-joindate{
+  padding: 10px 15px;
+}
+.b-td-email{
+  padding: 10px 15px;
+}
+
+.b-td-destroy-guest span{
+
+
+  height: 18px;
+  width: 18px;
+}

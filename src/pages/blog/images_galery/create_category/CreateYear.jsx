@@ -1,10 +1,16 @@
 import "./CreateYear.scss";
 import {useRef } from "react";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react"
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreateYear = (props) => {
+  let cookieToken = "";
+  const cookie = Cookies.get("cie-lutin-auth-token");
 
+  if (cookie !== undefined) {
+    cookieToken = cookie;
+  }
   const [category, setCategory] = useState("")
 
   const createYearBtn = useRef(null);
@@ -43,6 +49,7 @@ const CreateYear = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`
       },
       body: JSON.stringify(body),
     };
@@ -72,18 +79,19 @@ const CreateYear = (props) => {
   };
 
   const destroyCategoryAPI = async (id) => {
+    const config = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${cookieToken}`,
+      },
+
+    };
     if (props.arg === "dessins") {
-      await fetch(`${BASE_URL}/api/v1/dessin_categories/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(`${BASE_URL}/api/v1/dessin_categories/${id}`, config);
     } else if (props.arg === "paysages") {
-      await fetch(`${BASE_URL}/api/v1/paysage_categories/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(`${BASE_URL}/api/v1/paysage_categories/${id}`, config);
     } else if (props.arg === "carnets") {
-      await fetch(`${BASE_URL}/api/v1/carnet_categories/${id}`, {
-        method: "DELETE",
-      });
+      await fetch(`${BASE_URL}/api/v1/carnet_categories/${id}`, config);
     }
     
     window.location.reload(false);

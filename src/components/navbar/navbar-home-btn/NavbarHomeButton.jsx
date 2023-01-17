@@ -59,7 +59,13 @@ const NavbarHomeButton = (props) => {
   }
 
   const navigateTo = (arg) => {
+
     navigate(`/${arg}`)
+    if (modalIsOpen) {
+      props.burgerModalElem.current.style.transform = "translateY(-100vh)"
+      props.setModalIsOpen(false)
+    }
+
   }
 
 
@@ -83,12 +89,12 @@ const NavbarHomeButton = (props) => {
           </div>
   
         </div>
-        <div className="b-navbar-option__linebar_effect-container">
-        <div className="b-navbar-option__linebar_effect" ref={linebarElemIndex}>
+        <div className="b-navbar-option__linebar_effect-container home">
+        <div className="b-navbar-option__linebar_effect home" ref={linebarElemIndex}>
             </div>
  
           </div>
-          <div className="b-navbar-option__linebar_effect-container">
+          <div className="b-navbar-option__linebar_effect-container home">
         <div className="b-navbar-option__linebar_selected_option" ref={linebarSelectedOptionRef}>
               </div>
               </div>

@@ -4,9 +4,9 @@ import Icons from "./icons/Icons"
 import Policy from "./policy/Policy"
 import { useRef } from "react"
 import { useNavigate, Link } from "react-router-dom";
-const Footer = () => {
+const Footer = (props) => {
+  const navigate = useNavigate()
 
-  const policyModalRef = useRef(null)
   /*
      <div className="b-footer-mentions">
             MENTIONS L&#xC9;GALES
@@ -15,20 +15,22 @@ const Footer = () => {
         </div>
     
   */
-  const openPolicyModal = () => {
-    policyModalRef.current.classList.add("active")
+
+  
+  const navigateTo = (dest) => {
+    navigate(`/gaelle-boucherit`)
   }
   
   const closePolicyModal = () => {
     console.log('hi')
-    policyModalRef.current.classList.remove("active")
+    props.policyModalRef.current.classList.remove("active")
   }
   
   return (
     <footer className="b-footer-wrapper">
       <div className="b-footer-container">
 
-          <div className="b-footer-mentions" onClick={openPolicyModal}>
+          <div className="b-footer-mentions" onClick={props.openPolicyModal}>
             MENTIONS L&#xC9;GALES
           </div>
      
@@ -39,7 +41,7 @@ const Footer = () => {
      
  
       </div>
-      <Policy  closePolicyModal={closePolicyModal} policyModalRef={policyModalRef} />
+      <Policy  closePolicyModal={closePolicyModal} policyModalRef={props.policyModalRef} />
     </footer>
   );
 };

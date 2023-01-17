@@ -8,7 +8,7 @@
 
   height: 100%;
   color: $darkgrey_1;
-  @media  (max-width:900px){
+  @media  (max-width:1090px){
     display: none;
   }
 }
@@ -19,13 +19,14 @@
 .b-navbar-option span{
   font-size: 0.9375rem;
   font-weight:700;
-  //border: 1px solid green;
+  //border: 1px solid green;z
   padding: 0px 32px;
   height: 100%;
   display: flex;
   align-items: center;
   border-radius: 4px;
-  border: 2px solid green;
+  border: 2px solid $default_blue;
+  color: $darkgrey_1;
 }
 
 .b-navbar-option span:hover{
@@ -71,6 +72,7 @@
 }
 .b-navbar-option__effect span:nth-child(1){
   font-weight:600;
+  color:$darkgrey_1;
 
 }
 .b-navbar-option__effect span:nth-child(2){
@@ -88,6 +90,8 @@
   //transform: translateY(calc(-0.975rem - 5px));
   transition: .3s;
 }
+
+
 
 .b-navbar-option-btn-container{
   
@@ -130,7 +134,7 @@
 
 
   height: 3px;
-  background-color: green;
+  background-color: $default_blue;
   width:100%;
   display: none;
 
@@ -164,15 +168,18 @@
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 10px 10px;
   transition: .3s;
   cursor:pointer;
+  text-decoration-color: #3598D8;
 }
 
 .b-navbar-option-dessins__dropdown a:hover{
   //background-color: red;
-  color: #3598D8;
+
+  text-decoration: underline;
+
 }
 .dessins__dropdown-menu{
   padding: 10px;
@@ -200,9 +207,56 @@
 }
 
 .b-navbar-option-btn-container.contact{
-  padding-right: 15px;
+
 }
 
 .b-navbar-option-btn-container.dessins{
   margin-right: 20px;
+}
+
+.b-navbar-option-btn-container.newsletter{
+
+  padding-right: 15px;
+}
+.b-navbar-option-btn-container.newsletter span{
+  background-color: $lightgrey-2;
+
+}
+.b-navbar-option__linebar_effect-container.selected-dessins{
+  padding-right: 0;
+  
+
+}
+.b-navbar-option__linebar_selected_option.dessins{
+
+}
+
+.b-navbar-option__linebar_effect-container.photos{
+
+}
+
+.b-navbar-subscribe-newsletter-open-btn{
+  font-family: "Quicksand";
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: none;
+  outline: none;
+  background-color: $lightgrey-2;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor:pointer;
+  color: $darkgrey_1;
+  transition: 0.15s;
+
+
+}
+
+.b-navbar-subscribe-newsletter-open-btn:hover{
+  background-color: $lightgrey-3;
+  transition: 0.15s;
+
+}
+
+.b-navbar-option-btn-container.newsletter{
+  cursor:default;
 }

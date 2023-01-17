@@ -20,11 +20,11 @@
 
   left: 0;
   margin-left: 20px;
-  top: 30px;
+  top: calc(75px + 10px);
   display:flex;
   align-items: center;
   cursor:pointer;
-  z-index: 7;
+  z-index: 20;
   flex-direction: row;
   border: 1px solid $alert_red;
   background-color: $lightgrey_1;
@@ -32,6 +32,9 @@
   padding: 5px 10px;
   width: auto;
   transition: .15s;
+  @media (max-width: 1090px) {
+    z-index: 10;
+    }
 }
 
 .bd-left-bar-trigger-btn:hover{
@@ -60,15 +63,16 @@
 
 .b-main-content-loader{
   position:absolute;
-  top:0;
+  top:75px;
  left:0;
  right:0;
  bottom:0;
- z-index: 9999;
+ z-index: 15;
 
- display: none;
+ display: flex;
  background-color: $lightgrey_1;
  align-items :center;
+
 }
 
 .b-main-content-loader.active{
@@ -90,4 +94,25 @@ transform: translate(-50%,-50%);
 }
 .b-main-content-loader-container img{
 
+}
+
+.scroll-to-top-btn-small-container-wrapper{
+  position: relative;
+  z-index: 9;
+;
+}
+.scroll-to-top-btn-small-container{
+  position: fixed;
+  border-radius: 50%;
+
+  right: 15px;
+  top: calc(75px + 10px);
+  display: none;
+  z-index: 9;
+  transform: rotate(180deg);
+  transition: .15s;
+  cursor:pointer;
+}
+.scroll-to-top-btn-small-container.active{
+  display: flex;
 }

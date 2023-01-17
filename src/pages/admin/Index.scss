@@ -1,39 +1,77 @@
+@import "../../variables";
 .auth-wrapper{
-  max-width: 100%;
-
-  height: calc(100vh - 75px - 50px);
-
-
-  padding: 0 75px;
-  margin-top: 75px;
+  font-family:"Quicksand";
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 125px;
 }
 
 .auth-content{
-  background-color: gray;
-  width: 100%;
-  height: 100%;
+
+  
+
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  min-height: calc(100vh - 150px);
+  max-width: 1180px;
+  width: 100%;
+  height: 100%;
+  padding-top: 20px;
+
+  padding: 0 15px;
+
 
 }
 
 .auth-title{
-  font-size: 3rem;
+  font-size: 1.875rem;
   text-align: center;
   margin: 0;
   padding: 0;
+  color: $darkgrey_1;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .auth-login{
 
 }
 
-.auth-form{
-  border: 4px solid green;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.admin-content-container{
+  display:flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
 
+
+.b-main-content-loader{
+  position:absolute;
+  top:75px;
+ left:0;
+ right:0;
+ bottom:0;
+ z-index: 15;
+
+ display: flex;
+ background-color: $lightgrey_1;
+ align-items :center;
+}
+
+.b-main-content-loader.active{
+  display:flex;
+}
+
+.b-main-content-loader-container{
+
+  position: fixed;
+  top: 50%;
+  left:50%;
+  bottom: 50%;
+  right: 50%;
+
+display: flex;
+height: 75px;
+width: 75px;
+transform: translate(-50%,-50%);
 }
