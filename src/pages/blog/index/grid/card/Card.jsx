@@ -28,13 +28,8 @@ const Card = (props) => {
 
 
 
-  useEffect(() => {
-    console.log("///////")
-    console.log(props.data)
-    console.log(props.data.homes[0].image_url)
-    console.log("///////")
-  },[props.data])
 
+  //  <img src={props.data.homes[0].image_url} alt={props.data.title} data={props.data} />
 
   return (
     <div className="b-index-content-card">
@@ -68,11 +63,9 @@ const Card = (props) => {
         ))}
           </div>
           <div className="b-index-content-card-image odd">
-            {props.data.homes[0].image_url ?
+           
               <img src={props.data.homes[0].image_url} alt={props.data.title} data={props.data} />
-              :
-              <></>
-            }
+         
         
       </div>
         </>
