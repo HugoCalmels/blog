@@ -18,7 +18,8 @@ const Footer = (props) => {
 
   
   const navigateTo = (dest) => {
-    navigate(`/gaelle-boucherit`)
+    navigate(`/${dest}`)
+    window.scrollTo({ top: '0px'});
   }
   
   const closePolicyModal = () => {
@@ -29,14 +30,30 @@ const Footer = (props) => {
   return (
     <footer className="b-footer-wrapper">
       <div className="b-footer-container">
-
+          <div className="b-footer-top-wrapper">
+          <div className="b-footer-top-container">
+            <div className="b-footer-top-small-wrapper">
+            <p>Retrouvez moi sur les réseaux </p>
+          <Icons />
+            </div>
+    
+            </div>
+         
+        </div>
+        
+        <div className="b-footer-bot-wrapper">
+          <div className="b-footer-bot-container">
           <div className="b-footer-mentions" onClick={props.openPolicyModal}>
             MENTIONS L&#xC9;GALES
           </div>
      
-        <Icons />
+
         <Link className="b-footer-cie" to={"/cie"}>SITE COMPAGNIE</Link>
-          <div className="b-footer-copyright">GAELLE BOUCHERIT - COPYRIGHT &#169; 2022</div>
+          <div className="b-footer-copyright" onClick={()=>navigateTo("gaelle-boucherit")}>GAELLE BOUCHERIT - COPYRIGHT &#169; 2022</div>
+        </div>
+       
+          </div>
+         
    
      
  

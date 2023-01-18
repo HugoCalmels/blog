@@ -81,7 +81,7 @@ function App() {
           
 
           {/* Cie router */}
-          <Route path="/" element={<IndexCie />} />
+          <Route path="/cie" element={<IndexCie />} />
         </Routes>
         <Footer openPolicyModal={openPolicyModal} policyModalRef={policyModalRef} />
       </Router>

@@ -13,7 +13,7 @@ const NewsLetter = (props) => {
   let cookieToken = "";
   const cookie2 = Cookies.get("cie-lutin-auth-token");
 
-  if (cookie !== undefined) {
+  if (cookie2 !== undefined) {
     cookieToken = cookie2;
   }
   const templateEmailPreviewElemRef = useRef(null)

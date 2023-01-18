@@ -7,6 +7,13 @@ const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
   
 
 const Subscribers = () => {
+
+  let cookieToken = "";
+  const cookie2 = Cookies.get("cie-lutin-auth-token");
+
+  if (cookie2 !== undefined) {
+    cookieToken = cookie2;
+  }
   let cookieIsAuth = false;
   const cookie = Cookies.get("cie-lutin-isAuth");
 
@@ -33,7 +40,15 @@ const Subscribers = () => {
   }
 
   const destroyGuestAPI = async (guestID) => {
-    const res = await fetch(`${BASE_URL}/api/v1/guests/${guestID}`, {method: 'DELETE'})
+
+    const config = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${cookieToken}`,
+      },
+    };
+    const res = await fetch(`${BASE_URL}/api/v1/guests/${guestID}`, config)
 
     console.log("11111111111111111111")
     console.log("11111111111111111111")

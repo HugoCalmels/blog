@@ -125,7 +125,7 @@ const Content = (props) => {
              <div className="bp-custom-hr-perf"></div>
         <h3 id="bp-perf-more-websites-title">Retrouvez {props.selectedValue.featuring} sur son site</h3>
         
-            <div className="bp-link-preview-wrapper" onClick={() => openPage(linkPreview.url)}>
+            <div className="bp-link-preview-wrapper-perf" onClick={() => openPage(linkPreview.url)}>
               {linkPreview.images && linkPreview.images.length > 0 ?
                      <img src={linkPreview.images[0].src} />
                 :

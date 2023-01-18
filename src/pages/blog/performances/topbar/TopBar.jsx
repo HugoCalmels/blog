@@ -1,12 +1,18 @@
 import { RxValue } from "react-icons/rx"
 import "./TopBar.scss"
-import Select from "react-select"
+
 const TopBar = (props) => {
-  const options = props.value
 
-  console.log(props.value)
-  console.log(options)
 
+
+  const handleChange = (e) => {
+    e.preventDefault()
+
+    //props.setSelectedValue(e.target.selectedOptions[0].value)
+    const foundPerf = props.value.find(perf => perf.id == e.target.selectedOptions[0].id)
+
+    props.setSelectedValue(foundPerf)
+  }
   return (
     <div className="bp-topbar" ref={props.topBarElem}>
       <div className="bp-topbar-container">
@@ -34,20 +40,22 @@ const TopBar = (props) => {
         </div>
 
         <div className="bd-top-bar-categories-mobile-perf">
- 
-          <select id="b-select-mobile-perf-mobile">
+
+          <select id="b-select-mobile-perf-mobile" onChange={(e)=>handleChange(e)}>
           {props.value && props.value.map((performance) => (
        <>
               {performance.featuring.length > 0 ?
                 <>
                   <option
-                className="b-option-mobile-perf"
+                    id={performance.id}
+                className="b-option-mobile-dessins"
                 key={performance.id} >     <h5 >{performance.title}</h5>
-                <p>& {performance.featuring}</p></option>
+                <p>&nbsp;& {performance.featuring}</p></option>
                             </>
                 :
                 <option
-                className="b-option-mobile-perf"
+                id={performance.id}
+                className="b-option-mobile-dessins"
                 key={performance.id} ><h5 >{performance.title}</h5></option>
               
                 
@@ -56,7 +64,7 @@ const TopBar = (props) => {
           
       ))}
             </select>
-       
+         
         </div>
     </div>
   )

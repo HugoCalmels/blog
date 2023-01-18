@@ -1,6 +1,11 @@
+import "./IndexCie.scss"
+
 const IndexCie = () => {
   return (
-    <><h1>SITE DE LA CIE</h1></>
+    <div className="c-index-wrapper">
+      <h3>Le site de la compagnie est en construction.</h3>
+      <p>Aucun contenu n'y sera publié avant son ouverture.</p>
+    </div>
   )
 }
 

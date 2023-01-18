@@ -11,6 +11,7 @@
   z-index: 9;
   justify-content: center;
   border-bottom: 1px solid $lightgrey-3;
+  
 } 
 
 .admin-topbar-container ul{
@@ -21,6 +22,9 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+  @media (max-width: 650px){
+    display: none;
+  }
 
 }
 .admin-topbar-container li{
@@ -37,4 +41,33 @@
 .admin-topbar-container li:hover{
   color: $darkgrey_1;
   background-color: $lightgrey_2;
+}
+
+.admin-mobile-select-wrapper{
+  display: none;
+
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  @media (max-width: 650px){
+    display: block;
+  }
+}
+
+.admin-mobile-select-wrapper select{
+  font-family: "Quicksand";
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 49px;
+
+  background-color: $darkgrey_1;
+  color: $lightgrey_2;
+}
+
+.admin-mobile-select-wrapper select option{
+  font-size: 0.9375rem;
+  font-weight: 700;
 }

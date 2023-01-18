@@ -161,6 +161,15 @@ const ContactIndex = () => {
         
           <div className="b-contact-content-right">
             
+          <div className="b-contact-form-alerts-wrapper-contact">
+              <div className="b-contact-form-alert success" ref={alertSuccessElemRef}>
+                <p>Le formulaire a été envoyé !</p>
+              </div>
+              <div className="b-contact-form-alert danger" ref={alertDangerElemRef}>
+              <p>Veuillez remplir tous les champs.</p>
+              </div>
+            </div>
+
             <h4>GAELLE BOUCHERIT</h4>
             <div className="b-contact-info">
               <AiOutlineMail style={btnStyle} /> <p>gaelle-boucherit@gmail.com</p>
@@ -173,14 +182,7 @@ const ContactIndex = () => {
             <div className="b-contact-info">
               <span></span> <p>31500 Toulouse</p>
             </div>
-            <div className="b-contact-form-alerts-wrapper">
-              <div className="b-contact-form-alert success" ref={alertSuccessElemRef}>
-                <p>Le formulaire a été envoyé !</p>
-              </div>
-              <div className="b-contact-form-alert danger" ref={alertDangerElemRef}>
-              <p>Veuillez remplir tous les champs.</p>
-              </div>
-            </div>
+            
          
         </div>
         </div>

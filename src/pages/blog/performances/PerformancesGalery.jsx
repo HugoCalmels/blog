@@ -14,7 +14,7 @@ const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const PerformancesGalery = () => {
   const [isLoading, setIsLoading ] = useState(false)
   const btnStyle = { color: "#424242", width: "25px", height: "25px" }
-  const btnStyle2 = { color: "#424242", width: "35px", height: "35px" }
+  const btnStyle2 = {backgroundColor: "rgba(250,250,250,.75)", borderRadius: "50%", shapeRendering: "solidGeometricPrecision",color: "#424242", width: "35px", height: "35px" }
   const [value, setValue] = useState("")
   const [selectedValue, setSelectedValue] = useState("")
   const performanceModalRef = useRef(null)

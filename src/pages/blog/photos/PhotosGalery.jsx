@@ -229,7 +229,7 @@ const PhotosGalery = (props) => {
  
     })
     console.log("??EZEZFZ")
-
+    setCurrentPaginationIndex(1)
     if (leftBarTriggerBtnElem.current && topBarElem.current){
       //leftBarTriggerBtnElem.current.style.top = `calc(75px + ${topBarElem.current.offsetHeight}px + 30px)`
     }

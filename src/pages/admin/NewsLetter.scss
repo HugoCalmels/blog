@@ -3,7 +3,9 @@
 .admin-newsletter{
   font-family: "Quicksand";
   width:100%;
-
+  @media (max-width:800px){
+    margin-bottom: 100px;
+  }
 }
 .admin-newsletter-paragraph{
   display: flex;

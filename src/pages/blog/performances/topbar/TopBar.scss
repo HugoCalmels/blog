@@ -154,8 +154,13 @@ border:none;
 }
 
 .bd-top-bar-categories-mobile-perf select option{
-  background-color: purple;
-  color: green;
+
+  line-height: 2rem;
+  font-family: "Quicksand";
+  font-size: 0.9375rem;
+  font-weight: 700;
+  background-color: $lightgrey_2;
+  color: $darkgrey_1;
 }
 
 .b-option-mobile-perf{

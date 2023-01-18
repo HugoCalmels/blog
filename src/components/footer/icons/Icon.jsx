@@ -24,15 +24,21 @@ const Icon = (props) => {
     {
       props.name === "facebook" ?
       <div className="b-footer-owner-social-network" onMouseEnter={enableHoverStyle} onMouseLeave={disableHoverStyle} ref={iconFacebookRef}>
-      <ImFacebook style={btnStyle} fill={btnCurrentColor} />
+           <a href="https://www.facebook.com/gaelle.boucherit" target="_blank">
+              <ImFacebook style={btnStyle} fill={btnCurrentColor} />
+              </a>
       </div>
         : props.name === "twitter" ?
         <div className="b-footer-owner-social-network" onMouseEnter={enableHoverStyle} onMouseLeave={disableHoverStyle}ref={iconTwitterRef}>
-        <FaTwitter style={btnStyle} fill={btnCurrentColor} />
+        <a href="https://twitter.com/gaelleboucherit" target="_blank">
+              <FaTwitter style={btnStyle} fill={btnCurrentColor} />
+              </a>
         </div>
             :props.name === "insta" ?
             <div className="b-footer-owner-social-network" onMouseEnter={enableHoverStyle} onMouseLeave={disableHoverStyle}ref={iconInstaRef}>
-            <FaInstagram style={btnStyle} fill={btnCurrentColor} />
+                      <a href="https://www.instagram.com/gaelle.boucherit/?hl=fr" target="_blank">
+                <FaInstagram style={btnStyle} fill={btnCurrentColor} />
+                </a>
             </div>
               :
               <></>

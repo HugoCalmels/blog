@@ -1,6 +1,7 @@
 import "./NewsLetterIndex.scss"
 import { useState, useRef, useEffect } from "react"
 import imageFriends from "../../../assets/images/testImage7.png"
+import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const NewsLetterIndex = (props) => {
 
@@ -37,6 +38,7 @@ const NewsLetterIndex = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+    
       },
       body: JSON.stringify(body),
     };
