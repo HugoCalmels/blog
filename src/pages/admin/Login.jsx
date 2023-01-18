@@ -8,7 +8,7 @@ const Login = (props) => {
 
         <div className="auth-form-input">
         <label>Identifiant :</label>
-        <input type="text" onChange={(e) => props.setEmail(e.target.value)}placeholder="admin@gmail.com"></input>
+        <input type="text" onChange={(e) => props.setEmail(e.target.value)}></input>
         </div>
 
         <div className="auth-form-input">
@@ -16,7 +16,7 @@ const Login = (props) => {
         <input
           type="password"
           onChange={(e) => props.setPassword(e.target.value)}
-          placeholder="123123"
+    
           ></input>
            </div>
            
