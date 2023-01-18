@@ -69,7 +69,12 @@ const Card = (props) => {
         ))}
           </div>
           <div className="b-index-content-card-image odd">
-        <img src={props.data.homes[0].image_url} alt={props.data.title} data={props.data} />
+            {props.data.homes[0].image_url ?
+              <img src={props.data.homes[0].image_url} alt={props.data.title} data={props.data} />
+              :
+              <></>
+            }
+        
       </div>
         </>
       }
