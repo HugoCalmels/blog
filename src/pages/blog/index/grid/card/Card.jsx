@@ -1,6 +1,6 @@
 import "./Card.scss"
 import gearIcon from "../../../../../assets/icons/gearIcon.png"
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import EditCard from "./EditCard"
 import Cookies from "js-cookie";
 const Card = (props) => {
