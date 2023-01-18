@@ -70,7 +70,7 @@ const NewsLetter = (props) => {
     const res = await fetch(`${BASE_URL}/api/v1/send-to-all-guests`, config)
 
     const data = await res.json();
-    return data
+    return "123"
     
   }
   
