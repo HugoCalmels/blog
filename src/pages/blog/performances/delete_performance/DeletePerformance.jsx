@@ -12,9 +12,7 @@ const DeletePerformance = (props) => {
   if (cookie !== undefined) {
     cookieToken = cookie;
   }
-  console.log("delete performance")
-  console.log(props.value)
-  console.log("delete performance")
+
 
   const tryToDestroyPerformance = (e) => {
     e.preventDefault()
@@ -26,10 +24,7 @@ const DeletePerformance = (props) => {
       `voulez vous supprimer "${foundSelect[0].value}" ?`
     );
     if (answer) {
-      console.log("TESTTTT")
-      console.log(foundSelect[0].value)
-      console.log(foundSelect[0].dataset.id)
-      console.log("TESTTTT")
+
       destroyPerformanceAPI(foundSelect[0].dataset.id);
     }
   };

@@ -37,12 +37,7 @@ const Content = (props) => {
     customIndex
   ) => {
     e.preventDefault();
-    console.log("--------------------------------------")
-    console.log(category)
-    console.log(imageIndex)
-    console.log(arrayIndex)
-    console.log(customIndex)
-    console.log("--------------------------------------")
+
     imagesReaderElement.current.style.display = "flex";
     setDefaultArrayAndIndex({
       category: category,
@@ -52,9 +47,7 @@ const Content = (props) => {
     setDefaultCustomIndex(customIndex);
 
     
-    console.log("##########")
-    console.log(props.leftBarTriggerBtnElem.current)
-    console.log(props.scrollToTopElem.current)
+
     if (props.leftBarTriggerBtnElem.current) {
       props.leftBarTriggerBtnElem.current.classList.add("inactive")
     }
@@ -164,18 +157,13 @@ const Content = (props) => {
   }, [props.selectedCategory])
 
 
-  console.log("from content")
-  console.log(props.images)
+
 
   const capitalizeAndStyleString = (string) => {
     return "PHOTOS"
   }
 
-  console.log("TEST IAMGES REaDER")
-  console.log("TEST IAMGES REaDER")
-  console.log(props.images)
-  console.log("TEST IAMGES REaDER")
-  console.log("TEST IAMGES REaDER")
+
 
   return (
     <section className="bd-category-wrapper" ref={props.contentWrapperRef}>

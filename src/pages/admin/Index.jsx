@@ -21,9 +21,6 @@ const Index = () => {
   const loaderElemRef = useRef(null)
 
   useEffect(() => {
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
     if(isLoading ) {
       loaderElemRef.current.classList.add('active')
     } else {
@@ -78,9 +75,7 @@ const Index = () => {
   
   }
 
-  const testInput = () => {
-    console.log("test")
-  }
+
 
   const displayErrorMessage = () => {
     if (errorMessage !== "") {
@@ -115,13 +110,6 @@ const Index = () => {
     }
   }
 
-
-
-
-  
-  useEffect(() => {
-    console.log(selectedSubMenu)
-  },[selectedSubMenu])
 
   return (
     <div className="auth-wrapper">

@@ -18,7 +18,7 @@ const EditCard = (props) => {
   const textareaRef = useRef(null)
 
   useEffect(() => {
-    console.log(props.data)
+
      setTitle(props.data.title)
      setDesc(props.data.desc)
     
@@ -28,8 +28,7 @@ const EditCard = (props) => {
   const tryToEditCard = (e) => {
     e.preventDefault();
  props.setIsLoading(true)
-    console.dir(e.target[0].files)
-    console.dir(e.target[0].files.length)
+
     if (e.target[0].files.length > 0) {
       resizeImages(e.target[0].files[0]).then((imageFile) => {
         const data = new FormData();
@@ -59,8 +58,7 @@ const EditCard = (props) => {
       body: newImage,
     };
     const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, config);
-    console.log("/////");
-    console.log(test1);
+
     const res = await fetch(`${BASE_URL}/api/v1/home-latest`, {
       method: "GET",
     });
@@ -71,8 +69,6 @@ const EditCard = (props) => {
 
   const editCardImageAPI = async (newImage) => {
 
-    console.log("EDIT IAMGE CARD")
-    console.log(newImage)
     const body = {
       home: {
         image_url: newImage.image_url,
@@ -92,9 +88,9 @@ const EditCard = (props) => {
       `${BASE_URL}/api/v1/homes/${props.data.homes[0].id}`,
       config
     );
-    console.log(res)
+
     const data = await res.json();
-    console.log(data)
+
 
       window.location.reload(false);
     

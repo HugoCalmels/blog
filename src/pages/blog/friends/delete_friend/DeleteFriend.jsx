@@ -26,10 +26,7 @@ const DeleteFriend = (props) => {
       `voulez vous supprimer "${foundSelect[0].value}" ?`
     );
     if (answer) {
-      console.log("TESTTTT")
-      console.log(foundSelect[0].value)
-      console.log(foundSelect[0].dataset.id)
-      console.log("TESTTTT")
+
       destroyFriendAPI(foundSelect[0].dataset.id);
     }
   };

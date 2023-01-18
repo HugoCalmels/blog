@@ -42,9 +42,7 @@ const PerformancesGalery = () => {
     })
   },[])
   useEffect(() => {
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
+
     if(isLoading ) {
       loaderElem.current.classList.add('active')
     } else {
@@ -55,7 +53,7 @@ const PerformancesGalery = () => {
 
   const openLeftBar = (e) => {
     e.preventDefault();
-    console.log("ALO")
+
     leftBarElem.current.classList.add("active")
     leftBarTriggerBtnElem.current.classList.add("inactive")
   }
@@ -72,9 +70,7 @@ const PerformancesGalery = () => {
   const getAllPerformances = async () => {
     const res = await fetch(`${BASE_URL}/api/v1/performances`)
     const data = await res.json()
-    console.log('this is the value')
-    console.log(data)
-   
+
     return data
   }
 
@@ -85,7 +81,7 @@ const PerformancesGalery = () => {
   }
 
   const openDeletePerformanceModal = () => {
-    console.log("HELLO")
+
     deletePerformancesModalRef.current.classList.toggle("active")
     performanceModalRef.current.classList.remove("active")
     editPerformanceModalRef.current.classList.remove("active")
@@ -93,7 +89,7 @@ const PerformancesGalery = () => {
 
   
   const openEditPerformanceModal = () => {
-    console.log("HELLO")
+
     editPerformanceModalRef.current.classList.toggle("active")
     deletePerformancesModalRef.current.classList.remove("active")
     performanceModalRef.current.classList.remove("active")

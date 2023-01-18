@@ -29,7 +29,7 @@ const Subscribers = () => {
   
   const tryToDestroyGuest = (e, guest) => {
     e.preventDefault()
-    console.log("hi")
+
     let answer = window.confirm(
       `voulez vous supprimer "${guest.email}" ?`
     );
@@ -50,13 +50,6 @@ const Subscribers = () => {
     };
     const res = await fetch(`${BASE_URL}/api/v1/guests/${guestID}`, config)
 
-    console.log("11111111111111111111")
-    console.log("11111111111111111111")
-    console.log("11111111111111111111")
-
-    console.log("11111111111111111111")
-    console.log("11111111111111111111")
-    console.log("11111111111111111111")
 
     const newGuestList = guests.filter(guest => guest.id !== guestID)
     setGuests(newGuestList)
@@ -68,7 +61,7 @@ const Subscribers = () => {
     setGuests(data)
   }
 
-  console.log(guests)
+
 
   const generateFormatedDate = (createdAt) => {
     const date = new Date(createdAt);

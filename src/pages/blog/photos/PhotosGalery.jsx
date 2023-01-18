@@ -69,7 +69,7 @@ const PhotosGalery = (props) => {
   const getAllImages = async () => {
     const response = await fetch(`${BASE_URL}/api/v1/getAllPhotos`);
     const data = await response.json();
-    console.log("GET ALL PHOTOS !!!!!!!!")
+
     setValue(data);
   };
 
@@ -86,38 +86,19 @@ const PhotosGalery = (props) => {
 
   const imagesFilter = (initialData) => {
     // select the category
-    console.log("IMAGES FILTER 33333333333333333333333")
-    console.log(initialData)
-    console.log("IMAGES FILTER 33333333333333333333333333")
+
     if (hideImages === false && initialData.length > 0) {
       // small filter
-      console.log('1111111111111111111111111')
-      console.log('1111111111111111111111111')
-      console.log(initialData)
-      console.log('1111111111111111111111111')
-      console.log('1111111111111111111111111')
+
       const filteredCategory = filterCategory(initialData);
-      console.log('222222222222222222222222222')
-      console.log('222222222222222222222222222')
-      console.log(filteredCategory)
-      console.log('222222222222222222222222222')
-      console.log('222222222222222222222222222')
+
       const initializedImagesReader = initImagesReader(filteredCategory);
-      console.log("333333333333333333333333333")
-      console.log("333333333333333333333333333")
-      console.log(initializedImagesReader)
-      console.log("333333333333333333333333333")
-      console.log("333333333333333333333333333")
+
       setFilteredImages(sliceDataForPagination(initializedImagesReader));
       setUnpaginatedImages(initializedImagesReader)
     } else if (hideImages === true && initialData.length > 0) {
       // same plus hide image system
-      console.log("THE OTHER THING")
-      console.log("THE OTHER THING")
-      console.log(initialData)
-      console.log("THE OTHER THING")
 
-      console.log("THE OTHER THING")
       const filteredCategory = filterCategory(initialData);
 
       const initializedImagesReader = initImagesReader(filteredCategory);
@@ -137,11 +118,7 @@ const PhotosGalery = (props) => {
   };
 
   const initImagesReader = (array) => {
-    console.log("????????????????????????????")
-    console.log("????????????????????????????")
-    console.log(array)
-    console.log("????????????????????????????")
-    console.log("????????????????????????????")
+
     let count = 0;
     let filteredArray = array.map((cate) => {
       return {
@@ -171,14 +148,7 @@ const PhotosGalery = (props) => {
         photos: cate.photos.slice(0, currentPaginationIndex * 9),
       };
     });
-    console.log("))))))))))))))))))))))")
-    console.log("))))))))))))))))))))))")
-    console.log(props.arg)
-    console.log(array)
-    console.log(filteredArray)
-    console.log("))))))))))))))))))))))")
-    console.log("))))))))))))))))))))))")
-    console.log("))))))))))))))))))))))")
+
     return filteredArray;
   };
 
@@ -206,9 +176,7 @@ const PhotosGalery = (props) => {
     let userScrollHeight = window.innerHeight + window.scrollY;
     let windowBottomHeight = document.documentElement.offsetHeight;
 
-    console.log("???")
-    console.log(userScrollHeight)
-    console.log(windowBottomHeight)
+
     if (userScrollHeight >= windowBottomHeight - 25) {
       setCurrentPaginationIndex(currentPaginationIndex + 1);
     }
@@ -216,19 +184,17 @@ const PhotosGalery = (props) => {
 
   // séquence filter
   useEffect(() => {
-    console.log('HOW IS THE VALUE')
-    console.log(value)
+
     imagesFilter(value);
   }, [value]);
 
   useEffect(() => {
-    console.log("SELECTED CATEGORY")
-    console.log(value)
+
 
     getAllImages(props.arg).then(() => {
  
     })
-    console.log("??EZEZFZ")
+
     setCurrentPaginationIndex(1)
     if (leftBarTriggerBtnElem.current && topBarElem.current){
       //leftBarTriggerBtnElem.current.style.top = `calc(75px + ${topBarElem.current.offsetHeight}px + 30px)`
@@ -249,10 +215,9 @@ const PhotosGalery = (props) => {
   },[])
 
   useEffect(() => {
-    console.log("ARG CHANGED WHEN DO YOU READ THAT")
+
     setIsScrollable(false)
-    console.log(props.arg)
- 
+
     getCategories(props.arg);
     getAllImages(props.arg).then(() => {
    
@@ -268,15 +233,14 @@ const PhotosGalery = (props) => {
   }
 
   useEffect(() => {
-    console.log("HIDE IMAGES")
-    console.log(value)
+
     imagesFilter(value);
   }, [hideImages]);
 
 
   const openLeftBar = (e) => {
     e.preventDefault();
-    console.log('hji')
+
     leftBarElem.current.classList.add("active")
     leftBarTriggerBtnElem.current.classList.add("inactive")
   }
@@ -291,9 +255,7 @@ const PhotosGalery = (props) => {
 const loaderElem = useRef(null)
 
   useEffect(() => {
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
+
     if(isLoading ) {
       loaderElem.current.classList.add('active')
     } else {
@@ -307,15 +269,9 @@ const loaderElem = useRef(null)
     setCurrentPaginationIndex(1)
   },[ props.arg])
 
-  useEffect(() => {
-    console.log("from index")
-    console.log(filteredImages)
-  },[filteredImages])
 
-  console.log("once index gain")
-  console.log(value)
-  console.log(filteredImages)
-  console.log(currentPaginationIndex)
+
+
 
   useEffect(() => {
     if (isScrollable) {
@@ -324,17 +280,7 @@ const loaderElem = useRef(null)
 
   },[currentPaginationIndex])
 
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-  console.log(value)
-  console.log(filteredImages)
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
 
   return (
     <>

@@ -16,7 +16,7 @@ const CreatePhoto = (props) => {
     cookieToken = cookie;
   }
   useEffect(() => {
-    console.log(props.selectedCategory)
+
     setCategory(props.selectedCategory);
   },[props.selectedCategory])
 
@@ -34,21 +34,14 @@ const CreatePhoto = (props) => {
 
   useEffect(() => {
       
-  console.log("SELECTED CATEGORY")
-  console.log("SELECTED CATEGORY")
-  console.log(category)
-  console.log("SELECTED CATEGORY")
-  console.log("SELECTED CATEGORY")
+
   },[category])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (canSave) {
       props.setIsLoading(true)
-      console.log("!!!!!!!!!!!!")
-      console.dir(e.target[0].files[0])
-      console.log(props.selectedCategoryID)
-      console.log("!!!!!!!!!!!!!")
+
     resizeImages(e.target[0].files[0]).then((imageFile) => {
       const data = new FormData();
       data.append("photo_temp_image[image]", imageFile);
@@ -162,8 +155,6 @@ const CreatePhoto = (props) => {
     submitInput.current.disabled = true;
   }
 
-  console.log("OOO")
-  console.log(canSave)
 
 
   useEffect(() => {
@@ -176,8 +167,7 @@ const CreatePhoto = (props) => {
   }, [canSave])
   
   const testDisabledBtn = () => {
-    console.log("test disabled btn")
-    console.log(canSave)
+
   }
 
   return (

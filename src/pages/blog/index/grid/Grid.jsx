@@ -7,8 +7,7 @@ const Grid = (props) => {
 
   let sortedArray = gridArray.sort((a, b) => a.id - b.id)
 
-  console.log("GRIIIIIIIIIIID")
-  console.log(gridArray)
+
   return (
     <div className="b-index-content-grid">
       {gridArray.map((type, index) => (

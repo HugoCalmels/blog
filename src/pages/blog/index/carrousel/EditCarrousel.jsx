@@ -37,8 +37,7 @@ const EditCarrousel = (props) => {
       body: newImage,
     };
     const test1 = await fetch(`${BASE_URL}/api/v1/home_temp_images`, config);
-    console.log("/////");
-    console.log(test1);
+
     const res = await fetch(`${BASE_URL}/api/v1/home-latest`, {
       method: "GET",
     });

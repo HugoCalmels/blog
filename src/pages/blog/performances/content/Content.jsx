@@ -12,28 +12,11 @@ const Content = (props) => {
   const [linkPreview, setLinkPreview] = useState([])
   const [errorMessage, setErrorMessage] = useState("")
 
-  console.log("///////////////////")
-  console.log(props)
-  console.log("///////////////////")
+
 
   const getWebsiteThumbnailLinkPreview = async (website) => {
 
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log(`${BASE_URL}/api/v1/getLink`)
-    console.log(website)
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
-    console.log("HEYYYYYYYYY")
+
 
 
     const body = {
@@ -55,15 +38,7 @@ const Content = (props) => {
 
     const res = await fetch(`${BASE_URL}/api/v1/getLink`, config)
     const data = await res.json()
-    console.log('222222222222222222222222222222222')
-    console.log('222222222222222222222222222222222')
-    console.log('222222222222222222222222222222222')
-    console.log(res)
-    console.log(data)
-    console.log("22222222222222222222222222222222")
-    console.log('222222222222222222222222222222222')
 
-    console.log('222222222222222222222222222222222')
     if (data.error) {
       setLinkPreview("")
       setErrorMessage("url non reconnue")
@@ -75,8 +50,7 @@ const Content = (props) => {
   }
 
   useEffect(() => {
-    console.log('HELLO ??? LINK PREVIEW ')
-    console.log(props.selectedValue.website_link)
+
     if (props.selectedValue.website_link.length > 0) {
       getWebsiteThumbnailLinkPreview(props.selectedValue.website_link)
     }

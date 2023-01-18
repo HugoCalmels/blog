@@ -14,9 +14,7 @@ const QuitNewsLetterIndex = () => {
 
 
   useEffect(() => {
-    console.log("THE QUERRY CHANGED")
-    console.log("THE NEW QUERRY IS :")
-    console.log(querry)
+
     setVerificationToken(querry.token)
   }, [querry])
   
@@ -31,15 +29,10 @@ const QuitNewsLetterIndex = () => {
   }
 
   const sendConfirmationToDeleteGuestFromNewsletterToAPI = async () => {
-    console.log("SENDING THIS TO THE BACK")
-    console.log(`${BASE_URL}/api/v1/quit-newsletter/${verificationToken}`)
+
     const res = await fetch(`${BASE_URL}/api/v1/quit-newsletter/${verificationToken}`)
     const data = await res.json();
-    console.log("////////////////////////")
-    console.log("////////////////////////")
-    console.log("////////////////////////")
-    console.log("END OF MY API CALL QUI NEWSLETTER")
-    console.log(data)
+
     if (data.message === "User destroyed") {
       alertElemRef.current.classList.add("active")
       contentElemRef.current.classList.remove("active")
@@ -47,9 +40,6 @@ const QuitNewsLetterIndex = () => {
       alertDangerElemRef.current.classList.add("active")
       contentElemRef.current.classList.remove("active")
     }
-    console.log("////////////////////////")
-    console.log("////////////////////////")
-    console.log("////////////////////////")
 
   }
   return (

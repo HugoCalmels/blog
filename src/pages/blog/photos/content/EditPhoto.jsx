@@ -228,7 +228,7 @@ const EditPhoto = (props) => {
     props.setIsLoading(true)
     if (categorySelected === null) {
       // category unchanged
-      console.log(props.editSelectedCategory.id);
+
       cateID = props.editSelectedCategory.id;
     } else {
       // the user changed the category
@@ -239,7 +239,7 @@ const EditPhoto = (props) => {
     const data = new FormData();
     data.append("dessin_temp_image[image]", e.target[0].files[0]);
     if (e.target[0].files[0] !== undefined) {
-      console.log(e.target[0].files[0]);
+
       createTempImage(data).then((res) => {
         submitEditImageToAPI(res, cateID);
       });

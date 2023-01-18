@@ -67,9 +67,7 @@ const ImagesReader = (props) => {
     }
   };
 
-  console.log("REALLY FROM IMAGES READER")
-  console.log(props.images)
-  console.log("REALLY FROM IMAGES READER")
+
 
 
   return (

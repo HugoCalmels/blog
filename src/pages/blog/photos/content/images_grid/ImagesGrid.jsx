@@ -9,9 +9,7 @@ const ImagesGrid = (props) => {
     700: 1,
   
   };
-  console.log("IMAGE GRID");
-  console.log("IMAGE GRID");
-  console.log(props.image);
+
 
   const imagesArray = () => {
 

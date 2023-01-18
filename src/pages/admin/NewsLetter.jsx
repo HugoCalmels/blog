@@ -71,12 +71,6 @@ const NewsLetter = (props) => {
 
     const data = await res.json();
 
-    console.log("%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%")
-    console.log("WE TRYING TO SEND BULK EMAILS")
-    console.log(data)
-    console.log("%%%%%%%%%%%%%")
-    console.log("%%%%%%%%%%%%%")
     
   }
   

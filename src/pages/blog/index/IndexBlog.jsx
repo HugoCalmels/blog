@@ -86,9 +86,7 @@ const IndexBlog = (props) => {
   }, [])
   
   useEffect(() => {
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
+
     if(isLoading ) {
       loaderElem.current.classList.add('active')
     } else {

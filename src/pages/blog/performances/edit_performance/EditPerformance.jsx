@@ -28,7 +28,7 @@ const EditPerformance = (props) => {
 
     e.preventDefault();
     props.setIsLoading(true)
-      console.dir(e.target)
+
       const data = new FormData()
     data.append("performance_temp_video[video]", e.target[0].files[0])
     
@@ -72,9 +72,6 @@ const EditPerformance = (props) => {
     })
     const data = await response.json()
 
-    console.log('?????????')
-    console.log(data)
-    console.log('?????????')
     return data
 
   }
@@ -99,9 +96,7 @@ const EditPerformance = (props) => {
     };
     const response = await fetch(`${BASE_URL}/api/v1/performances/${id}`, config)
     const data = await response.json()
-    console.log("!!!!!!!!!!!!!!")
-    console.log(data)
-    console.log("!!!!!!!!!!!!!!")
+
     return data
   }
 
@@ -125,9 +120,7 @@ const EditPerformance = (props) => {
     };
     const response = await fetch(`${BASE_URL}/api/v1/performances/${id}`, config)
     const data = await response.json()
-    console.log("!!!!!!!!!!!!!!")
-    console.log(data)
-    console.log("!!!!!!!!!!!!!!")
+
     return data
   }
 
@@ -138,7 +131,7 @@ const EditPerformance = (props) => {
     setFeaturing(props.selectedValue.featuring)
   }, [props.selectedValue])
   
-  console.log(props.selectedValue)
+
 
   return (
  

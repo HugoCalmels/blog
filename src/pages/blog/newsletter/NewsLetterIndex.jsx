@@ -44,12 +44,7 @@ const NewsLetterIndex = (props) => {
     };
     const res = await fetch(`${BASE_URL}/api/v1/guests`, config)
     const data = await res.json();
-    console.log("--------------------------------")
-    console.log("--------------------------------")
-    console.log("END OF CREATE A GUEST")
-    console.log(data)
-    console.log("--------------------------------")
-    console.log("--------------------------------")
+
   }
 
   useEffect(() => {

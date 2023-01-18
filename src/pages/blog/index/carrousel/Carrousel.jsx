@@ -30,15 +30,13 @@ const Carrousel = (props) => {
   const addBtnToRef = (el) => {
     if (el && !navigationBtnsRef.current.includes(el)) {
       navigationBtnsRef.current.push(el)
-      console.log("?????")
-      console.log(el.offsetWidth)
+
     }
   }
   const addImageToRef = (el) => {
     if (el && !imagesRef.current.includes(el)) {
        imagesRef.current.push(el)
-      console.log("?????")
-      console.log(el.offsetWidth)
+
       setDefaultImageWidth(el.offsetWidth)
       //spacing = 0 - el.offsetWidth
     }
@@ -53,9 +51,7 @@ const Carrousel = (props) => {
   })
 
   const addDistance = () => {
-    console.log("---")
-    console.log("HELO IM DONE ?")
-    console.log(defaultImageWidth)
+
     
 
     spacing += defaultImageWidth
@@ -63,7 +59,7 @@ const Carrousel = (props) => {
 
 
 
-    console.log(spacing)
+
  
     return spacing;
   }
@@ -109,8 +105,7 @@ const Carrousel = (props) => {
     setPause(true);
   }
   useEffect(() => {
-    console.log("HELLO CAN YOU STOP MY COUNTER MOFO ?")
-    console.log(props.page)
+
     if (props.page !== "b-index") {
       stopCounter()
     } else {
@@ -131,9 +126,7 @@ const Carrousel = (props) => {
 
 
     if (navigationBtnsRef.current.length > 0) {
-      console.log("TEST")
-      console.log(navigationBtnsRef.current[1].offsetWidth)
-      console.log("TEST")
+
     } 
 
   
@@ -158,8 +151,6 @@ const Carrousel = (props) => {
 
 
   const actionsInterval = () => {
-    
-    console.log("INTERVAL")
 
   
     intervalRef.current = setInterval(() => {
@@ -199,8 +190,7 @@ const Carrousel = (props) => {
 
   const changeColor = (e) => {
     e.preventDefault()
-    console.log("CHANGE COLOR !!!")
-    console.log(carrouselPauseElemLeft.current.style)
+
     carrouselPauseElemLeft.current.style.backgroundColor = "#bbbbbb"
     carrouselPauseElemRight.current.style.backgroundColor = "#bbbbbb"
   }

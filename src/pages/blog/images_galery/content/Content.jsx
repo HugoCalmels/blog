@@ -38,12 +38,7 @@ const Content = (props) => {
     customIndex
   ) => {
     e.preventDefault();
-    console.log("--------------------------------------")
-    console.log(category)
-    console.log(imageIndex)
-    console.log(arrayIndex)
-    console.log(customIndex)
-    console.log("--------------------------------------")
+
     imagesReaderElement.current.style.display = "flex";
     props.scrollToTopElem.current.classList.remove("active")
     setDefaultArrayAndIndex({
@@ -235,8 +230,6 @@ const Content = (props) => {
   }, [props.selectedCategory])
 
 
-  console.log("from content")
-  console.log(props.images)
 
   const capitalizeAndStyleString = (string) => {
     if (string === "dessins") {

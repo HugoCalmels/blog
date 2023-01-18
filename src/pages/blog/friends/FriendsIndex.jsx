@@ -20,7 +20,7 @@ const FriendsIndex = () => {
   const createFriendModalRef = useRef(null)
   const deleteFriendModalRef = useRef(null)
   const openCreateFriendModal = () => {
-    console.log('hi')
+
     createFriendModalRef.current.classList.toggle("active")
     deleteFriendModalRef.current.classList.remove("active")
   }
@@ -49,7 +49,7 @@ const FriendsIndex = () => {
 
   const openLeftBar = (e) => {
     e.preventDefault();
-    console.log("ALO")
+
     leftBarElemRef.current.classList.add("active")
     leftBarTriggerBtnElem.current.classList.add("inactive")
   }
@@ -68,9 +68,7 @@ const FriendsIndex = () => {
   }
   
   useEffect(() => {
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
-    console.log("LOADER TRIGGERED")
+
     if(isLoading ) {
       loaderElem.current.classList.add('active')
     } else {
@@ -79,9 +77,7 @@ const FriendsIndex = () => {
 
   }, [isLoading])
   
-  console.log("^^^^^^^^^^^^") 
-  console.log(friends)
-  console.log("^^^^^^^^^^^^")
+
   return (
     <div className="b-friends-wrapper">
 

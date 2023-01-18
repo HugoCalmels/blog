@@ -29,7 +29,7 @@ const CreatePerformance = (props) => {
     if (canSave) {
       props.setIsLoading(true)
       e.preventDefault();
-      console.dir(e.target)
+
       const data = new FormData()
       data.append("performance_temp_video[video]", e.target[0].files[0])
       submitTempVideoToAPI(data).then((data) => {
@@ -47,15 +47,12 @@ const CreatePerformance = (props) => {
       body: file,
     })
     const test2 = await test.json()
-    console.log("OOOOOOOOOOO")
-    console.log(test2)
+
     const response = await fetch(`${BASE_URL}/api/v1/video-latest`, {
       method: "GET"
     })
     const data = await response.json()
-    console.log("HEYYYYY")
-    console.log(data)
-    console.log("HEYYYYY")
+
     
  
     const body = {
@@ -75,9 +72,7 @@ const CreatePerformance = (props) => {
     const extraVideoResponse = await fetch(`${BASE_URL}/api/v1/performances/${performanceID}/extra_performance_videos`, config)
     const extraVideoData = await extraVideoResponse.json()
 
-    console.log("################")
-    console.log(extraVideoData)
-    console.log("################")
+
 
   }
 
@@ -96,9 +91,6 @@ const CreatePerformance = (props) => {
     })
     const data = await response.json()
 
-    console.log('?????????')
-    console.log(data)
-    console.log('?????????')
     return data
 
   }
@@ -123,15 +115,11 @@ const CreatePerformance = (props) => {
     };
     const response = await fetch(`${BASE_URL}/api/v1/performances`, config)
     const data = await response.json()
-    console.log("!!!!!!!!!!!!!!")
-    console.log(data)
-    console.log("!!!!!!!!!!!!!!")
+
     return data
   }
 
-  useEffect(() => {
-    console.log(title)
-  }, [title])
+
   
   const closeModal = () => {
     props.performanceModalRef.current.classList.remove("active")

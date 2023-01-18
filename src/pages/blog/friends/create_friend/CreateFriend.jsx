@@ -22,9 +22,7 @@ const CreateFriend = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     props.setIsLoading(true)
-    console.log("////////////////////")
-    console.dir(e.target)
-    console.log("//////////////////////")
+
     createFriendAPI()
   }
 
@@ -45,9 +43,6 @@ const CreateFriend = (props) => {
     const res = await fetch(`${BASE_URL}/api/v1/friends`, config)
     const data = await res.json()
 
-    console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨")
-    console.log(data)
-    console.log("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨")
     window.location.reload(false)
   }
 

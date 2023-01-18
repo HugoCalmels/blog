@@ -47,14 +47,7 @@ const LeftBar = (props) => {
 
   // props.topBarElem pour la topbar width
 
-  useEffect(() => {
-    console.log("INITTTTT")
-    console.log("INITTTTT")
-    console.log("INITTTTT")
-    console.log(props.topBarElem.current.offsetWidth)
-    
-    //props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
-  }, [])
+
 
   useEffect(() => {
     //props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`

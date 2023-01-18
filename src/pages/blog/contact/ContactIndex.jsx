@@ -75,15 +75,7 @@ const ContactIndex = () => {
     };
     const res = await fetch(`${BASE_URL}/api/v1/contact_demands`, config)
     const data = await res.json()
-    console.log("####################################")
-    console.log("####################################")
-    console.log("####################################")
-    console.log("####################################")
-    console.log('RES CONTACT DEMAND')
-    console.log(data)
-    console.log("####################################")
-    console.log("####################################")
-    console.log("####################################")
+
   }
 
   const setStylesForErrorHandling = () => {

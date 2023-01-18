@@ -19,11 +19,7 @@ const Card = (props) => {
   let newArrayOfStrings = []
   if (props.data.desc) {
     const descriptionWithLineBreaks = props.data.desc.split("<br/>")
-    console.log('CARD')
-    console.log("===================")
-    console.log(props.data.desc.split("<br/>"))
-    console.log(props.data.desc)
-    console.log("===================")
+
   
     descriptionWithLineBreaks.forEach((subString) => {
       newArrayOfStrings.push(subString)
@@ -32,9 +28,12 @@ const Card = (props) => {
 
 
 
-  console.log("TESTTTTTTTTTTTTTTTTTTTTTTT")
-  console.log(newArrayOfStrings)
-  console.log("TESTTTTTTTTTTTTTTTTTTTTTTT")
+  useEffect(() => {
+    console.log("///////")
+    console.log(props.data)
+    console.log(props.data.homes[0].image_url)
+    console.log("///////")
+  },[props.data])
 
 
   return (
