@@ -11,7 +11,7 @@
   font-family: "Quicksand";
 
 
-  z-index: 20;
+  z-index: 3000;
 
  transform: translateX(-175px);
   transition: .3s;
@@ -20,10 +20,7 @@
   flex-direction: column;
   gap: 10px;
   padding-left: 20px;
-
-  @media (max-width: 1090px) {
-    z-index: 10;
-    }
+  overflow: hidden;
 }
 
 .bd-left-bar.active {

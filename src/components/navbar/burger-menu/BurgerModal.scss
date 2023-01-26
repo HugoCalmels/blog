@@ -5,7 +5,7 @@
   width: 100%;
   height: calc(100vh - 75px);
 
-  z-index: 12;
+  z-index: 19;
   overflow:hidden;
   background-color: $darkgrey_1;
   border-bottom: 1px solid $lightgrey_3;
@@ -19,7 +19,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 12;
+  z-index:19;
   position: relative;
   overflow: hidden;
 }

@@ -16,7 +16,7 @@ const BurgerModal = (props) => {
     <div className="b-navbar-burger-modal-container" ref={props.burgerModalElem}>
       <ul className="b-navbar-burger-modal-ul">
         {isAuthCookie ?
-          <li>ADMIN</li>
+          <li onClick={()=>navigateTo("admin")}>ADMIN</li>
           :
           <></>
         }

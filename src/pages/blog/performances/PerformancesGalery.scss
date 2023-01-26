@@ -15,7 +15,7 @@ padding-bottom: 100px;
   display:flex;
   align-items: center;
   cursor:pointer;
-  z-index: 20;
+  z-index: 13;
   flex-direction: row;
   border: 1px solid $alert_red;
   background-color: $lightgrey_1;
@@ -23,9 +23,7 @@ padding-bottom: 100px;
   padding: 5px 10px;
   width: auto;
   transition: .15s;
-  @media (max-width: 768px) {
-    z-index: 10;
-  }
+
 }
 
 .bp-left-bar-trigger-btn-perf:hover{

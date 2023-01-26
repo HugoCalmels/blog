@@ -1,7 +1,7 @@
 @import "../../../../variables";
 
 .bd-left-bar {
-  position: fixed;
+  position: sticky;
   left: 0;
   top: calc(75px + 10px);
   bottom: 0;
@@ -11,7 +11,7 @@
   font-family: "Quicksand";
 
 
-  z-index: 20;
+  z-index: 3000;
 
  transform: translateX(-175px);
   transition: .3s;
@@ -21,9 +21,8 @@
   gap: 10px;
   padding-left: 20px;
 
-  @media (max-width: 1090px) {
-  z-index: 10;
-  }
+
+
 }
 
 .bd-left-bar.active {
