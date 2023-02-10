@@ -1,16 +1,13 @@
 @import "../../variables";
-.auth-wrapper{
-  font-family:"Quicksand";
+.auth-wrapper {
+  font-family: "Quicksand";
   min-height: 100vh;
   display: flex;
   justify-content: center;
   padding-top: 125px;
 }
 
-.auth-content{
-
-  
-
+.auth-content {
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 150px);
@@ -20,11 +17,9 @@
   padding-top: 20px;
 
   padding: 0 15px;
-
-
 }
 
-.auth-title{
+.auth-title {
   font-size: 1.875rem;
   text-align: center;
   margin: 0;
@@ -34,44 +29,41 @@
   margin-bottom: 30px;
 }
 
-.auth-login{
-
+.auth-login {
 }
 
-.admin-content-container{
-  display:flex;
+.admin-content-container {
+  display: flex;
   justify-content: center;
   margin-bottom: 100px;
 }
 
+.b-main-content-loader {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
 
-.b-main-content-loader{
-  position:absolute;
-  top:75px;
- left:0;
- right:0;
- bottom:0;
- z-index: 15;
-
- display: flex;
- background-color: $lightgrey_1;
- align-items :center;
+  display: flex;
+  background-color: $lightgrey_1;
+  align-items: center;
 }
 
-.b-main-content-loader.active{
-  display:flex;
+.b-main-content-loader.active {
+  display: flex;
 }
 
-.b-main-content-loader-container{
-
+.b-main-content-loader-container {
   position: fixed;
   top: 50%;
-  left:50%;
+  left: 50%;
   bottom: 50%;
   right: 50%;
 
-display: flex;
-height: 75px;
-width: 75px;
-transform: translate(-50%,-50%);
+  display: flex;
+  height: 75px;
+  width: 75px;
+  transform: translate(-50%, -50%);
 }

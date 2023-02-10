@@ -1,12 +1,10 @@
 import "./LeftBar.scss";
 import Cookies from "js-cookie";
-import {useRef, useEffect} from "react"
-import { RxCross1 } from "react-icons/rx"
+import {  useEffect } from "react";
+import { RxCross1 } from "react-icons/rx";
 const LeftBar = (props) => {
+  const btnStyle = { color: "#424242", width: "20px", height: "20px" };
 
-
-  const btnStyle = { color: "#424242", width: "20px", height: "20px" }
-  
   const toggleModalCreateYearDisplay = () => {
     const mainModalElem = document.querySelector(".bdl-create-year-modal");
     const secondaryModalElem = document.querySelector(
@@ -47,45 +45,34 @@ const LeftBar = (props) => {
 
   // props.topBarElem pour la topbar width
 
-
-
   useEffect(() => {
     //props.leftBarElem.current.style.marginTop = `calc( ${props.topBarElem.current.offsetHeight}px)`
-  },[props.selectedCategory])
-  
-
+  }, [props.selectedCategory]);
 
   return (
     <aside className="bd-left-bar" ref={props.leftBarElem}>
-
-      <div className="bd-left-bar-btn-to-display-elem" onClick={(e)=>props.closeLeftBar(e)}>
+      <div
+        className="bd-left-bar-btn-to-display-elem"
+        onClick={(e) => props.closeLeftBar(e)}
+      >
         <h5>Retour</h5>
         <RxCross1 style={btnStyle} />
       </div>
-   
-          <div
-            className="bdl-create-year"
-            onClick={toggleModalCreateYearDisplay}
-          >
-            <h5>Créer catégorie</h5>
-          </div>
-          <div
-            className="bdl-create-photo"
-            onClick={toggleModalCreatePhotoDisplay}
-          >
-            <h5>Créer image</h5>
-          </div>
-          <div className="bdl-create-photo hide">
-            <h5>Démasquer</h5>
-            <input
-              type="checkbox"
-              checked={!props.hideImages}
-              onChange={(e) => toggleImagesHiding(e)}
-            ></input>
-          </div>
-     
-   
-      
+
+      <div className="bdl-create-year" onClick={toggleModalCreateYearDisplay}>
+        <h5>Créer catégorie</h5>
+      </div>
+      <div className="bdl-create-photo" onClick={toggleModalCreatePhotoDisplay}>
+        <h5>Créer image</h5>
+      </div>
+      <div className="bdl-create-photo hide">
+        <h5>Démasquer</h5>
+        <input
+          type="checkbox"
+          checked={!props.hideImages}
+          onChange={(e) => toggleImagesHiding(e)}
+        ></input>
+      </div>
     </aside>
   );
 };

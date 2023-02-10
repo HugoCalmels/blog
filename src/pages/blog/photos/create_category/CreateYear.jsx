@@ -1,7 +1,7 @@
 import "./CreateYear.scss";
-import {useRef } from "react";
+import { useRef } from "react";
 import xCloseIcon from "../../../../assets/icons/xCloseIcon.png";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const CreateYear = (props) => {
@@ -11,11 +11,11 @@ const CreateYear = (props) => {
   if (cookie !== undefined) {
     cookieToken = cookie;
   }
-  const [category, setCategory] = useState("")
+  const [category, setCategory] = useState("");
 
   const createYearBtn = useRef(null);
 
-  const canSave = Boolean(category) || false
+  const canSave = Boolean(category) || false;
 
   const closeModal = () => {
     const modal = document.querySelector(".bdl-create-year-modal");
@@ -24,18 +24,18 @@ const CreateYear = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let body
+    let body;
     body = {
       photo_category: {
         title: e.target[0].value,
       },
     };
-   
+
     const config = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookieToken}`
+        Authorization: `Bearer ${cookieToken}`,
       },
       body: JSON.stringify(body),
     };
@@ -43,7 +43,6 @@ const CreateYear = (props) => {
 
     window.location.reload(false);
   };
-
 
   const tryToDestroyCategory = (e) => {
     let getSelects = document.querySelectorAll(".bdl-custom-select-destroy");
@@ -64,22 +63,19 @@ const CreateYear = (props) => {
       headers: {
         Authorization: `Bearer ${cookieToken}`,
       },
-
     };
     await fetch(`${BASE_URL}/api/v1/photo_categories/${id}`, config);
-    
+
     window.location.reload(false);
   };
 
   useEffect(() => {
-
     if (canSave && createYearBtn.current !== undefined) {
-      createYearBtn.current.classList.add('active')
+      createYearBtn.current.classList.add("active");
     } else {
-      createYearBtn.current.classList.remove('active')
+      createYearBtn.current.classList.remove("active");
     }
-  
-  },[category])
+  }, [category]);
 
   return (
     <div className="bdl-create-year-modal" ref={props.modalCreateCate}>
@@ -92,13 +88,18 @@ const CreateYear = (props) => {
       </div>
       <form className="bdl-create-year-form" onSubmit={(e) => handleSubmit(e)}>
         <label>Ajouter une catégorie :</label>
-        <input id="bdl-create-year-text-input" type="text" value={category} onChange={(e)=>setCategory(e.target.value)}></input>
+        <input
+          id="bdl-create-year-text-input"
+          type="text"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        ></input>
         <div className="bdl-send-input">
           <input
             className="bdl-create-year-form-send-btn"
             type="submit"
             value="Valider"
-            disabled = {!canSave}
+            disabled={!canSave}
             ref={createYearBtn}
           ></input>
         </div>
@@ -114,15 +115,16 @@ const CreateYear = (props) => {
         onSubmit={(e) => tryToDestroyCategory(e)}
       >
         <select id="remove-categories">
-          {props.categories && props.categories.map((category) => (
-            <option
-              className="bdl-custom-select-destroy"
-              key={category.id}
-              data-id={category.id}
-            >
-              {category.title}
-            </option>
-          ))}
+          {props.categories &&
+            props.categories.map((category) => (
+              <option
+                className="bdl-custom-select-destroy"
+                key={category.id}
+                data-id={category.id}
+              >
+                {category.title}
+              </option>
+            ))}
         </select>
         <div className="bdl-send-input-container">
           <input

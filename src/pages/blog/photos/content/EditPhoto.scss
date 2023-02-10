@@ -17,16 +17,15 @@
   font-family: "Quicksand";
   padding: 15px;
   flex-direction: column;
-  @media  (max-width:650px){
-
+  @media (max-width: 650px) {
     left: 15px;
     right: 15px;
   }
 }
 
-.bdl-edit-year-photo-title h5{
-  margin:0;
-  padding:0;
+.bdl-edit-year-photo-title h5 {
+  margin: 0;
+  padding: 0;
   font-size: 0.9375rem;
   font-weight: 700;
 }
@@ -37,25 +36,25 @@
   top: 15px;
 }
 
-.bd-edit-close-btn img{
+.bd-edit-close-btn img {
   width: 20px;
   height: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.bd-edit-form{
-  display:flex;
+.bd-edit-form {
+  display: flex;
   flex-direction: column;
   margin-top: 20px;
   gap: 10px;
 }
 
-.bd-edit-input-container{
-  display:flex;
+.bd-edit-input-container {
+  display: flex;
   flex-direction: column;
 }
 
-.bd-edit-input-container input{
+.bd-edit-input-container input {
   font-size: 0.9375rem;
   padding: 5px 10px;
   font-weight: 700;
@@ -64,47 +63,47 @@
   outline: none;
   border: 1px solid $darkgrey_1;
 }
-.bd-edit-input-container select{
+.bd-edit-input-container select {
   font-size: 0.9375rem;
   padding: 5px 10px;
   font-weight: 700;
   color: $darkgrey_1;
 }
-.bd-edit-input-container option{
+.bd-edit-input-container option {
   font-size: 0.9375rem;
   font-weight: 700;
   color: $font_grey_1;
   border-radius: 0px;
 }
 
-.bd-edit-input-container label{
-  font-size:0.9375rem;
+.bd-edit-input-container label {
+  font-size: 0.9375rem;
   font-weight: 500;
   color: $darkgrey_1;
 }
 
-.bd-edit-input-send-container{
-  display:flex;
+.bd-edit-input-send-container {
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-top: 20px;
 }
 
-.bd-edit-input-send-container input{
-  cursor:pointer;
-padding: 5px 10px;
-border-radius: 5px;
-font-size: 0.9375rem;
-font-weight: 700;
-border: 1px solid $darkgrey_1;
-outline: none;
+.bd-edit-input-send-container input {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: 1px solid $darkgrey_1;
+  outline: none;
 }
 
-.bd-edit-input-container-upload{
+.bd-edit-input-container-upload {
   display: flex;
   flex-direction: column;
 }
 
-.bd-edit-input-container.int input{
+.bd-edit-input-container.int input {
   width: 100px;
 }

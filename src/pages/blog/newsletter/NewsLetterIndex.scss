@@ -1,6 +1,6 @@
 @import "../../../variables";
-.b-newsletter-wrapper{
-  font-family:"Quicksand";
+.b-newsletter-wrapper {
+  font-family: "Quicksand";
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,8 +10,7 @@
   }
 }
 
-.b-newsletter-content{
-
+.b-newsletter-content {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -22,12 +21,10 @@
   padding-top: 20px;
 
   padding: 0 15px;
-
-
 }
 
 #b-newsletter-content-title {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   width: 100%;
   color: #737373;
   margin: 0;
@@ -38,58 +35,53 @@
   text-align: center;
 }
 
-.b-newsletter-cc-wrapper{
-
+.b-newsletter-cc-wrapper {
   display: flex;
   flex-direction: row;
 
-  @media (max-width: 800px){
+  @media (max-width: 800px) {
     width: 100%;
     flex-direction: column;
     align-items: center;
   }
 }
 .b-newsletter-content-container {
-
-
   height: 100%;
   display: flex;
   flex-direction: row;
   height: 66%;
   align-items: center;
-  @media (max-width: 800px){
- 
+  @media (max-width: 800px) {
   }
-
 }
 
-.b-newsletter-content-container h3{
+.b-newsletter-content-container h3 {
   font-size: 1.875rem;
   margin: 0;
   color: $darkgrey_1;
   font-weight: 700;
-  display:flex;
+  display: flex;
   align-items: center;
 
   margin-top: 15px;
 }
 
-#b-newsletter-subscribe-infos{
+#b-newsletter-subscribe-infos {
   font-size: 1.125rem;
   margin: 0;
   margin-top: 15px;
 }
 
-#b-newsletter-join-form{
+#b-newsletter-join-form {
   display: flex;
   flex-direction: column;
 
   max-width: calc(1180px / 2 + 50px);
 }
 
-#b-newsletter-input-email{
+#b-newsletter-input-email {
   font-family: "Quicksand";
-  border:none;
+  border: none;
   outline: none;
   padding: 10px 15px;
   font-size: 1.125rem;
@@ -97,27 +89,25 @@
   color: $font_grey_1;
   margin-top: 15px;
   border: 1px solid $lightgrey-3;
-  border-radius:4px;
+  border-radius: 4px;
 }
 
-.b-newsletter-input-checkbox-container{
+.b-newsletter-input-checkbox-container {
   margin-top: 15px;
 
-  display:flex;
+  display: flex;
   flex-direction: row;
-
 }
 
-#b-newsletter-input-checkbox{
+#b-newsletter-input-checkbox {
   height: 18px;
   width: 18px;
   position: absolute;
   top: -3px;
-  left:-4px;
-
+  left: -4px;
 }
 
-.b-newsletter-checkbox-wrapper{
+.b-newsletter-checkbox-wrapper {
   display: flex;
   align-items: flex-start;
 
@@ -128,25 +118,24 @@
   height: 40px;
 }
 
-.b-newsletter-input-checkbox-container label{
+.b-newsletter-input-checkbox-container label {
   font-size: 0.9375rem;
   color: $darkgrey_1;
   font-weight: 400;
 }
-.b-newsletter-input-send-container{
-
+.b-newsletter-input-send-container {
   display: flex;
-  @media (max-width: 1160px){
+  @media (max-width: 1160px) {
     margin-top: 15px;
   }
 }
 
-.b-newsletter-input-send-container input{
+.b-newsletter-input-send-container input {
   font-family: "Quicksand";
   display: flex;
   border: none;
   outline: none;
-  font-size: .9375rem;
+  font-size: 0.9375rem;
   padding: 10px 15px;
   background-color: $lightgrey-2;
 
@@ -155,26 +144,24 @@
   cursor: pointer;
   letter-spacing: 1px;
   margin-bottom: 15px;
-  transition: .15s;
-
+  transition: 0.15s;
 }
-.b-newsletter-input-send-container input:hover{
-
-  transition: .15s;
+.b-newsletter-input-send-container input:hover {
+  transition: 0.15s;
   background-color: $lightgrey-3;
 }
 
-#b-newsletter-label-rgpd span{
+#b-newsletter-label-rgpd span {
   font-weight: 600;
-  text-decoration:none;
+  text-decoration: none;
 }
 
-#b-newsletter-label-rgpd span:hover{
-  text-decoration:underline;
-  cursor:pointer;
+#b-newsletter-label-rgpd span:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.b-newsletter-hero{
+.b-newsletter-hero {
   position: absolute;
   top: 75px;
   bottom: 50px;
@@ -187,33 +174,29 @@
   justify-content: center;
 }
 
-.b-newsletter-content-container-sub{
-
+.b-newsletter-content-container-sub {
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
-  background-color: rgba(242, 242, 242, .5);
+  background-color: rgba(242, 242, 242, 0.5);
   height: auto;
   border: 1px solid $lightgrey-3;
-  border-radius: 4px;;
+  border-radius: 4px;
 
   flex: 4;
-
 }
 
-.b-newsletter-subtitle{
-
+.b-newsletter-subtitle {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
   flex: 3;
   padding: 10px 20px;
-
 }
 
-.b-contact-form-alerts-wrapper{
+.b-contact-form-alerts-wrapper {
   margin-top: 15px;
-  display:flex;
+  display: flex;
   width: 100%;
 }

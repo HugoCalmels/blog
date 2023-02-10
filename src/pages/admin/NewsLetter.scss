@@ -1,41 +1,40 @@
 @import "../../variables";
 
-.admin-newsletter{
+.admin-newsletter {
   font-family: "Quicksand";
-  width:100%;
-  @media (max-width:800px){
+  width: 100%;
+  @media (max-width: 800px) {
     margin-bottom: 100px;
   }
 }
-.admin-newsletter-paragraph{
+.admin-newsletter-paragraph {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
 
-.admin-newsletter-paragraph h3{
-  margin:0;
+.admin-newsletter-paragraph h3 {
+  margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 15px;
   color: $darkgrey_1;
 }
 
-.admin-newsletter-paragraph p{
-  margin:0;
+.admin-newsletter-paragraph p {
+  margin: 0;
   font-size: 1.125rem;
   font-weight: 500;
   margin-bottom: 5px;
   color: $darkgrey_1;
 }
 
-.admin-newsletter-input-form{
-
+.admin-newsletter-input-form {
   display: flex;
   flex-direction: column;
 }
 
-.admin-newsletter-input-form textarea{
+.admin-newsletter-input-form textarea {
   font-family: "Quicksand";
   height: 200px;
   border: none;
@@ -48,7 +47,7 @@
   border-radius: 4px;
 }
 
-.admin-newsletter-send-input{
+.admin-newsletter-send-input {
   font-family: "Quicksand";
   font-size: 1.25rem;
   font-weight: 700;
@@ -57,23 +56,22 @@
   padding: 5px 15px;
   color: $lightgrey-3;
   border: none;
-  border: 1px solid  $lightgrey-3;
+  border: 1px solid $lightgrey-3;
   outline: none;
-  cursor:default;
+  cursor: default;
   border-radius: 4px;
   margin-top: 30px;
 }
 
-.admin-newsletter-send-input.active{
+.admin-newsletter-send-input.active {
   color: $darkgrey_1;
   border: 1px solid $darkgrey_1;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.b-admin-template-email-preview-container{
+.b-admin-template-email-preview-container {
   border: 1px solid $darkgrey_1;
   margin-top: 30px;
   border-radius: 4px;
   padding: 10px 15px;
-
 }

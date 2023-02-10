@@ -1,7 +1,6 @@
-// elements I use multiple times 
-@import "../../../variables";
-.b-index-content{
 
+@import "../../../variables";
+.b-index-content {
   padding-top: 24px;
   width: auto;
   //height: calc(100vh - 75px);
@@ -11,20 +10,19 @@
   margin-right: auto;
   font-family: "Quicksand";
 
-
   display: flex;
   flex-direction: column;
   padding-bottom: 150px;
-  @media  (max-width:800px){
+  @media (max-width: 800px) {
     padding-bottom: 200px;
   }
-  @media  (max-width:600px){
+  @media (max-width: 600px) {
     padding-bottom: 250px;
   }
 }
-.b-index-title-animated{
-  margin:0;
-  padding:0;
+.b-index-title-animated {
+  margin: 0;
+  padding: 0;
   margin-top: 30px;
   margin-bottom: 30px;
   text-align: center;
@@ -32,21 +30,21 @@
   font-weight: 900;
   color: $darkgrey_1;
 }
-.b-main-content-loader-home{
-  position:absolute;
-  top:0px;
- left:0;
- right:0;
- bottom:0;
- z-index: 15;
+.b-main-content-loader-home {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
 
- display: none;
- background-color: $lightgrey_1;
- align-items :center;
+  display: none;
+  background-color: $lightgrey_1;
+  align-items: center;
 }
 
-.b-main-content-loader-home.active{
-  display:flex;
+.b-main-content-loader-home.active {
+  display: flex;
 }
 
 .b-index-title-animated {
@@ -58,7 +56,7 @@
 .b-index-title-animated span {
   display: inline-block;
   opacity: 0;
-  animation: animateTitle .65s ease-in-out forwards;
+  animation: animateTitle 0.65s ease-in-out forwards;
 }
 
 @keyframes animateTitle {
@@ -73,7 +71,7 @@
 }
 
 .b-index-title-animated span:nth-child(1) {
-  animation-delay: .6s;
+  animation-delay: 0.6s;
 }
 
 .b-index-title-animated span:nth-child(2) {
@@ -89,18 +87,18 @@
 }
 
 .b-index-title-animated span:nth-child(5) {
-  animation-delay: .8s;
+  animation-delay: 0.8s;
 }
 
 .b-index-title-animated span:nth-child(6) {
-  animation-delay: .85s;
+  animation-delay: 0.85s;
 }
 
 .b-index-title-animated span:nth-child(7) {
-  animation-delay: .9s;
+  animation-delay: 0.9s;
 }
 .b-index-title-animated span:nth-child(8) {
-  animation-delay: .95s;
+  animation-delay: 0.95s;
 }
 .b-index-title-animated span:nth-child(9) {
   animation-delay: 1s;
@@ -121,21 +119,19 @@
   animation-delay: 1.25s;
 }
 
-.b-custom-hr-animated-bot{
+.b-custom-hr-animated-bot {
   margin: auto;
   margin-bottom: 60px;
   margin-top: 30px;
   width: 50%;
 
-
   background-color: $font_grey_1;
   height: 4px;
-  border-radius:12px;
+  border-radius: 12px;
   padding: 0 15px;
-  animation: slideInFromLeft .75s ease-in-out forwards;
-
+  animation: slideInFromLeft 0.75s ease-in-out forwards;
 }
-.b-custom-hr-animated-top{
+.b-custom-hr-animated-top {
   margin: auto;
   margin-bottom: 30px;
   margin-top: 60px;
@@ -143,9 +139,9 @@
 
   background-color: $font_grey_1;
   height: 4px;
-  border-radius:12px;
+  border-radius: 12px;
   padding: 0 15px;
-  animation: slideInFromRight .75s ease-in-out forwards;
+  animation: slideInFromRight 0.75s ease-in-out forwards;
 }
 
 @keyframes slideInFromLeft {

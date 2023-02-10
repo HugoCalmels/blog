@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap");
 @import "./variables";
 html {
   box-sizing: border-box;
@@ -10,12 +10,10 @@ html {
   box-sizing: inherit;
 }
 
-body{
-  margin:0;
-
+body {
+  margin: 0;
 }
-#root{
-
+#root {
   height: 100%;
   position: relative;
   background-color: $lightgrey_1;

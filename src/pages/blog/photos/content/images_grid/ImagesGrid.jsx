@@ -2,26 +2,18 @@ import GridItem from "./GridItem";
 import Masonry from "react-masonry-css";
 
 const ImagesGrid = (props) => {
-
   const breakpointColumnsObj = {
     default: 3,
     1180: 2,
     700: 1,
-  
   };
-
 
   const imagesArray = () => {
-
-      return props.imageCategory.photos;
-
+    return props.imageCategory.photos;
   };
 
-  // Masonry will build only if "my-masonry-grid" &&  "grid-item" are the same component.
-  // Means I cant handle better conditionnal rendering.
   return (
     <div className={`images-grid-per-category ${props.imageCategory.title}`}>
-               
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

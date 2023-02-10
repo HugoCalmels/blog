@@ -1,9 +1,9 @@
 @import "../../../../variables";
 
-.bp-perf-edit-perf-modal-wrapper{
+.bp-perf-edit-perf-modal-wrapper {
   position: fixed;
 
-  display:none;
+  display: none;
   z-index: 14;
   max-width: 600px;
   width: auto;
@@ -13,19 +13,19 @@
   right: 0;
   top: 0;
   bottom: 0;
-  margin:auto;
-padding: 15px;
-background-color: $edit_green;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-border-radius: 8px;
-  flex-direction:column;
+  margin: auto;
+  padding: 15px;
+  background-color: $edit_green;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+  flex-direction: column;
 }
 
-.bp-perf-edit-perf-modal-wrapper.active{
+.bp-perf-edit-perf-modal-wrapper.active {
   display: flex;
 }
 
-#bp-perf-edit-perf-modal-title{
+#bp-perf-edit-perf-modal-title {
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
@@ -33,33 +33,32 @@ border-radius: 8px;
   margin-bottom: 15px;
 }
 
-.bp-close-modal-container{
+.bp-close-modal-container {
   position: absolute;
   right: 15px;
   top: 15px;
 
-  display:flex;
+  display: flex;
 }
 
-.bp-close-modal-container img{
+.bp-close-modal-container img {
   width: 20px;
   height: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.bp-perf-edit-perf-modal-wrapper form{
+.bp-perf-edit-perf-modal-wrapper form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
 }
 
-.bp-close-modal-container label{
+.bp-close-modal-container label {
   font-size: 0.9375rem;
   font-weight: 500;
 }
 
-.bp-input-text{
+.bp-input-text {
   font-size: 0.9375rem;
   font-weight: 700;
   padding: 5px 10px;
@@ -69,41 +68,38 @@ border-radius: 8px;
   color: #737373;
 }
 
-.bp-edit-perf-input{
+.bp-edit-perf-input {
   display: flex;
   flex-direction: column;
 }
 
-.bp-custom-hr{
+.bp-custom-hr {
   height: 2px;
   width: 100%;
   background-color: purple;
 }
-.bp-edit-performance-modal-secondary-title{
+.bp-edit-performance-modal-secondary-title {
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
   font-weight: 700;
-
 }
 
-.bp-input-text.textarea{
+.bp-input-text.textarea {
   height: 200px;
 }
-.bp-edit-perf-input.send{
+.bp-edit-perf-input.send {
   display: flex;
   justify-content: center;
-
 }
 
-
-.bp-edit-perf-input.send input{
-  cursor:pointer;
+.bp-edit-perf-input.send input {
+  cursor: pointer;
   color: $darkgrey_1;
   padding: 5px 10px;
   font-size: 0.9375rem;
   font-weight: 700;
-  display:flex;
+  display: flex;
   justify-content: center;
 
   width: 100px;

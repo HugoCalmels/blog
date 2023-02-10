@@ -1,33 +1,31 @@
 @import "../../../variables";
 
-.admin-topbar-container{
+.admin-topbar-container {
   position: absolute;
   top: 75px;
   background-color: $darkgrey_1;
   height: 50px;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   display: flex;
   z-index: 9;
   justify-content: center;
   border-bottom: 1px solid $lightgrey-3;
-  
-} 
+}
 
-.admin-topbar-container ul{
+.admin-topbar-container ul {
   margin: 0;
-  padding:0;
+  padding: 0;
   list-style-type: none;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
-  @media (max-width: 650px){
+  @media (max-width: 650px) {
     display: none;
   }
-
 }
-.admin-topbar-container li{
+.admin-topbar-container li {
   font-size: 1.125rem;
   font-weight: 600;
   color: $lightgrey-2;
@@ -36,25 +34,25 @@
   display: flex;
   align-items: center;
   padding: 0 15px;
-  cursor:pointer;
+  cursor: pointer;
 }
-.admin-topbar-container li:hover{
+.admin-topbar-container li:hover {
   color: $darkgrey_1;
   background-color: $lightgrey_2;
 }
 
-.admin-mobile-select-wrapper{
+.admin-mobile-select-wrapper {
   display: none;
 
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
-  @media (max-width: 650px){
+  @media (max-width: 650px) {
     display: block;
   }
 }
 
-.admin-mobile-select-wrapper select{
+.admin-mobile-select-wrapper select {
   font-family: "Quicksand";
   font-weight: 700;
   font-size: 0.9375rem;
@@ -67,7 +65,7 @@
   color: $lightgrey_2;
 }
 
-.admin-mobile-select-wrapper select option{
+.admin-mobile-select-wrapper select option {
   font-size: 0.9375rem;
   font-weight: 700;
 }

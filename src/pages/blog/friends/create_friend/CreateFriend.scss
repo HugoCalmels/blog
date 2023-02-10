@@ -1,9 +1,9 @@
 @import "../../../../variables";
 
-.b-friends-create-friend-wrapper{
+.b-friends-create-friend-wrapper {
   position: fixed;
 
-  display:none;
+  display: none;
   z-index: 99;
   max-width: 600px;
   width: auto;
@@ -13,12 +13,12 @@
   right: 0;
   top: 0;
   bottom: 0;
-  margin:auto;
-padding: 15px;
+  margin: auto;
+  padding: 15px;
 
-background-color: $lightgrey_1;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-border-radius: 8px;
+  background-color: $lightgrey_1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
   flex-direction: column;
   @media (max-width: 450px) {
     margin-left: 15px;
@@ -26,46 +26,44 @@ border-radius: 8px;
   }
 }
 
-.bp-create-friend-modal-title{
+.bp-create-friend-modal-title {
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
   font-weight: 700;
   margin-bottom: 15px;
-
 }
 
-.bp-close-modal-container{
+.bp-close-modal-container {
   position: absolute;
   right: 15px;
   top: 15px;
 
-  display:flex;
-}
-
-.bp-close-modal-container img{
-  width: 20px;
-  height: 20px;
-  cursor:pointer;
-}
-
-.b-friends-create-friend-wrapper.active{
   display: flex;
 }
 
-.bp-create-friend-input.send{
+.bp-close-modal-container img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.b-friends-create-friend-wrapper.active {
+  display: flex;
+}
+
+.bp-create-friend-input.send {
   display: flex;
   justify-content: flex-start;
   margin-top: 25px;
 }
 
-
-.bp-create-friend-input.send input{
-  cursor:pointer;
+.bp-create-friend-input.send input {
+  cursor: pointer;
   padding: 5px 10px;
   font-size: 0.9375rem;
   font-weight: 700;
-  display:flex;
+  display: flex;
   justify-content: center;
   border-radius: 4px;
   color: $darkgrey_1;

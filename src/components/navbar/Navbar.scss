@@ -1,5 +1,5 @@
 @import "../../variables";
-.b-navbar{
+.b-navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,11 +11,9 @@
   display: flex;
   justify-content: center;
   z-index: 15;
-
 }
 
-.b-navbar-wrapper{
-
+.b-navbar-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,12 +28,11 @@
   border-bottom: 1px solid $lightgrey_3;
 }
 
-.b-navbar.alert{
+.b-navbar.alert {
   background-color: $alert_red;
   border-bottom: 1px solid $darkgrey_1;
-  
 }
-.b-navbar-wrapper.alert{
+.b-navbar-wrapper.alert {
   background-color: $alert_red;
   border-bottom: 1px solid $darkgrey_1;
 }
@@ -48,14 +45,13 @@
 }
 */
 
-.b-navbar-overlay{
+.b-navbar-overlay {
   position: fixed;
- // border: 6px solid lightgreen;
+  // border: 6px solid lightgreen;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   z-index: 30;
   display: none;
-
 }

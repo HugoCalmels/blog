@@ -1,9 +1,9 @@
 @import "../../../../variables";
 
-.bp-perf-delete-performances-wrapper{
+.bp-perf-delete-performances-wrapper {
   position: fixed;
 
-  display:none;
+  display: none;
   z-index: 99;
   max-width: 400px;
   width: auto;
@@ -13,19 +13,19 @@
   right: 0;
   top: 0;
   bottom: 0;
-  margin:auto;
-padding: 15px;
-background-color: $lightgrey_1;
-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-border-radius: 8px;
+  margin: auto;
+  padding: 15px;
+  background-color: $lightgrey_1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 8px;
   flex-direction: column;
 }
 
-.bp-perf-delete-performances-wrapper.active{
+.bp-perf-delete-performances-wrapper.active {
   display: flex;
 }
 
-#bp-perf-delete-perf-modal-title{
+#bp-perf-delete-perf-modal-title {
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
@@ -33,26 +33,25 @@ border-radius: 8px;
   margin-bottom: 15px;
 }
 
-.bp-close-modal-container{
+.bp-close-modal-container {
   position: absolute;
   right: 15px;
   top: 15px;
 
-  display:flex;
+  display: flex;
 }
 
-.bp-close-modal-container img{
+.bp-close-modal-container img {
   width: 20px;
   height: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.bp-close-modal-container select{
+.bp-close-modal-container select {
   padding: 5px 10px;
 }
 
-
-#remove-perf-select{
+#remove-perf-select {
   font-size: 1rem;
   color: $font_grey_1;
   padding: 5px 10px;
@@ -63,25 +62,24 @@ border-radius: 8px;
   width: 200px;
 }
 
-#bp-perf-delete-perf-form{
-  display:flex;
+#bp-perf-delete-perf-form {
+  display: flex;
   flex-direction: column;
   margin-top: 10px;
 }
 
-.bp-delete-perf-input.send{
+.bp-delete-perf-input.send {
   display: flex;
   justify-content: flex-start;
   margin-top: 25px;
 }
 
-
-.bp-delete-perf-input.send input{
-  cursor:default;
+.bp-delete-perf-input.send input {
+  cursor: default;
   padding: 5px 10px;
   font-size: 0.9375rem;
   font-weight: 700;
-  display:flex;
+  display: flex;
   justify-content: center;
   color: $darkgrey_1;
   width: 100px;

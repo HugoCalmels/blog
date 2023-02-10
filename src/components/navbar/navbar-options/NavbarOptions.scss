@@ -1,5 +1,5 @@
 @import "../../../variables";
-.b-nabvar-options-list{
+.b-nabvar-options-list {
   list-style-type: none;
 
   display: flex;
@@ -8,17 +8,14 @@
 
   height: 100%;
   color: $darkgrey_1;
-  @media  (max-width:1090px){
+  @media (max-width: 1090px) {
     display: none;
   }
 }
 
-
-
-
-.b-navbar-option span{
+.b-navbar-option span {
   font-size: 0.9375rem;
-  font-weight:700;
+  font-weight: 700;
   //border: 1px solid green;z
   padding: 0px 32px;
   height: 100%;
@@ -29,36 +26,32 @@
   color: $darkgrey_1;
 }
 
-.b-navbar-option span:hover{
- // color: #3598D8;
+.b-navbar-option span:hover {
+  // color: #3598D8;
   //background-color: #bbbbbb;
   //font-size: 1rem;
   //font-weight:900 ;
 }
 
-.b-navbar-option{
-
+.b-navbar-option {
   margin: 0;
   padding: 0;
   //padding: 6px 16px;
   //border: 3px solid blue;
   display: flex;
   align-items: center;
-  position:relative;
-  z-index:31;
+  position: relative;
+  z-index: 31;
   //background-color: yellow;
-  cursor:pointer;
+  cursor: pointer;
   height: 100%;
   padding: 10px 0px;
-
-
 }
-.b-navbar-option.admin{
+.b-navbar-option.admin {
   //border: 4px solid red;
 }
 
-.b-navbar-option__btn{
-
+.b-navbar-option__btn {
   position: relative;
   min-width: 100%;
   font-size: 0.9375rem;
@@ -66,35 +59,29 @@
   padding: 0px 5px;
   overflow: hidden;
 }
-.b-navbar-option__btn__first-span{
-
+.b-navbar-option__btn__first-span {
   opacity: 0;
 }
-.b-navbar-option__effect span:nth-child(1){
-  font-weight:600;
-  color:$darkgrey_1;
-
+.b-navbar-option__effect span:nth-child(1) {
+  font-weight: 600;
+  color: $darkgrey_1;
 }
-.b-navbar-option__effect span:nth-child(2){
-  color: #3598D8;;
+.b-navbar-option__effect span:nth-child(2) {
+  color: #3598d8;
   font-weight: 900;
 }
-.b-navbar-option__effect{
+.b-navbar-option__effect {
   position: absolute;
   top: 0;
-
 
   display: flex;
   flex-direction: column;
 
   //transform: translateY(calc(-0.975rem - 5px));
-  transition: .3s;
+  transition: 0.3s;
 }
 
-
-
-.b-navbar-option-btn-container{
-  
+.b-navbar-option-btn-container {
   height: 100%;
 
   display: flex;
@@ -103,13 +90,11 @@
   position: relative;
   cursor: pointer;
 }
-.b-navbar-option-btn-container.admin{
-
+.b-navbar-option-btn-container.admin {
   border-radius: 4px;
-
 }
 
-.b-navbar-option__linebar_effect-container{
+.b-navbar-option__linebar_effect-container {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -119,123 +104,104 @@
   width: 100%;
 }
 
-
-.b-navbar-option__linebar_effect{
-
-
+.b-navbar-option__linebar_effect {
   height: 3px;
-  background-color: #3598D8;
-  width:0;
-  transition: .3s;
-
-
+  background-color: #3598d8;
+  width: 0;
+  transition: 0.3s;
 }
-.b-navbar-option__linebar_selected_option{
-
-
+.b-navbar-option__linebar_selected_option {
   height: 3px;
   background-color: $default_blue;
-  width:100%;
+  width: 100%;
   display: none;
-
-
 }
-.b-navbar-option__linebar_selected_option.active{
+.b-navbar-option__linebar_selected_option.active {
   display: block;
 }
 
-.b-navbar-option-dessins__dropdown{
+.b-navbar-option-dessins__dropdown {
   // dropdown menu container
   position: absolute;
   top: 74px;
-  left:0;
+  left: 0;
   width: 300px;
 
   background-color: $lightgrey_1;
-  transition: .3s;
+  transition: 0.3s;
   //width: 0px;
   //height: 0px;
   overflow: hidden;
-   width: 0px;
+  width: 0px;
   height: 0px;
   border: 1px solid $lightgrey_3;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-.b-navbar-option-dessins__dropdown a{
-
+.b-navbar-option-dessins__dropdown a {
   margin: 0;
   padding: 0;
   font-size: 0.9375rem;
   font-weight: 600;
   padding: 10px 10px;
-  transition: .3s;
-  cursor:pointer;
-  text-decoration-color: #3598D8;
+  transition: 0.3s;
+  cursor: pointer;
+  text-decoration-color: #3598d8;
 }
 
-.b-navbar-option-dessins__dropdown a:hover{
+.b-navbar-option-dessins__dropdown a:hover {
   //background-color: red;
 
   text-decoration: underline;
-
 }
-.dessins__dropdown-menu{
+.dessins__dropdown-menu {
   padding: 10px;
   display: flex;
   flex-direction: column;
-
 }
 
-.b-navbar-option-icon{
+.b-navbar-option-icon {
   position: absolute;
 
   height: 12px;
   width: 12px;
   display: flex;
-  transition: .3s;
+  transition: 0.3s;
   right: 0;
-  top:50%;
+  top: 50%;
   bottom: 50%;
   transform: translateY(-50%);
-  align-items:center;
+  align-items: center;
 }
-.b-navbar-option-icon.active{
-  transform:  translateY(-50%) rotate(180deg);
-  transition: .3s;
-}
-
-.b-navbar-option-btn-container.contact{
-
+.b-navbar-option-icon.active {
+  transform: translateY(-50%) rotate(180deg);
+  transition: 0.3s;
 }
 
-.b-navbar-option-btn-container.dessins{
+.b-navbar-option-btn-container.contact {
+}
+
+.b-navbar-option-btn-container.dessins {
   margin-right: 20px;
 }
 
-.b-navbar-option-btn-container.newsletter{
-
+.b-navbar-option-btn-container.newsletter {
   padding-right: 15px;
 }
-.b-navbar-option-btn-container.newsletter span{
+.b-navbar-option-btn-container.newsletter span {
   background-color: $lightgrey-2;
-
 }
-.b-navbar-option__linebar_effect-container.selected-dessins{
+.b-navbar-option__linebar_effect-container.selected-dessins {
   padding-right: 0;
-  
-
 }
-.b-navbar-option__linebar_selected_option.dessins{
-
+.b-navbar-option__linebar_selected_option.dessins {
 }
 
-.b-navbar-option__linebar_effect-container.photos{
-
+.b-navbar-option__linebar_effect-container.photos {
 }
 
-.b-navbar-subscribe-newsletter-open-btn{
+.b-navbar-subscribe-newsletter-open-btn {
   font-family: "Quicksand";
   font-weight: 600;
   font-size: 0.9375rem;
@@ -244,19 +210,16 @@
   background-color: $lightgrey-2;
   padding: 6px 12px;
   border-radius: 4px;
-  cursor:pointer;
+  cursor: pointer;
   color: $darkgrey_1;
   transition: 0.15s;
-
-
 }
 
-.b-navbar-subscribe-newsletter-open-btn:hover{
+.b-navbar-subscribe-newsletter-open-btn:hover {
   background-color: $lightgrey-3;
   transition: 0.15s;
-
 }
 
-.b-navbar-option-btn-container.newsletter{
-  cursor:default;
+.b-navbar-option-btn-container.newsletter {
+  cursor: default;
 }

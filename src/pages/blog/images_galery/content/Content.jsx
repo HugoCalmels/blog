@@ -1,15 +1,14 @@
 import "./Content.scss";
 
-import { useState, useContext, useRef , useEffect} from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import ImagesReader from "./images_reader/ImagesReader";
 import EditPhoto from "./EditPhoto";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import Cookies from "js-cookie";
-import ImagesGrid from "./images_grid/ImagesGrid"
+import ImagesGrid from "./images_grid/ImagesGrid";
 
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const Content = (props) => {
-
   let cookieToken = "";
   const cookie2 = Cookies.get("cie-lutin-auth-token");
 
@@ -28,7 +27,7 @@ const Content = (props) => {
 
   const imagesReaderElement = useRef(null);
   const EditModalElem = useRef(null);
-  const imagesGaleryContainerElem = useRef(null)
+  const imagesGaleryContainerElem = useRef(null);
 
   const openImagesReader = (
     e,
@@ -40,7 +39,7 @@ const Content = (props) => {
     e.preventDefault();
 
     imagesReaderElement.current.style.display = "flex";
-    props.scrollToTopElem.current.classList.remove("active")
+    props.scrollToTopElem.current.classList.remove("active");
     setDefaultArrayAndIndex({
       category: category,
       imageIndex: imageIndex,
@@ -48,9 +47,8 @@ const Content = (props) => {
     });
     setDefaultCustomIndex(customIndex);
     if (props.leftBarTriggerBtnElem.current) {
-      props.leftBarTriggerBtnElem.current.classList.add("inactive")
+      props.leftBarTriggerBtnElem.current.classList.add("inactive");
     }
-  
   };
 
   const tryToDestroyImage = (image, category) => {
@@ -107,7 +105,6 @@ const Content = (props) => {
           }),
         };
       }
-      
     });
     setValue(newValue);
   };
@@ -119,8 +116,8 @@ const Content = (props) => {
   };
 
   const handleHideImage = async (e, image, category) => {
-    e.preventDefault()
-    let body 
+    e.preventDefault();
+    let body;
     if (props.arg === "dessins") {
       body = {
         dessin: {
@@ -140,7 +137,7 @@ const Content = (props) => {
         },
       };
     }
-    
+
     const config = {
       method: "PUT",
       headers: {
@@ -149,7 +146,7 @@ const Content = (props) => {
       },
       body: JSON.stringify(body),
     };
-    let res
+    let res;
     if (props.arg === "dessins") {
       res = await fetch(
         `${BASE_URL}/api/v1/dessin_categories/${category.id}/dessins/${image.id}`,
@@ -166,7 +163,7 @@ const Content = (props) => {
         config
       );
     }
-   
+
     const data = await res.json();
     let newValue = value.map((category) => {
       if (props.arg === "dessins") {
@@ -174,7 +171,10 @@ const Content = (props) => {
           ...category,
           dessins: category.dessins.map((image) => {
             if (image.id === data.id) {
-              return { ...image, has_to_be_displayed: data.has_to_be_displayed };
+              return {
+                ...image,
+                has_to_be_displayed: data.has_to_be_displayed,
+              };
             } else {
               return image;
             }
@@ -185,7 +185,10 @@ const Content = (props) => {
           ...category,
           paysages: category.paysages.map((image) => {
             if (image.id === data.id) {
-              return { ...image, has_to_be_displayed: data.has_to_be_displayed };
+              return {
+                ...image,
+                has_to_be_displayed: data.has_to_be_displayed,
+              };
             } else {
               return image;
             }
@@ -196,14 +199,16 @@ const Content = (props) => {
           ...category,
           carnets: category.carnets.map((image) => {
             if (image.id === data.id) {
-              return { ...image, has_to_be_displayed: data.has_to_be_displayed };
+              return {
+                ...image,
+                has_to_be_displayed: data.has_to_be_displayed,
+              };
             } else {
               return image;
             }
           }),
         };
       }
-      
     });
     setValue(newValue);
   };
@@ -214,34 +219,27 @@ const Content = (props) => {
     cookieIsAuth = JSON.parse(cookie);
   }
 
-
+  useEffect(() => {
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`;
+  }, []);
 
   useEffect(() => {
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`;
 
-    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
-  }, [])
-  
-  useEffect(() => {
-    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
-
-    window.scrollTo({ top: '0px'});
-    
-    
-  }, [props.selectedCategory])
-
-
+    window.scrollTo({ top: "0px" });
+  }, [props.selectedCategory]);
 
   const capitalizeAndStyleString = (string) => {
     if (string === "dessins") {
-      return "DESSINS ET CROQUIS"
+      return "DESSINS ET CROQUIS";
     }
     if (string === "paysages") {
-      return "PAYSAGES"
+      return "PAYSAGES";
     }
     if (string === "carnets") {
-      return "CARNETS DE VOYAGE"
+      return "CARNETS DE VOYAGE";
     }
-  }
+  };
 
   return (
     <section className="bd-category-wrapper" ref={props.contentWrapperRef}>
@@ -263,19 +261,22 @@ const Content = (props) => {
         setIsLoading={props.setIsLoading}
       />
       <div className="bd-images-container" ref={imagesGaleryContainerElem}>
-        <h2 id="b-images-galery-title">{capitalizeAndStyleString(props.arg)} {props.selectedCategory ? <>: {props.selectedCategory}</>:<></>}</h2>
+        <h2 id="b-images-galery-title">
+          {capitalizeAndStyleString(props.arg)}{" "}
+          {props.selectedCategory ? <>: {props.selectedCategory}</> : <></>}
+        </h2>
         {props.images &&
           props.images.map((imageCategory, cateIndex) => (
             <>
               <ImagesGrid
-                   arg={props.arg}
-                   cateIndex={cateIndex}
-                   cookieIsAuth={cookieIsAuth}
-                   handleHideImage={handleHideImage}
-                   imageCategory={imageCategory}
-                   openEditModal={openEditModal}
-                   tryToDestroyImage={tryToDestroyImage}
-                   openImagesReader={openImagesReader}
+                arg={props.arg}
+                cateIndex={cateIndex}
+                cookieIsAuth={cookieIsAuth}
+                handleHideImage={handleHideImage}
+                imageCategory={imageCategory}
+                openEditModal={openEditModal}
+                tryToDestroyImage={tryToDestroyImage}
+                openImagesReader={openImagesReader}
               />
             </>
           ))}

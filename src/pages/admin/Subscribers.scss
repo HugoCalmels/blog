@@ -1,8 +1,8 @@
 @import "../../variables";
 
-.admin-subscribers{
+.admin-subscribers {
   font-family: "Quicksand";
-  width:100%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -20,42 +20,38 @@
   margin-bottom: 30px;
 }
 
-.admin-subs-table{
+.admin-subs-table {
   border: 1px solid $darkgrey_1;
   border-collapse: collapse;
 }
-.admin-subs-table tr{
+.admin-subs-table tr {
   border: 1px solid $darkgrey_1;
   border-collapse: collapse;
 }
-.admin-subs-table td{
+.admin-subs-table td {
   font-size: 1.125rem;
   color: $darkgrey_1;
   font-weight: 500;
   border: 1px solid $darkgrey_1;
   border-collapse: collapse;
-
 }
 
-
-.b-td-index{
+.b-td-index {
   text-align: center;
 }
 
-.b-td-destroy-guest{
+.b-td-destroy-guest {
   text-align: center;
 }
 
-.b-td-joindate{
+.b-td-joindate {
   padding: 10px 15px;
 }
-.b-td-email{
+.b-td-email {
   padding: 10px 15px;
 }
 
-.b-td-destroy-guest span{
-
-
+.b-td-destroy-guest span {
   height: 18px;
   width: 18px;
 }

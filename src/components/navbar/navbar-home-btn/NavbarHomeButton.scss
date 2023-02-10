@@ -1,37 +1,34 @@
 @import "../../../variables";
-.b-navbar-home-button-wrapper{
-margin-left:15px;
+.b-navbar-home-button-wrapper {
+  margin-left: 15px;
 }
-.b-navbar-main-home-button{
+.b-navbar-main-home-button {
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
   gap: 10px;
   height: 75px;
 }
-.b-navbar-index-link{
+.b-navbar-index-link {
   text-decoration: none;
   font-weight: 900;
   font-size: 0.9375rem;
   color: $darkgrey_1;
-  transition: .3s;
+  transition: 0.3s;
 }
-.b-navbar-index-link:hover{
-  transition: .3s;
+.b-navbar-index-link:hover {
+  transition: 0.3s;
   color: $default_blue;
 }
 
-
-.b-navbar-main-home-button img{
+.b-navbar-main-home-button img {
   height: 15px;
   width: 15px;
-  transition: .5s;
+  transition: 0.5s;
   cursor: pointer;
-
 }
 
-
-.b-navbar-index-list-modal.active{
+.b-navbar-index-list-modal.active {
   display: flex;
 }
 .b-navbar-triangle {
@@ -39,11 +36,10 @@ margin-left:15px;
   height: 0;
   border-style: solid;
   border-width: 5px 10px 5px 0;
-border-color: transparent #dddddd transparent transparent;
+  border-color: transparent #dddddd transparent transparent;
 }
 
-.b-navbar-container{
-
+.b-navbar-container {
   display: flex;
   flex-direction: column;
   background-color: #dddddd;
@@ -52,8 +48,7 @@ border-color: transparent #dddddd transparent transparent;
   border-radius: 4px;
 }
 
-.b-navbar-container h5{
-
+.b-navbar-container h5 {
   margin: 0;
   padding: 0;
   height: 20px;
@@ -65,16 +60,14 @@ border-color: transparent #dddddd transparent transparent;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 2px;
-
 }
 
-.b-navbar-container h5:hover{
+.b-navbar-container h5:hover {
   background-color: #bbbbbb;
-  color: #3598D8;
+  color: #3598d8;
 }
 
-.b-navbar-option-btn-container-index{
-  
+.b-navbar-option-btn-container-index {
   height: 100%;
 
   display: flex;
@@ -82,12 +75,9 @@ border-color: transparent #dddddd transparent transparent;
   padding: 0px;
   position: relative;
   cursor: pointer;
-
 }
-.b-navbar-option__linebar_effect-container.home{
-
- padding: 0;
+.b-navbar-option__linebar_effect-container.home {
+  padding: 0;
 }
-.b-navbar-option__linebar_effect.home{
-
+.b-navbar-option__linebar_effect.home {
 }

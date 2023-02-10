@@ -1,30 +1,28 @@
 @import "../../../variables";
-.b-footer-policy-wrapper{
+.b-footer-policy-wrapper {
   position: fixed;
 
   left: 0;
   right: 0;
   top: 0;
-  bottom:  0px;
+  bottom: 0px;
 
   display: none;
   z-index: 5;
   overflow: hidden;
-  @media  (max-width:650px){
-
+  @media (max-width: 650px) {
     margin-left: 15px;
     margin-right: 15px;
   }
-
 }
 
-.b-footer-policy-wrapper.active{
+.b-footer-policy-wrapper.active {
   display: flex;
 }
 
-.b-footer-policy-container{
+.b-footer-policy-container {
   position: absolute;
- border-radius: 6px;
+  border-radius: 6px;
   width: 600px;
   top: 125px;
   bottom: 20%;
@@ -37,38 +35,35 @@
   background-color: white;
   flex-direction: column;
   overflow: hidden;
-  @media  (max-width:650px){
+  @media (max-width: 650px) {
     width: auto;
-    
   }
 }
 
-.b-footer-policy-overlay{
+.b-footer-policy-overlay {
   position: fixed;
   bottom: 0;
-  left:0;
-  top:0;
-  right:0;
+  left: 0;
+  top: 0;
+  right: 0;
   z-index: 4;
   background-color: black;
   opacity: 0.5;
 }
 
-.b-footer-policy-close-btn{
+.b-footer-policy-close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   display: flex;
   cursor: pointer;
-  
 }
-.b-footer-policy-close-btn img{
+.b-footer-policy-close-btn img {
   height: 20px;
   width: 20px;
 }
 
-.b-footer-policy-header{
-
+.b-footer-policy-header {
   padding-left: 10px;
   padding-top: 10px;
   //border: 2px solid black;
@@ -77,38 +72,38 @@
   border-bottom: 1px solid $lightgrey_3;
 }
 
-.b-footer-policy-header h5{
-  margin:0;
+.b-footer-policy-header h5 {
+  margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 5px;
   color: $darkgrey_1;
 }
-.b-footer-policy-content{
+.b-footer-policy-content {
   overflow-y: scroll;
 
   padding: 20px 20px;
 }
 
-.b-footer-policy-close-btn-svg:hover{
+.b-footer-policy-close-btn-svg:hover {
   //color:yellow;
   //colortransform: scale(1.5);
 }
 
-.b-footer-policy-content h6{
+.b-footer-policy-content h6 {
   margin: 0;
-  font-size:0.9375rem; 
+  font-size: 0.9375rem;
   font-weight: 700;
   color: $font_grey_1;
 }
-.b-footer-policy-content p{
+.b-footer-policy-content p {
   margin: 0;
-  font-size:0.9375rem; 
+  font-size: 0.9375rem;
   font-weight: 500;
   color: $font_grey_1;
 }
 
-.b-footer-policy-custom-hr{
+.b-footer-policy-custom-hr {
   width: 100%;
   height: 1px;
   background-color: $lightgrey_3;
@@ -117,20 +112,18 @@
   width: 95%;
 }
 
-.b-footer-policy-spe-paragraph{
+.b-footer-policy-spe-paragraph {
   padding-top: 10px;
-
 }
 
-
-.b-website-text-link{
+.b-website-text-link {
   font-weight: 700;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.b-website-text-link-external{
+.b-website-text-link-external {
   font-weight: 700;
-  cursor:pointer;
+  cursor: pointer;
   color: #737373;
   text-decoration: none;
 }

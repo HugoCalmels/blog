@@ -1,9 +1,9 @@
 @import "../../../../../variables";
-.b-index-content-card-edit-btn-open-modal:hover{
+.b-index-content-card-edit-btn-open-modal:hover {
   background-color: $lightgrey-2;
 }
 
-.b-index-content-card-edit-btn-open-modal{
+.b-index-content-card-edit-btn-open-modal {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -13,22 +13,21 @@
   display: none;
   cursor: pointer;
 }
-.b-index-content-card-edit-btn-open-modal.active{
+.b-index-content-card-edit-btn-open-modal.active {
   display: flex;
- 
 }
 
-.b-index-content-card-edit-btn-open-modal img{
+.b-index-content-card-edit-btn-open-modal img {
   width: 30px;
   height: 30px;
 }
 
-.b-index-content-card-edit-modal__elem{
+.b-index-content-card-edit-modal__elem {
   position: absolute;
-left : 0;
-right: 0;
-bottom: 0;
-top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   padding: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 6px;
@@ -37,12 +36,12 @@ top:0;
   display: none;
   flex-direction: column;
 }
-.b-index-content-card-edit-modal__elem.active{
+.b-index-content-card-edit-modal__elem.active {
   display: flex;
   width: 100%;
 }
 
-.b-index-content-card-edit-modal__elem h4{
+.b-index-content-card-edit-modal__elem h4 {
   margin: 0;
   font-size: 1.15rem;
   font-weight: 700;
@@ -50,43 +49,39 @@ top:0;
   color: $darkgrey_1;
 }
 
-
-.b-index-content-card-edit-modal__elem__close-btn{
+.b-index-content-card-edit-modal__elem__close-btn {
   position: absolute;
   top: 10px;
   right: 10px;
   padding: 5px;
-  cursor:pointer;
+  cursor: pointer;
   display: flex;
-
 }
-.b-index-content-card-edit-modal__elem__close-btn img{
+.b-index-content-card-edit-modal__elem__close-btn img {
   height: 20px;
   width: 20px;
 }
 
-.b-index-content-card-edit-modal__input{
+.b-index-content-card-edit-modal__input {
   display: flex;
   flex-direction: column;
 
   gap: 5px;
-
 }
-.b-index-content-card-edit-modal__input label{
+.b-index-content-card-edit-modal__input label {
   font-size: 0.9375rem;
   font-weight: 700;
   display: flex;
   align-items: center;
 }
-.b-index-content-card-edit-modal__input input{
+.b-index-content-card-edit-modal__input input {
   font-size: 0.9375rem;
   font-weight: 700;
   padding: 5px;
   color: $font_grey_1;
-  outline:none;
-
+  outline: none;
 }
-.b-index-content-card-edit-modal__input textarea{
+.b-index-content-card-edit-modal__input textarea {
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 5px;
@@ -94,62 +89,52 @@ top:0;
   height: 200px;
   color: $font_grey_1;
   font-weight: 600;
-min-width: 100%;
-outline:none;
-
-  
+  min-width: 100%;
+  outline: none;
 }
 
-
-.b-index-content-card-edit-modal__elem form{
+.b-index-content-card-edit-modal__elem form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   height: 100%;
 }
 
-.b-index-content-card-edit-modal-top{
+.b-index-content-card-edit-modal-top {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  @media (max-width: 600px){
-    display:flex;
+  @media (max-width: 600px) {
+    display: flex;
     flex-direction: column;
   }
-
 }
 
-.b-index-content-card-edit-modal__input.send{
+.b-index-content-card-edit-modal__input.send {
   align-items: flex-start;
-
 }
-.b-index-content-card-edit-modal__input.send input{
+.b-index-content-card-edit-modal__input.send input {
   color: $darkgrey_1;
   padding: 5px 10px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.b-index-content-card-edit-modal__input span{
-
+.b-index-content-card-edit-modal__input span {
   padding: 2px 6px;
   cursor: pointer;
 
-
   margin-left: 10px;
-
 }
-.b-index-content-card-edit-modal__input span:hover{
+.b-index-content-card-edit-modal__input span:hover {
   text-decoration: underline;
 }
 
-
-
-.b-index-content-card-edit-modal__input.textarea{
+.b-index-content-card-edit-modal__input.textarea {
   height: 100%;
 
   display: flex;
   align-items: stretch;
 }
 
-.b-index-content-card-edit-modal__input.textarea textarea{
+.b-index-content-card-edit-modal__input.textarea textarea {
   height: 100%;
 }

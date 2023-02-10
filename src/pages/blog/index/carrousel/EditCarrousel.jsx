@@ -1,8 +1,8 @@
-import { useEffect, useRef } from "react";
+
 import "./EditCarrousel.scss";
 import { resizeImages } from "../../../../utils/resizeImages";
 import { useState } from "react";
-import crossIcon from "../../../../assets/icons/xCloseIcon.png"
+import crossIcon from "../../../../assets/icons/xCloseIcon.png";
 import Cookies from "js-cookie";
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const EditCarrousel = (props) => {
@@ -14,16 +14,15 @@ const EditCarrousel = (props) => {
     cookieToken = cookie;
   }
   const tryToEditImage = (e, index) => {
-    
     e.preventDefault();
-    props.setIsLoading(true)
+    props.setIsLoading(true);
     resizeImages(e.target[1].files[0]).then((imageFile) => {
       const data = new FormData();
       data.append("home_temp_image[image]", imageFile);
       submitImageToAPI(data).then((res) => {
         editImageAPI(res, index).then(() => {
-          props.setIsLoading(false)
-        })
+          props.setIsLoading(false);
+        });
       });
     });
   };
@@ -57,7 +56,7 @@ const EditCarrousel = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookieToken}`
+        Authorization: `Bearer ${cookieToken}`,
       },
       body: JSON.stringify(body),
     };
@@ -96,7 +95,7 @@ const EditCarrousel = (props) => {
         className="b-index-carrousel-edit-modal-close-btn"
         onClick={(e) => props.closeEditModal(e)}
       >
-        <img src={crossIcon} alt="close edit modal"/>
+        <img src={crossIcon} alt="close edit modal" />
       </div>
       <form
         className="b-index-carrousel-edit-form"

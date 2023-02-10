@@ -1,19 +1,18 @@
-
 @import "../../../../variables";
-.b-index-carrousel-edit-modal{
+.b-index-carrousel-edit-modal {
   position: absolute;
   top: 5px;
   right: 5px;
   width: auto;
   height: auto;
 
-  z-index:6;
+  z-index: 6;
   background-color: $edit_green;
   padding: 15px;
   display: none;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  @media (max-width:400px){
+  @media (max-width: 400px) {
     left: 0;
     right: 0;
     bottom: 0;
@@ -21,40 +20,40 @@
   }
 }
 
-.b-index-carrousel-edit-modal.active{
+.b-index-carrousel-edit-modal.active {
   display: block;
 }
 
-.b-index-carrousel-edit-modal h4{
-  margin:0;
-  padding:0;
+.b-index-carrousel-edit-modal h4 {
+  margin: 0;
+  padding: 0;
   margin-bottom: 30px;
   font-size: 1.15rem;
   font-weight: 700;
 }
 
-.b-index-carrousel-edit-form{
+.b-index-carrousel-edit-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.b-index-carrousel-edit-input select{
+.b-index-carrousel-edit-input select {
   width: 100px;
 }
 
-.b-index-carrousel-edit-input{
+.b-index-carrousel-edit-input {
   display: flex;
   flex-direction: column;
 }
 
-.b-index-carrousel-edit-input label{
-  font-size:0.9375rem;
+.b-index-carrousel-edit-input label {
+  font-size: 0.9375rem;
   font-weight: 500;
   margin-bottom: 5px;
 }
 
-.b-index-carrousel-edit-input.send{
+.b-index-carrousel-edit-input.send {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
@@ -62,25 +61,23 @@
   align-items: flex-start;
 }
 
-.b-index-carrousel-edit-input.send input{
+.b-index-carrousel-edit-input.send input {
   font-size: 0.9375rem;
   font-weight: 700;
- padding: 5px 10px;
- color: $darkgrey_1;
- outline: none;
-
+  padding: 5px 10px;
+  color: $darkgrey_1;
+  outline: none;
 }
 
-
-.b-index-carrousel-edit-modal-close-btn{
+.b-index-carrousel-edit-modal-close-btn {
   position: absolute;
   top: 15px;
   right: 15px;
   width: 20px;
   height: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
-.b-index-carrousel-edit-modal-close-btn img{
+.b-index-carrousel-edit-modal-close-btn img {
   width: 20px;
   height: 20px;
 }

@@ -1,11 +1,11 @@
 import "./Content.scss";
 
-import { useState, useContext, useRef , useEffect} from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import ImagesReader from "./images_reader/ImagesReader";
 import EditPhoto from "./EditPhoto";
 import { ImagesContext } from "../../../../context/ImagesContext";
 import Cookies from "js-cookie";
-import ImagesGrid from "./images_grid/ImagesGrid"
+import ImagesGrid from "./images_grid/ImagesGrid";
 
 const BASE_URL = process.env.REACT_APP_PROD_BACK_DOMAIN;
 const Content = (props) => {
@@ -27,7 +27,7 @@ const Content = (props) => {
 
   const imagesReaderElement = useRef(null);
   const EditModalElem = useRef(null);
-  const imagesGaleryContainerElem = useRef(null)
+  const imagesGaleryContainerElem = useRef(null);
 
   const openImagesReader = (
     e,
@@ -46,14 +46,11 @@ const Content = (props) => {
     });
     setDefaultCustomIndex(customIndex);
 
-    
-
     if (props.leftBarTriggerBtnElem.current) {
-      props.leftBarTriggerBtnElem.current.classList.add("inactive")
+      props.leftBarTriggerBtnElem.current.classList.add("inactive");
     }
-   
 
-    props.scrollToTopElem.current.classList.remove("active")
+    props.scrollToTopElem.current.classList.remove("active");
   };
 
   const tryToDestroyImage = (image, category) => {
@@ -69,13 +66,11 @@ const Content = (props) => {
       headers: {
         Authorization: `Bearer ${cookieToken}`,
       },
-
     };
     await fetch(
       `${BASE_URL}/api/v1/photo_categories/${category.id}/photos/${image.id}`,
-     config
+      config
     );
-    
 
     const newValue = value.map((category) => {
       return {
@@ -84,7 +79,6 @@ const Content = (props) => {
           return image.id !== img.id;
         }),
       };
-      
     });
     setValue(newValue);
   };
@@ -96,14 +90,14 @@ const Content = (props) => {
   };
 
   const handleHideImage = async (e, image, category) => {
-    e.preventDefault()
-    let body 
+    e.preventDefault();
+    let body;
     body = {
       photo: {
         has_to_be_displayed: !image.has_to_be_displayed,
       },
     };
-    
+
     const config = {
       method: "PUT",
       headers: {
@@ -112,12 +106,12 @@ const Content = (props) => {
       },
       body: JSON.stringify(body),
     };
-    let res
+    let res;
     res = await fetch(
       `${BASE_URL}/api/v1/photo_categories/${category.id}/photos/${image.id}`,
       config
     );
-   
+
     const data = await res.json();
     let newValue = value.map((category) => {
       return {
@@ -130,7 +124,6 @@ const Content = (props) => {
           }
         }),
       };
-      
     });
     setValue(newValue);
   };
@@ -141,29 +134,19 @@ const Content = (props) => {
     cookieIsAuth = JSON.parse(cookie);
   }
 
-
+  useEffect(() => {
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`;
+  }, []);
 
   useEffect(() => {
+    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`;
 
-    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
-  }, [])
-  
-  useEffect(() => {
-    imagesGaleryContainerElem.current.style.marginTop = `calc((${props.topBarElem.current.offsetHeight}px) - 20px)`
-
-    window.scrollTo({ top: '0px'});
-    
-    
-  }, [props.selectedCategory])
-
-
-
+    window.scrollTo({ top: "0px" });
+  }, [props.selectedCategory]);
 
   const capitalizeAndStyleString = (string) => {
-    return "PHOTOS"
-  }
-
-
+    return "PHOTOS";
+  };
 
   return (
     <section className="bd-category-wrapper" ref={props.contentWrapperRef}>
@@ -185,19 +168,22 @@ const Content = (props) => {
         setIsLoading={props.setIsLoading}
       />
       <div className="bd-images-container" ref={imagesGaleryContainerElem}>
-      <h2 id="b-images-galery-title">{capitalizeAndStyleString(props.arg)} {props.selectedCategory ? <>: {props.selectedCategory}</>:<></>}</h2>
+        <h2 id="b-images-galery-title">
+          {capitalizeAndStyleString(props.arg)}{" "}
+          {props.selectedCategory ? <>: {props.selectedCategory}</> : <></>}
+        </h2>
         {props.images &&
           props.images.map((imageCategory, cateIndex) => (
             <>
               <ImagesGrid
-                   arg={props.arg}
-                   cateIndex={cateIndex}
-                   cookieIsAuth={cookieIsAuth}
-                   handleHideImage={handleHideImage}
-                   imageCategory={imageCategory}
-                   openEditModal={openEditModal}
-                   tryToDestroyImage={tryToDestroyImage}
-                   openImagesReader={openImagesReader}
+                arg={props.arg}
+                cateIndex={cateIndex}
+                cookieIsAuth={cookieIsAuth}
+                handleHideImage={handleHideImage}
+                imageCategory={imageCategory}
+                openEditModal={openEditModal}
+                tryToDestroyImage={tryToDestroyImage}
+                openImagesReader={openImagesReader}
               />
             </>
           ))}

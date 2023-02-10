@@ -2,22 +2,20 @@ import "./ImagesReader.scss";
 import { useEffect, useState, useRef } from "react";
 import customChevron from "../../../../../assets/icons/chevronDroit.png";
 import closeMenuIcon from "../../../../../assets/icons/xCloseIcon.png";
-import ImagesReaderCategory from "./ImagesReaderCategory"
+import ImagesReaderCategory from "./ImagesReaderCategory";
 const ImagesReader = (props) => {
   const [defaultCurrentIndex, setDefaultCurrentIndex] = useState("");
   const readerMain = useRef(null);
   const paginateLeft = useRef(null);
   const paginateRight = useRef(null);
 
-
-
   const closeMenu = () => {
     props.imagesReaderElement.current.style.display = "none";
     if (props.leftBarTriggerBtnElem.current) {
-      props.leftBarTriggerBtnElem.current.classList.remove("inactive")
+      props.leftBarTriggerBtnElem.current.classList.remove("inactive");
     }
 
-    props.scrollToTopElem.current.classList.add("active")
+    props.scrollToTopElem.current.classList.add("active");
   };
 
   useEffect(() => {
@@ -67,15 +65,12 @@ const ImagesReader = (props) => {
     }
   };
 
-
-
-
   return (
     <div className="bd-images-reader" ref={props.imagesReaderElement}>
       <div className="bd-images-reader-carrousel">
         <div className="bd-images-reader-main" ref={readerMain}>
           {props.images.map((category) => (
-          <>
+            <>
               <ImagesReaderCategory
                 arg={props.arg}
                 category={category}

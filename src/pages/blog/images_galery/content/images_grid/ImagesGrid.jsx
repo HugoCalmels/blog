@@ -2,12 +2,10 @@ import GridItem from "./GridItem";
 import Masonry from "react-masonry-css";
 
 const ImagesGrid = (props) => {
-
   const breakpointColumnsObj = {
     default: 3,
     1180: 2,
     700: 1,
-  
   };
 
   const imagesArray = () => {
@@ -24,7 +22,6 @@ const ImagesGrid = (props) => {
   // Means I cant handle better conditionnal rendering.
   return (
     <div className={`images-grid-per-category ${props.imageCategory.title}`}>
-               
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

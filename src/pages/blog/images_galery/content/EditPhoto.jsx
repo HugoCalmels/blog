@@ -23,7 +23,7 @@ const EditPhoto = (props) => {
   const editFormElem = useRef(null);
 
   const submitEditImageToAPI = async (newImage, cateID) => {
-    let data
+    let data;
     if (props.arg === "dessins") {
       data = {
         dessin: {
@@ -36,7 +36,7 @@ const EditPhoto = (props) => {
         },
       };
       if (newImage !== null) {
-        data.dessin.image_url = newImage.image_url
+        data.dessin.image_url = newImage.image_url;
       }
     } else if (props.arg === "paysages") {
       data = {
@@ -50,7 +50,7 @@ const EditPhoto = (props) => {
         },
       };
       if (newImage !== null) {
-        data.paysage.image_url = newImage.image_url
+        data.paysage.image_url = newImage.image_url;
       }
     } else if (props.arg === "carnets") {
       data = {
@@ -64,20 +64,19 @@ const EditPhoto = (props) => {
         },
       };
       if (newImage !== null) {
-        data.carnet.image_url = newImage.image_url
+        data.carnet.image_url = newImage.image_url;
       }
     }
- 
-    
+
     const config = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${cookieToken}`
+        Authorization: `Bearer ${cookieToken}`,
       },
       body: JSON.stringify(data),
     };
-    let res 
+    let res;
     let newValue;
 
     try {
@@ -97,7 +96,7 @@ const EditPhoto = (props) => {
           config
         );
       }
-   
+
       const datafetched = await res.json();
 
       // handle context
@@ -211,21 +210,18 @@ const EditPhoto = (props) => {
         }
       }
     } catch (e) {
-      console.log(e)
+      console.log(e);
     } finally {
       editFormElem.current.reset();
       props.EditModalElem.current.style.display = "none";
       setValue(newValue);
-      props.setIsLoading(false)
+      props.setIsLoading(false);
     }
-    
-    
-
   };
   const tryToEditImage = (e) => {
     e.preventDefault();
     let cateID;
-    props.setIsLoading(true)
+    props.setIsLoading(true);
     if (categorySelected === null) {
       // category unchanged
 
@@ -239,7 +235,6 @@ const EditPhoto = (props) => {
     const data = new FormData();
     data.append("dessin_temp_image[image]", e.target[0].files[0]);
     if (e.target[0].files[0] !== undefined) {
-
       createTempImage(data).then((res) => {
         submitEditImageToAPI(res, cateID);
       });
@@ -302,9 +297,7 @@ const EditPhoto = (props) => {
         ref={editFormElem}
       >
         <div className="bd-edit-input-container-upload">
-          <label htmlFor="bd-edit-image">
-           Upload nouvelle image :
-          </label>
+          <label htmlFor="bd-edit-image">Upload nouvelle image :</label>
           <input id="bd-edit-image" type="file"></input>
         </div>
 

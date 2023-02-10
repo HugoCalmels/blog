@@ -18,8 +18,8 @@
   font-family: "Quicksand";
   padding: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-margin: auto;
-  @media  (max-width:550px){
+  margin: auto;
+  @media (max-width: 550px) {
     height: 350px;
     left: 15px;
     right: 15px;
@@ -30,9 +30,9 @@ margin: auto;
   display: block;
 }
 
-.bdl-create-year-modal h5{
-  margin:0;
-  padding:0;
+.bdl-create-year-modal h5 {
+  margin: 0;
+  padding: 0;
   font-size: 0.9375rem;
   font-size: 700;
   color: $darkgrey_1;
@@ -44,29 +44,28 @@ margin: auto;
   flex-direction: column;
   justify-content: center;
 }
-.bdl-create-year-form label{
+.bdl-create-year-form label {
   font-size: 0.9375rem;
   font-weight: 500;
   color: $darkgrey_1;
 }
-.bdl-create-year-modal-close{
+.bdl-create-year-modal-close {
   position: absolute;
   top: 15px;
   right: 15px;
 }
-.bdl-create-year-modal-close img{
+.bdl-create-year-modal-close img {
   width: 20px;
   height: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.bdl-send-input{
+.bdl-send-input {
   margin-top: 10px;
   display: flex;
   align-items: center;
-
 }
-.bdl-send-input input{
+.bdl-send-input input {
   margin-top: 10px;
   font-family: "Quicksand";
   font-size: 0.9375rem;
@@ -74,17 +73,16 @@ margin: auto;
   padding: 5px 10px;
   border-radius: 4px;
   border: 1px solid $lightgrey_3;
-
 }
-.bdl-send-input input.active{
+.bdl-send-input input.active {
   border: 1px solid $darkgrey_1;
   color: $darkgrey_1;
-  cursor:pointer;
+  cursor: pointer;
 }
-.bdl-send-input input.active:hover{
+.bdl-send-input input.active:hover {
   background-color: $lightgrey_2;
 }
-.bdl-custom-hr{
+.bdl-custom-hr {
   width: 100%;
   height: 1px;
   background-color: $darkgrey_1;
@@ -92,7 +90,7 @@ margin: auto;
   margin-bottom: 20px;
 }
 
-#bdl-create-year-text-input{
+#bdl-create-year-text-input {
   font-size: 1rem;
   font-weight: 700;
   color: $font_grey_1;
@@ -102,8 +100,7 @@ margin: auto;
   border-radius: 4px;
 }
 
-
-#remove-categories{
+#remove-categories {
   font-size: 1rem;
   color: $font_grey_1;
   padding: 5px 10px;
@@ -112,7 +109,7 @@ margin: auto;
   outline: none;
 }
 
-#bdl-submit-delete-year{
+#bdl-submit-delete-year {
   font-size: 0.9375rem;
   padding: 5px 10px;
   margin-top: 10px;
@@ -121,13 +118,13 @@ margin: auto;
   outline: none;
   border: 1px solid $darkgrey_1;
   border-radius: 4px;
-  cursor:pointer;
+  cursor: pointer;
 }
-#bdl-submit-delete-year:hover{
+#bdl-submit-delete-year:hover {
   background-color: $lightgrey_2;
 }
 
-.bdl-year-delete-year-form{
+.bdl-year-delete-year-form {
   display: flex;
   flex-direction: column;
   gap: 10px;

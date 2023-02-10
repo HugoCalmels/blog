@@ -18,13 +18,17 @@ const GridItem = (props) => {
           </div>
           <div
             className="bd-image-edit"
-            onClick={() => props.openEditModal(props.image, props.imageCategory)}
+            onClick={() =>
+              props.openEditModal(props.image, props.imageCategory)
+            }
           >
             <img src={editIcon} alt="edit" />
           </div>
           <div
             className="bd-image-destroy"
-            onClick={() => props.tryToDestroyImage(props.image, props.imageCategory)}
+            onClick={() =>
+              props.tryToDestroyImage(props.image, props.imageCategory)
+            }
           >
             <img src={deleteIcon} alt="delete" />
           </div>

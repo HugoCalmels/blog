@@ -1,4 +1,3 @@
-
 @import "../../../variables";
 
 .b-main-wrapper {
@@ -16,15 +15,15 @@
   padding-bottom: 100px;
 }
 
-.bd-left-bar-trigger-btn{
+.bd-left-bar-trigger-btn {
   position: fixed;
 
   left: 0;
   margin-left: 20px;
   top: calc(75px + 10px);
-  display:flex;
+  display: flex;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
   z-index: 13;
   flex-direction: row;
   border: 1px solid $alert_red;
@@ -32,76 +31,68 @@
   border-radius: 4px;
   padding: 5px 10px;
   width: auto;
-  transition: .15s;
-
+  transition: 0.15s;
 }
 
-.bd-left-bar-trigger-btn:hover{
-  transition: .15s;
+.bd-left-bar-trigger-btn:hover {
+  transition: 0.15s;
   background-color: $lightgrey_2;
 }
 
-
-.bd-left-bar-trigger-btn.inactive{
+.bd-left-bar-trigger-btn.inactive {
   display: none;
 }
 
-.bd-left-bar-trigger-btn h5{
+.bd-left-bar-trigger-btn h5 {
   font-family: "Quicksand";
   margin: 0;
   font-size: 0.9375rem;
   font-weight: 600;
   margin-right: 10px;
   display: block;
-  @media only screen and (max-width: 600px){
+  @media only screen and (max-width: 600px) {
     display: none;
   }
 }
 
+.b-main-content-loader {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
 
-
-.b-main-content-loader{
-  position:absolute;
-  top:75px;
- left:0;
- right:0;
- bottom:0;
- z-index: 15;
-
- display: flex;
- background-color: $lightgrey_1;
- align-items :center;
-
+  display: flex;
+  background-color: $lightgrey_1;
+  align-items: center;
 }
 
-.b-main-content-loader.active{
-  display:flex;
+.b-main-content-loader.active {
+  display: flex;
 }
 
-.b-main-content-loader-container{
-
+.b-main-content-loader-container {
   position: fixed;
   top: 50%;
-  left:50%;
+  left: 50%;
   bottom: 50%;
   right: 50%;
 
-display: flex;
-height: 75px;
-width: 75px;
-transform: translate(-50%,-50%);
+  display: flex;
+  height: 75px;
+  width: 75px;
+  transform: translate(-50%, -50%);
 }
-.b-main-content-loader-container img{
-
+.b-main-content-loader-container img {
 }
 
-.scroll-to-top-btn-small-container-wrapper{
+.scroll-to-top-btn-small-container-wrapper {
   position: relative;
   z-index: 9;
-;
 }
 
-.scroll-to-top-btn-small-container{
+.scroll-to-top-btn-small-container {
   position: fixed;
   border-radius: 50%;
 
@@ -110,14 +101,14 @@ transform: translate(-50%,-50%);
   display: none;
   z-index: 9;
   transform: rotate(180deg);
-  transition: .15s;
-  cursor:pointer;
+  transition: 0.15s;
+  cursor: pointer;
 }
 
-.scroll-to-top-btn-small-container.active{
+.scroll-to-top-btn-small-container.active {
   display: flex;
 }
-.scroll-to-top-btn-small-container:hover{
+.scroll-to-top-btn-small-container:hover {
   transform: rotate(180deg) scale(1.1);
-  transition: .15s;
+  transition: 0.15s;
 }

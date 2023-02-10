@@ -1,62 +1,64 @@
-import CategoryContent from "./CategoryContent"
+import CategoryContent from "./CategoryContent";
 
 const Category = (props) => {
   return (
     <>
-      {props.arg === "dessins" ?
+      {props.arg === "dessins" ? (
         <>
-          {props.imageCategory.dessins && props.imageCategory.dessins.map((image, imageIndex) => (
-  <CategoryContent
-    image={image}
-    imageIndex={imageIndex}
-    cateIndex={props.cateIndex}
-    cookieIsAuth={props.cookieIsAuth}
-    handleHideImage={props.handleHideImage}
-    imageCategory={props.imageCategory}
-    openEditModal={props.openEditModal}
-    tryToDestroyImage={props.tryToDestroyImage}
-    openImagesReader={props.openImagesReader}
-  />
-))}
+          {props.imageCategory.dessins &&
+            props.imageCategory.dessins.map((image, imageIndex) => (
+              <CategoryContent
+                image={image}
+                imageIndex={imageIndex}
+                cateIndex={props.cateIndex}
+                cookieIsAuth={props.cookieIsAuth}
+                handleHideImage={props.handleHideImage}
+                imageCategory={props.imageCategory}
+                openEditModal={props.openEditModal}
+                tryToDestroyImage={props.tryToDestroyImage}
+                openImagesReader={props.openImagesReader}
+              />
+            ))}
         </>
-        : props.arg === "paysages" ?
-          <>
-            {props.imageCategory.paysages && props.imageCategory.paysages.map((image, imageIndex) => (
-  <CategoryContent
-    image={image}
-    imageIndex={imageIndex}
-    cateIndex={props.cateIndex}
-    cookieIsAuth={props.cookieIsAuth}
-    handleHideImage={props.handleHideImage}
-    imageCategory={props.imageCategory}
-    openEditModal={props.openEditModal}
-    tryToDestroyImage={props.tryToDestroyImage}
-    openImagesReader={props.openImagesReader}
-  />
-))}
-          </>
-        : props.arg === "carnets" ?
+      ) : props.arg === "paysages" ? (
         <>
-        {props.imageCategory.carnets && props.imageCategory.carnets.map((image, imageIndex) => (
-<CategoryContent
-image={image}
-imageIndex={imageIndex}
-cateIndex={props.cateIndex}
-cookieIsAuth={props.cookieIsAuth}
-handleHideImage={props.handleHideImage}
-imageCategory={props.imageCategory}
-openEditModal={props.openEditModal}
-tryToDestroyImage={props.tryToDestroyImage}
-openImagesReader={props.openImagesReader}
-/>
-))}
-      </>
-        :
-      <></>
-      }
+          {props.imageCategory.paysages &&
+            props.imageCategory.paysages.map((image, imageIndex) => (
+              <CategoryContent
+                image={image}
+                imageIndex={imageIndex}
+                cateIndex={props.cateIndex}
+                cookieIsAuth={props.cookieIsAuth}
+                handleHideImage={props.handleHideImage}
+                imageCategory={props.imageCategory}
+                openEditModal={props.openEditModal}
+                tryToDestroyImage={props.tryToDestroyImage}
+                openImagesReader={props.openImagesReader}
+              />
+            ))}
+        </>
+      ) : props.arg === "carnets" ? (
+        <>
+          {props.imageCategory.carnets &&
+            props.imageCategory.carnets.map((image, imageIndex) => (
+              <CategoryContent
+                image={image}
+                imageIndex={imageIndex}
+                cateIndex={props.cateIndex}
+                cookieIsAuth={props.cookieIsAuth}
+                handleHideImage={props.handleHideImage}
+                imageCategory={props.imageCategory}
+                openEditModal={props.openEditModal}
+                tryToDestroyImage={props.tryToDestroyImage}
+                openImagesReader={props.openImagesReader}
+              />
+            ))}
+        </>
+      ) : (
+        <></>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Category
-
+export default Category;
